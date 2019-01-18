@@ -4,12 +4,17 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PWMVictorSPX;                    //NOT USED
 import edu.wpi.first.wpilibj.TimedRobot;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;   //NOT WORKING
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+
 
 //START ROBOT CLASS
 public class Robot extends TimedRobot {
@@ -17,6 +22,10 @@ public class Robot extends TimedRobot {
     //MOTOR MAP
   private static final int rMotorPort = 1;
   private static final int lMotorPort = 2;
+  private static final int lslavePort = 2;
+  private static final int rslavePort = 2;
+
+
 
     //JOYSTICK MAP
   private static final int kJoystickPort = 0;
@@ -32,8 +41,15 @@ public class Robot extends TimedRobot {
   Boolean buttonflag = false;
 
   //  
-  TalonSRX rmotor = new TalonSRX(rMotorPort);
-  TalonSRX lmotor = new TalonSRX(lMotorPort);
+  WPI_TalonSRX rmotor = new WPI_TalonSRX(rMotorPort);
+  WPI_TalonSRX lmotor = new WPI_TalonSRX(lMotorPort);
+  WPI_TalonSRX lslave = new WPI_TalonSRX(lslavePort);
+  WPI_TalonSRX rslave = new WPI_TalonSRX(rslavePort);
+
+  SpeedControllerGroup mleft = new SpeedControllerGroup(lmotor, lslave);
+  SpeedControllerGroup mright = new SpeedControllerGroup(rmotor, rslave);
+
+  DifferentialDrive drive = new DifferentialDrive(mleft, mright);
 
   //VISION STUFF
   NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
@@ -58,62 +74,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
-    //VISION CODE
-    limelightX = tx.getDouble(0.0);
-    limelightY = ty.getDouble(0.0);
-    limelightArea = ta.getDouble(0.0);
-    limelightTarget = tv.getDouble(0.0);
+    drive.arcadeDrive(m_joystick.getRawAxis(leftY), m_joystick.getRawAxis(leftX));
 
-//     //SMART DASHBOARD
-//     /*
-//     SmartDashboard.putNumber("Limelight X", limelightX);
-//     SmartDashboard.putNumber("Limelight Y", limelightY);
-//     SmartDashboard.putNumber("Limelight Area", limelightArea);
-
-//     ^SMART DASHBOARD IS BROKEN DO NOT USE^
-//     */
-// <<<<<<< HEAD
-// //Test comment
-// =======
-// //test commit
-
-
-
-
-// >>>>>>> 21c87e5fb574eec06883a3e83466c674718a97dd
-//     //IF THE ROBOT SEES A TARRGET, RUN THE MOTORS AT 50% SPEED
-//     if(limelightTarget == 0.0){
-//       lmotor.set(ControlMode.PercentOutput, 0);
-//       rmotor.set(ControlMode.PercentOutput, 0);
-//     }else{
-//       lmotor.set(ControlMode.PercentOutput, .5);
-//       rmotor.set(ControlMode.PercentOutput, .5);
-//     }
-
-    /*
-    //BUTTON FLAG RESET
-    if(!m_joystick.getRawButton(buttonB) && !m_joystick.getRawButton(buttonX)){
-      buttonflag = false;
-    }
-
-    //SCALER INCREMENT
-    if(m_joystick.getRawButton(buttonB) && !buttonflag){
-      if(scaler <= 0.9){
-        scaler += 0.1;
-        buttonflag = true;
-      }
-    }
-
-    if(m_joystick.getRawButton(buttonX) && !buttonflag){
-      if(scaler >= 0.1){
-        scaler += -0.1;
-        buttonflag = true;
-      }    
-    }
-
-    //MOTOR CONTROL
-    lmotor.set(ControlMode.PercentOutput, m_joystick.getRawAxis(leftY)*scaler);
-    rmotor.set(ControlMode.PercentOutput, m_joystick.getRawAxis(rightY)*scaler);
-    */
   } //END ROBOTOT TELEOP
 } //END ROBOT CLASS
