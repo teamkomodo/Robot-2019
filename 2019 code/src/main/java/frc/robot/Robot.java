@@ -64,23 +64,31 @@ public class Robot extends TimedRobot {
     limelightArea = ta.getDouble(0.0);
     limelightTarget = tv.getDouble(0.0);
 
-    //SMART DASHBOARD
-    /*
-    SmartDashboard.putNumber("Limelight X", limelightX);
-    SmartDashboard.putNumber("Limelight Y", limelightY);
-    SmartDashboard.putNumber("Limelight Area", limelightArea);
+//     //SMART DASHBOARD
+//     /*
+//     SmartDashboard.putNumber("Limelight X", limelightX);
+//     SmartDashboard.putNumber("Limelight Y", limelightY);
+//     SmartDashboard.putNumber("Limelight Area", limelightArea);
 
-    ^SMART DASHBOARD IS BROKEN DO NOT USE^
-    */
-//Test comment
-    //IF THE ROBOT SEES A TARRGET, RUN THE MOTORS AT 50% SPEED
-    if(limelightTarget == 0.0){
-      lmotor.set(ControlMode.PercentOutput, 0);
-      rmotor.set(ControlMode.PercentOutput, 0);
-    }else{
-      lmotor.set(ControlMode.PercentOutput, .5);
-      rmotor.set(ControlMode.PercentOutput, .5);
-    }
+//     ^SMART DASHBOARD IS BROKEN DO NOT USE^
+//     */
+// <<<<<<< HEAD
+// //Test comment
+// =======
+// //test commit
+
+
+
+
+// >>>>>>> 21c87e5fb574eec06883a3e83466c674718a97dd
+//     //IF THE ROBOT SEES A TARRGET, RUN THE MOTORS AT 50% SPEED
+//     if(limelightTarget == 0.0){
+//       lmotor.set(ControlMode.PercentOutput, 0);
+//       rmotor.set(ControlMode.PercentOutput, 0);
+//     }else{
+//       lmotor.set(ControlMode.PercentOutput, .5);
+//       rmotor.set(ControlMode.PercentOutput, .5);
+//     }
 
     /*
     //BUTTON FLAG RESET
