@@ -37,12 +37,14 @@ public class RobotMap {
     public static final int lBumper = 5;
     public static final int rBumper = 6;
 
-    //OTHER DECLARATIONS
-    public static final double scaler = 0.75;
-    public static final double visionThreshold = 2.0;
-
     //CONTROL METHOD
     public static Boolean enableGamepad = false;
 
+    //VISION CODE
+    public static final double visionXThreshold = 2.0;
+    public static final double visionDistanceMax = 12.0;
+    public static final double visionDistanceMin = 1.0;
 
+    //OTHER DECLARATIONS
+    public static final double scaler = 0.75;
 }
