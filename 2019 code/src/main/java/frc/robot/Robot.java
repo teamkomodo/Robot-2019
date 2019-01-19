@@ -21,7 +21,6 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
 
     if (RobotMap.enableGamepad){
-<<<<<<< HEAD
       //BUTON FLAG RESET
       if(!oi.gamepad.getRawButton(RobotMap.buttonA) && !oi.gamepad.getRawButton(RobotMap.buttonB) && !oi.gamepad.getRawButton(RobotMap.buttonX) && !oi.gamepad.getRawButton(RobotMap.buttonY)){
         buttonFlag = false;
@@ -40,25 +39,5 @@ public class Robot extends TimedRobot {
     } else {  //CONTROL MODE CHECK
       oi.drive.tankDrive(-oi.ljoystick.getRawAxis(RobotMap.joyX)*RobotMap.scaler, -oi.ljoystick.getRawAxis(RobotMap.joyY)*RobotMap.scaler);
     } //END CONTROL MODE
-=======
-    //BUTON FLAG RESET
-    if(!gamepad.getRawButton(RobotMap.buttonA) && !gamepad.getRawButton(RobotMap.buttonB) && !gamepad.getRawButton(RobotMap.buttonX) && !gamepad.getRawButton(RobotMap.buttonY)){
-      buttonFlag = false;
-    }
-    //DRIVE MODE TOGGLE
-    if(gamepad.getRawButton(RobotMap.buttonA) && !buttonFlag){
-      driveMode = !driveMode;
-      buttonFlag = true;
-    }
-    //DRIVE FUNCTIONS
-    if(!driveMode){
-      drive.arcadeDrive(-gamepad.getRawAxis(RobotMap.leftY)*RobotMap.scaler, gamepad.getRawAxis(RobotMap.leftX)*RobotMap.scaler);
-    } else {
-      drive.tankDrive(-gamepad.getRawAxis(RobotMap.leftY)*RobotMap.scaler, -gamepad.getRawAxis(RobotMap.rightY)*RobotMap.scaler);
-    }
-  } else {
-    drive.tankDrive(-rjoystick.getRawAxis(RobotMap.joyY)*RobotMap.scaler, -ljoystick.getRawAxis(RobotMap.joyY)*RobotMap.scaler);
-  }
->>>>>>> master
   } //END ROBOTOT TELEOP
 } //END ROBOT CLASS
