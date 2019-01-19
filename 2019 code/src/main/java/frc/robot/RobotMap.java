@@ -10,12 +10,22 @@ public class RobotMap {
     public static final int lslavePort = 4;
 
     //JOYSTICK DECLARATIONS
+<<<<<<< HEAD
     public static final int lJoystickPort = 1;
     public static final int rJoystickPort = 2;
 
+=======
+    public static final int lJoystickPort = 0;
+>>>>>>> master
     public static final int joyX = 0;
     public static final int joyY = 1;
     public static final int lTrigger = 1;
+<<<<<<< HEAD
+=======
+
+    public static final int rJoystickPort = 1;
+
+>>>>>>> master
     public static final int rTrigger = 1;
 
     //GAMEPAD DECLARATIONS
