@@ -8,6 +8,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.analog.adis16448.frc.ADIS16448_IMU;
 
 public class OI{
     public Joystick gamepad;
@@ -23,6 +24,8 @@ public class OI{
     public SpeedControllerGroup mright;
 
     public DifferentialDrive drive;
+
+    public ADIS16448_IMU gyro;
 
     public NetworkTable table;
     public NetworkTableEntry tx;
@@ -64,6 +67,8 @@ public class OI{
 
         oneFootLeftEncoder = 3825.25;
         oneFootRightEncoder = -3864.15;
+
+        gyro = new ADIS16448_IMU();
 
         autonomousSpeed = 0.5;
 

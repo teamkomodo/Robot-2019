@@ -16,6 +16,7 @@ public class MotorControl{
       if(Robot.oi.gamepad.getRawButton(RobotMap.buttonY)){
         Robot.oi.rslave.setSelectedSensorPosition(0);
         Robot.oi.lmotor.setSelectedSensorPosition(0);
+        Robot.oi.gyro.reset();
       }
       if (RobotMap.enableGamepad){
         //DRIVE FUNCTIONS
@@ -33,5 +34,8 @@ public class MotorControl{
       } //END CONTROL MODE
       SmartDashboard.putNumber("Right Encoder", Robot.oi.rslave.getSelectedSensorPosition());
       SmartDashboard.putNumber("Left Encoder", Robot.oi.lmotor.getSelectedSensorPosition());
+      SmartDashboard.putNumber("Gyro X", Robot.oi.gyro.getAngleX());
+      SmartDashboard.putNumber("Gyro Y", Robot.oi.gyro.getAngleY());
+      SmartDashboard.putNumber("Gyro Z", Robot.oi.gyro.getAngleZ());
     } 
 }
