@@ -19,6 +19,21 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+    
+    oi.limelightX = oi.tx.getDouble(0.0);
+    oi.limelightY = oi.ty.getDouble(0.0);
+    oi.limelightArea = oi.ta.getDouble(0.0);
+    oi.limelightTarget = oi.tv.getDouble(0.0);
+
+    if(oi.limelightTarget != 0.0){
+      if(oi.limelightArea > .01 && oi.limelightArea < .12){
+        oi.mleft.set(.25);
+        oi.mright.set(.25);
+      } else {
+        oi.mleft.set(0);
+        oi.mright.set(0);
+      }
+    }
 
     if (RobotMap.enableGamepad){
       //BUTON FLAG RESET
@@ -38,7 +53,6 @@ public class Robot extends TimedRobot {
       }
     } else {  //CONTROL MODE CHECK
       oi.drive.tankDrive(-oi.ljoystick.getRawAxis(RobotMap.joyX)*RobotMap.scaler, -oi.ljoystick.getRawAxis(RobotMap.joyY)*RobotMap.scaler);
-      //Matt was here but he was a mega loser so Ethan moved him to the bottom.
     } //END CONTROL MODE
   } //END ROBOTOT TELEOP
 } //END ROBOT CLASS
