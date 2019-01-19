@@ -11,13 +11,11 @@ public class RobotMap {
 
     //JOYSTICK DECLARATIONS
     public static final int lJoystickPort = 1;
-    public static final int joyX = 0;
-    public static final int joyY = 1;
-    
-    public static final int lTrigger = 1;
-
     public static final int rJoystickPort = 2;
 
+    public static final int joyX = 0;
+    public static final int joyY = 1;
+    public static final int lTrigger = 1;
     public static final int rTrigger = 1;
 
     //GAMEPAD DECLARATIONS
