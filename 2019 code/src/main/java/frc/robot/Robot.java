@@ -21,6 +21,11 @@ public class Robot extends TimedRobot {
     oi = new OI();
   } //END ROBOT INIT
   @Override
+  public void autonomousInit() {
+    oi.rslave.setSelectedSensorPosition(0);
+    oi.lmotor.setSelectedSensorPosition(0);
+  }
+  @Override
   public void autonomousPeriodic() {
     autonomous = new Autonomous();
   }
