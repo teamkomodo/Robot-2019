@@ -38,6 +38,9 @@ public class OI{
     public double visionDistanceScaler;
     public double adjustedLeft;
     public double adjustedRight;
+    public double oneFootLeftEncoder;
+    public double oneFootRightEncoder;
+    public double autonomousSpeed;
 
     public Boolean defaultDrivemode;
     public Boolean ButtonFlag;
@@ -58,6 +61,11 @@ public class OI{
 
         rslave.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
         lslave.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+
+        oneFootLeftEncoder = 3825.25;
+        oneFootRightEncoder = -3864.15;
+
+        autonomousSpeed = 0.5;
 
         mleft = new SpeedControllerGroup(lmotor, lslave);
         mright = new SpeedControllerGroup(rmotor, rslave);

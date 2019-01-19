@@ -13,7 +13,10 @@ public class MotorControl{
         Robot.oi.defaultDrivemode = !Robot.oi.defaultDrivemode;
         Robot.oi.ButtonFlag = true;
       }
-
+      if(Robot.oi.gamepad.getRawButton(RobotMap.buttonY)){
+        Robot.oi.rslave.setSelectedSensorPosition(0);
+        Robot.oi.lmotor.setSelectedSensorPosition(0);
+      }
       if (RobotMap.enableGamepad){
         //DRIVE FUNCTIONS
         if(!Robot.oi.defaultDrivemode){

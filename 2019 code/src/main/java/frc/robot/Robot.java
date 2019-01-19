@@ -13,13 +13,17 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static TrackTarget visionCode;
   public static MotorControl motorControl;
+  public static Autonomous autonomous;
   
   @Override
   public void robotInit() {
     //INITIALIZE ALL MOTOR CONTROLLERS AND VARIABLES
     oi = new OI();
   } //END ROBOT INIT
-
+  @Override
+  public void autonomousPeriodic() {
+    autonomous = new Autonomous();
+  }
   @Override
   public void teleopPeriodic() {
 
