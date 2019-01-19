@@ -4,9 +4,7 @@ import frc.robot.*;
 public class MotorControl{
     private Boolean driveMode = false;
     private Boolean buttonFlag;
-    public void control(Boolean flag){
-      //SYNCING LOCAL VARIABLE WITH EXTERNAL VARIABLE
-      buttonFlag = flag;
+    public MotorControl(Boolean flag){
       if (RobotMap.enableGamepad){
         //DRIVE MODE TOGGLE
         if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA) && !buttonFlag){
@@ -22,5 +20,5 @@ public class MotorControl{
       } else {  //CONTROL MODE CHECK
         Robot.oi.drive.tankDrive(-Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*RobotMap.scaler, -Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*RobotMap.scaler);
       } //END CONTROL MODE
-    }
+    } 
 }
