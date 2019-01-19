@@ -41,8 +41,11 @@ public class Robot extends TimedRobot {
   double limelightArea = ta.getDouble(0.0);
   double limelightTarget = tv.getDouble(0.0);
   
-  //DECLARATIONS
+  //RANDOM DECLARATIONS
   private Joystick m_joystick;
+  Boolean driveMode = false;
+  Boolean buttonFlag = false;
+
 
   @Override
   public void robotInit() {
@@ -51,8 +54,20 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-
-    drive.arcadeDrive(-m_joystick.getRawAxis(RobotMap.leftY)*RobotMap.scaler, m_joystick.getRawAxis(RobotMap.leftX)*RobotMap.scaler);
-
+    //BUTON FLAG RESET
+    if(!m_joystick.getRawButton(RobotMap.buttonA) && !m_joystick.getRawButton(RobotMap.buttonB) && !m_joystick.getRawButton(RobotMap.buttonX) && !m_joystick.getRawButton(RobotMap.buttonY)){
+      buttonFlag = false;
+    }
+    //DRIVE MODE TOGGLE
+    if(m_joystick.getRawButton(RobotMap.buttonA) && !buttonFlag){
+      driveMode = !driveMode;
+      buttonFlag = true;
+    }
+    //DRIVE FUNCTIONS
+    if(!driveMode){
+      drive.arcadeDrive(-m_joystick.getRawAxis(RobotMap.leftY)*RobotMap.scaler, m_joystick.getRawAxis(RobotMap.leftX)*RobotMap.scaler);
+    } else {
+      drive.tankDrive(m_joystick.getRawAxis(RobotMap.leftY), m_joystick.getRawAxis(RobotMap.rightY));
+    }
   } //END ROBOTOT TELEOP
 } //END ROBOT CLASS
