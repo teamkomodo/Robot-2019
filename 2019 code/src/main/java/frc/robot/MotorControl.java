@@ -6,6 +6,8 @@ public class MotorControl{
     private Boolean buttonFlag;
     public MotorControl(Boolean flag){
       if (RobotMap.enableGamepad){
+        //SYNC EXTERNAL AND LOACAL VARIABLES
+        buttonFlag = flag;
         //DRIVE MODE TOGGLE
         if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA) && !buttonFlag){
           driveMode = !driveMode;
