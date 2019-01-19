@@ -42,12 +42,16 @@ public class Robot extends TimedRobot {
         oi.limelightArea = oi.ta.getDouble(0.0);
         oi.limelightTarget = oi.tv.getDouble(0.0);
 
-        if(oi.limelightX > 20){
-          oi.visionScaler = 1.0;
-        } else if(oi.limelightX < -20){
-          oi.visionScaler = 1.0;
+        if(oi.limelightArea + RobotMap.visionDistanceThreshold < RobotMap.visionDistanceTarget || oi.limelightArea - RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget) {
+          oi.visionDistanceScaler = oi.limelightArea / RobotMap.visionDistanceTarget;
+        }
+
+        if(oi.limelightX >= 20.0){
+          oi.visionXScaler = 0.7;
+        } else if(oi.limelightX <= -20.0){
+          oi.visionXScaler = -0.7;
         } else {
-          oi.visionScaler = oi.limelightX / 20;
+          oi.visionXScaler = oi.limelightX / 30;
         }
         //LOOKS FOR A TARGET
         if(oi.limelightTarget != 0.0){
@@ -55,19 +59,30 @@ public class Robot extends TimedRobot {
           if(oi.limelightArea > RobotMap.visionDistanceMin && oi.limelightArea < RobotMap.visionDistanceMax){
             //DETECTS WHERE THE TARGET IS ON X AXIS
             if(oi.limelightX - RobotMap.visionXThreshold > 0){
-              oi.mleft.set(oi.visionScaler);
-              oi.mright.set(oi.visionScaler);
+              oi.mleft.set(-oi.visionXScaler);
+              oi.mright.set(-oi.visionXScaler);
             }
             if(oi.limelightX + RobotMap.visionXThreshold < 0){
-              oi.mleft.set(-oi.visionScaler);
-              oi.mright.set(-oi.visionScaler);
+              oi.mleft.set(-oi.visionXScaler);
+              oi.mright.set(-oi.visionXScaler);
+            }
+            if(oi.limelightArea + RobotMap.visionDistanceThreshold < RobotMap.visionDistanceTarget){
+              oi.mleft.set(.3);
+              oi.mright.set(-.3);
+            }
+            if(oi.limelightArea - RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget){
+              oi.mleft.set(-.3);
+              oi.mright.set(.3);
             }
           } else {
             //DISABLES MOTORS IF IT DOES NOT FIND A TARGET
             oi.mleft.set(0);
             oi.mright.set(0);
           }
-        }   
+        } else {
+          oi.mleft.set(0);
+          oi.mright.set(0);
+        } 
       
        } else {
         if (RobotMap.enableGamepad){

@@ -41,9 +41,11 @@ public class RobotMap {
     public static Boolean enableGamepad = true;
 
     //VISION CODE
-    public static final double visionXThreshold = 10.0;
+    public static final double visionXThreshold = 2.0;
     public static final double visionDistanceMax = 12.0;
-    public static final double visionDistanceMin = 1.0;
+    public static final double visionDistanceMin = .025;         //SHOULD BE 1.0
+    public static final double visionDistanceTarget = 0.6;
+    public static final double visionDistanceThreshold = 0.2;
 
     //OTHER DECLARATIONS
     public static final double scaler = 0.75;
