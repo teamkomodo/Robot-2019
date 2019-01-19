@@ -1,4 +1,5 @@
 package frc.robot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.*;
 
 public class MotorControl{
@@ -27,5 +28,7 @@ public class MotorControl{
           Robot.oi.drive.tankDrive(-Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*RobotMap.scaler, -Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*RobotMap.scaler);
         }
       } //END CONTROL MODE
+      SmartDashboard.putNumber("Right Encoder", Robot.oi.rslave.getSelectedSensorPosition());
+      SmartDashboard.putNumber("Left Encoder", Robot.oi.lmotor.getSelectedSensorPosition());
     } 
 }

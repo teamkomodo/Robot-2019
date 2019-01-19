@@ -1,14 +1,13 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 public class OI{
     public Joystick gamepad;
@@ -24,7 +23,6 @@ public class OI{
     public SpeedControllerGroup mright;
 
     public DifferentialDrive drive;
-
 
     public NetworkTable table;
     public NetworkTableEntry tx;
@@ -44,16 +42,22 @@ public class OI{
     public Boolean defaultDrivemode;
     public Boolean ButtonFlag;
 
+    public int encoderTimeout;
 
     public OI() {
         gamepad = new Joystick(RobotMap.kJoystickPort);
         ljoystick = new Joystick(RobotMap.lJoystickPort);
         rjoystick = new Joystick(RobotMap.rJoystickPort);
 
+        encoderTimeout = 30;
+
         rmotor = new WPI_TalonSRX(RobotMap.rMotorPort);
         lmotor = new WPI_TalonSRX(RobotMap.lMotorPort);
         lslave = new WPI_TalonSRX(RobotMap.lslavePort);
         rslave = new WPI_TalonSRX(RobotMap.rslavePort);
+
+        rslave.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        lslave.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
 
         mleft = new SpeedControllerGroup(lmotor, lslave);
         mright = new SpeedControllerGroup(rmotor, rslave);
@@ -72,6 +76,5 @@ public class OI{
         limelightY = ty.getDouble(0.0);
         limelightArea = ta.getDouble(0.0);
         limelightTarget = tv.getDouble(0.0);
-
-    }  
+        } 
     }
