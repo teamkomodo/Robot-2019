@@ -30,7 +30,7 @@ public class OI{
     public NetworkTableEntry tx;
     public NetworkTableEntry ty;
     public NetworkTableEntry ta;
-    public  NetworkTableEntry tv;
+    public NetworkTableEntry tv;
   
     public double limelightX;
     public double limelightY;
@@ -38,6 +38,9 @@ public class OI{
     public double limelightTarget;
     public double visionXScaler;
     public double visionDistanceScaler;
+    public double adjustedLeft;
+    public double adjustedRight;
+
 
     public OI() {
         gamepad = new Joystick(RobotMap.kJoystickPort);
@@ -64,5 +67,6 @@ public class OI{
         limelightY = ty.getDouble(0.0);
         limelightArea = ta.getDouble(0.0);
         limelightTarget = tv.getDouble(0.0);
+
     }  
     }

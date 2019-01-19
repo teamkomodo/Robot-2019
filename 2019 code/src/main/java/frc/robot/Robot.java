@@ -42,8 +42,10 @@ public class Robot extends TimedRobot {
         oi.limelightArea = oi.ta.getDouble(0.0);
         oi.limelightTarget = oi.tv.getDouble(0.0);
 
-        if(oi.limelightArea + RobotMap.visionDistanceThreshold < RobotMap.visionDistanceTarget || oi.limelightArea - RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget) {
-          oi.visionDistanceScaler = oi.limelightArea / RobotMap.visionDistanceTarget;
+        if(oi.limelightArea + RobotMap.visionDistanceThreshold < RobotMap.visionDistanceTarget) {
+          oi.visionDistanceScaler = 1- (oi.limelightArea / (RobotMap.visionDistanceTarget*2));
+        } else if(oi.limelightArea - RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget) {
+          oi.visionDistanceScaler = oi.limelightArea / (RobotMap.visionDistanceTarget*2);
         }
 
         if(oi.limelightX >= 20.0){
@@ -58,22 +60,55 @@ public class Robot extends TimedRobot {
           //DETECTS IF TARGET IS IN RANGE
           if(oi.limelightArea > RobotMap.visionDistanceMin && oi.limelightArea < RobotMap.visionDistanceMax){
             //DETECTS WHERE THE TARGET IS ON X AXIS
-            if(oi.limelightX - RobotMap.visionXThreshold > 0){
-              oi.mleft.set(-oi.visionXScaler);
-              oi.mright.set(-oi.visionXScaler);
+            if(oi.limelightX - RobotMap.visionXThreshold > 0 && oi.limelightArea + RobotMap.visionDistanceThreshold < RobotMap.visionDistanceTarget){
+              //IF X > 0 AND ROBOT IS TOO CLOSE
+
+              oi.adjustedLeft = ((-oi.visionXScaler) + (oi.visionDistanceScaler))/2;
+              oi.adjustedRight = ((-oi.visionXScaler)+ (-oi.visionDistanceScaler))/2;
+
             }
-            if(oi.limelightX + RobotMap.visionXThreshold < 0){
-              oi.mleft.set(-oi.visionXScaler);
-              oi.mright.set(-oi.visionXScaler);
+            else if(oi.limelightX + RobotMap.visionXThreshold < 0 && oi.limelightArea + RobotMap.visionDistanceThreshold < RobotMap.visionDistanceTarget){
+              //IF X < 0 AND ROBOT IS TOO CLOSE
+
+              oi.adjustedLeft = ((-oi.visionXScaler) + (oi.visionDistanceScaler))/2;
+              oi.adjustedRight = ((-oi.visionXScaler)+ (-oi.visionDistanceScaler))/2;
+
             }
-            if(oi.limelightArea + RobotMap.visionDistanceThreshold < RobotMap.visionDistanceTarget){
-              oi.mleft.set(.3);
-              oi.mright.set(-.3);
+            else if(oi.limelightX - RobotMap.visionXThreshold > 0 && oi.limelightArea - RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget){
+              //IF X > 0 AND ROBOT IS TOO FAR
+
+              oi.adjustedLeft = ((-oi.visionXScaler) + (-oi.visionDistanceScaler))/2;
+              oi.adjustedRight = ((-oi.visionXScaler)+ (oi.visionDistanceScaler))/2;
+
             }
-            if(oi.limelightArea - RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget){
-              oi.mleft.set(-.3);
-              oi.mright.set(.3);
-            }
+            else if(oi.limelightX + RobotMap.visionXThreshold < 0 && oi.limelightArea - RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget){
+              //IF X < 0 AND ROBOT IS TOO FAR
+
+              oi.adjustedLeft = ((-oi.visionXScaler) + (-oi.visionDistanceScaler))/2;
+              oi.adjustedRight = ((-oi.visionXScaler)+ (oi.visionDistanceScaler))/2;
+
+            } else if(oi.limelightX - RobotMap.visionXThreshold > 0 && oi.limelightArea + RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget && oi.limelightArea + RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget){
+              //IF X > 0 AND DISTANCE IS RIGHT
+              oi.adjustedLeft = -oi.visionXScaler;
+              oi.adjustedRight = -oi.visionXScaler;
+            } else if(oi.limelightX + RobotMap.visionXThreshold < 0 && oi.limelightArea + RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget && oi.limelightArea + RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget){
+              //IF X < 0 AND DISTANCE IS RIGHT
+              oi.adjustedLeft = -oi.visionXScaler;
+              oi.adjustedRight = -oi.visionXScaler;
+            } else if(oi.limelightX + RobotMap.visionXThreshold > 0 && oi.limelightX - RobotMap.visionXThreshold < 0 && oi.limelightArea + RobotMap.visionDistanceThreshold < RobotMap.visionDistanceTarget){
+              //IF X IS GOOD AND DISTANCE IS TOO CLOSE
+              oi.adjustedLeft = oi.visionDistanceScaler;
+              oi.adjustedRight = -oi.visionDistanceScaler;
+            } else if(oi.limelightX + RobotMap.visionXThreshold > 0 && oi.limelightX - RobotMap.visionXThreshold < 0 && oi.limelightArea - RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget){
+              //IF X IS GOOD AND DISTANCE IS TOO FAR
+              oi.adjustedLeft = -oi.visionDistanceScaler;
+              oi.adjustedRight = oi.visionDistanceScaler;
+            } else if (oi.limelightX + RobotMap.visionXThreshold > 0 && oi.limelightX - RobotMap.visionXThreshold < 0 && oi.limelightArea + RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget && oi.limelightArea + RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget){
+              oi.adjustedLeft = 0;
+              oi.adjustedRight = 0;          
+            } 
+            oi.mleft.set(oi.adjustedLeft);
+            oi.mright.set(oi.adjustedRight);
           } else {
             //DISABLES MOTORS IF IT DOES NOT FIND A TARGET
             oi.mleft.set(0);
@@ -84,7 +119,7 @@ public class Robot extends TimedRobot {
           oi.mright.set(0);
         } 
       
-       } else {
+       } else { //END VISION CODE
         if (RobotMap.enableGamepad){
           //DRIVE MODE TOGGLE
           if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA) && !buttonFlag){

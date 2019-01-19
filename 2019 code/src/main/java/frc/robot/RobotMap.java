@@ -22,7 +22,7 @@ public class RobotMap {
     public static final int rTrigger = 1;
 
     //GAMEPAD DECLARATIONS
-    public static final int kJoystickPort = 1;
+    public static final int kJoystickPort = 2;
 
     public static final int leftX = 0;
     public static final int leftY = 1;  
