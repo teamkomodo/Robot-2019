@@ -38,6 +38,7 @@ public class Robot extends TimedRobot {
       }
     } else {  //CONTROL MODE CHECK
       oi.drive.tankDrive(-oi.ljoystick.getRawAxis(RobotMap.joyX)*RobotMap.scaler, -oi.ljoystick.getRawAxis(RobotMap.joyY)*RobotMap.scaler);
+      //Matt was here but he was a mega loser so Ethan moved him to the bottom.
     } //END CONTROL MODE
   } //END ROBOTOT TELEOP
 } //END ROBOT CLASS
