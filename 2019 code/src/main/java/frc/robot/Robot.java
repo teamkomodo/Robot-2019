@@ -42,32 +42,41 @@ public class Robot extends TimedRobot {
   double limelightTarget = tv.getDouble(0.0);
   
   //RANDOM DECLARATIONS
-  private Joystick m_joystick;
+  private Joystick gamepad;
+  private Joystick ljoystick;
+  private Joystick rjoystick;
   Boolean driveMode = false;
   Boolean buttonFlag = false;
 
 
   @Override
   public void robotInit() {
-    m_joystick = new Joystick(RobotMap.kJoystickPort);
+    gamepad = new Joystick(RobotMap.kJoystickPort);
+    ljoystick = new Joystick(RobotMap.lJoystickPort);
+    rjoystick = new Joystick(RobotMap.rJoystickPort);
   } //END ROBOT INIT
 
   @Override
   public void teleopPeriodic() {
+
+    if (RobotMap.enableGamepad){
     //BUTON FLAG RESET
-    if(!m_joystick.getRawButton(RobotMap.buttonA) && !m_joystick.getRawButton(RobotMap.buttonB) && !m_joystick.getRawButton(RobotMap.buttonX) && !m_joystick.getRawButton(RobotMap.buttonY)){
+    if(!gamepad.getRawButton(RobotMap.buttonA) && !gamepad.getRawButton(RobotMap.buttonB) && !gamepad.getRawButton(RobotMap.buttonX) && !gamepad.getRawButton(RobotMap.buttonY)){
       buttonFlag = false;
     }
     //DRIVE MODE TOGGLE
-    if(m_joystick.getRawButton(RobotMap.buttonA) && !buttonFlag){
+    if(gamepad.getRawButton(RobotMap.buttonA) && !buttonFlag){
       driveMode = !driveMode;
       buttonFlag = true;
     }
     //DRIVE FUNCTIONS
     if(!driveMode){
-      drive.arcadeDrive(-m_joystick.getRawAxis(RobotMap.leftY)*RobotMap.scaler, m_joystick.getRawAxis(RobotMap.leftX)*RobotMap.scaler);
+      drive.arcadeDrive(-gamepad.getRawAxis(RobotMap.leftY)*RobotMap.scaler, gamepad.getRawAxis(RobotMap.leftX)*RobotMap.scaler);
     } else {
-      drive.tankDrive(-m_joystick.getRawAxis(RobotMap.leftY)*RobotMap.scaler, -m_joystick.getRawAxis(RobotMap.rightY)*RobotMap.scaler);
+      drive.tankDrive(-gamepad.getRawAxis(RobotMap.leftY)*RobotMap.scaler, -gamepad.getRawAxis(RobotMap.rightY)*RobotMap.scaler);
     }
+  } else {
+    drive.tankDrive(-gamepad.getRawAxis(RobotMap.joyX)*RobotMap.scaler, -gamepad.getRawAxis(RobotMap.joyY)*RobotMap.scaler);
+  }
   } //END ROBOTOT TELEOP
 } //END ROBOT CLASS
