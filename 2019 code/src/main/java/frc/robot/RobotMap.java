@@ -21,7 +21,7 @@ public class RobotMap {
     public static final int rTrigger = 1;
 
     //GAMEPAD DECLARATIONS
-    public static final int kJoystickPort = 2;
+    public static final int kJoystickPort = 1;
 
     public static final int leftX = 0;
     public static final int leftY = 1;  
@@ -38,10 +38,10 @@ public class RobotMap {
     public static final int rBumper = 6;
 
     //CONTROL METHOD
-    public static Boolean enableGamepad = false;
+    public static Boolean enableGamepad = true;
 
     //VISION CODE
-    public static final double visionXThreshold = 2.0;
+    public static final double visionXThreshold = 10.0;
     public static final double visionDistanceMax = 12.0;
     public static final double visionDistanceMin = 1.0;
 

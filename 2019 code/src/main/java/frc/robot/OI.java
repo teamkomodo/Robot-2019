@@ -36,6 +36,7 @@ public class OI{
     public double limelightY;
     public double limelightArea;
     public double limelightTarget;
+    public double visionScaler;
 
     public OI() {
         gamepad = new Joystick(RobotMap.kJoystickPort);
