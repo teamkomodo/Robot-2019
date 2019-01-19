@@ -39,7 +39,7 @@ public class RobotMap {
     public static final int rBumper = 6;
 
     //CONTROL METHOD
-    public static Boolean enableGamepad = true;
+    public static Boolean enableGamepad = false;
 
     //VISION CODE
     public static final double visionXThreshold = 2.0;

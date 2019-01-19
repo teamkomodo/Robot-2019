@@ -14,11 +14,10 @@ public class Robot extends TimedRobot {
   public static OI oi;
   public static TrackTarget visionCode;
   public static MotorControl motorControl;
-
-  private Boolean driveMode = false;
   
   @Override
   public void robotInit() {
+    //INITIALIZE ALL MOTOR CONTROLLERS AND VARIABLES
     oi = new OI();
   } //END ROBOT INIT
 
@@ -26,7 +25,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
 
     //BUTON FLAG RESET
-    if(!oi.gamepad.getRawButton(RobotMap.buttonA) && !oi.gamepad.getRawButton(RobotMap.buttonB) && !oi.gamepad.getRawButton(RobotMap.buttonX) && !oi.gamepad.getRawButton(RobotMap.buttonY)){
+    if(!oi.gamepad.getRawButton(RobotMap.buttonA) && !oi.gamepad.getRawButton(RobotMap.buttonB) && !oi.gamepad.getRawButton(RobotMap.buttonX) && !oi.gamepad.getRawButton(RobotMap.buttonY) && !oi.ljoystick.getRawButton(RobotMap.lSwitch)){
       buttonFlag = false;
     }
     //VISION CODE TOGGLE
@@ -35,14 +34,9 @@ public class Robot extends TimedRobot {
       buttonFlag = true;
     }
     //DETERMINES IF WE ARE IN VISION MODE OR DRIVE MODE
-    if(visionFlag){
-        //UPDATES VISION VALUES
-        oi.limelightX = oi.tx.getDouble(0.0);
-        oi.limelightY = oi.ty.getDouble(0.0);
-        oi.limelightArea = oi.ta.getDouble(0.0);
-        oi.limelightTarget = oi.tv.getDouble(0.0);
+    if(visionFlag){   //START VISION CODE
         visionCode = new TrackTarget();
-       } else { //END VISION CODE
+       } else {       //END VISION CODE
         motorControl = new MotorControl(buttonFlag);
     }
   } //END ROBOTOT TELEOP
