@@ -76,7 +76,7 @@ public class Robot extends TimedRobot {
       drive.tankDrive(-gamepad.getRawAxis(RobotMap.leftY)*RobotMap.scaler, -gamepad.getRawAxis(RobotMap.rightY)*RobotMap.scaler);
     }
   } else {
-    drive.tankDrive(-gamepad.getRawAxis(RobotMap.joyX)*RobotMap.scaler, -gamepad.getRawAxis(RobotMap.joyY)*RobotMap.scaler);
+    drive.tankDrive(-rjoystick.getRawAxis(RobotMap.joyY)*RobotMap.scaler, -ljoystick.getRawAxis(RobotMap.joyY)*RobotMap.scaler);
   }
   } //END ROBOTOT TELEOP
 } //END ROBOT CLASS
