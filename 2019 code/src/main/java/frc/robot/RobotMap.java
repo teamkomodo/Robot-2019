@@ -15,6 +15,7 @@ public class RobotMap {
     public static final int joyY = 1;
     
     public static final int lTrigger = 1;
+    public static final int lSwitch = 12;
 
     public static final int rJoystickPort = 1;
 
