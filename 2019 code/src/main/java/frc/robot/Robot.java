@@ -8,7 +8,6 @@ import frc.robot.*;
 public class Robot extends TimedRobot {
   
   //RANDOM DECLARATIONS
-  public Boolean buttonFlag = false;
   public Boolean visionFlag = false;
 
   public static OI oi;
@@ -26,18 +25,18 @@ public class Robot extends TimedRobot {
 
     //BUTON FLAG RESET
     if(!oi.gamepad.getRawButton(RobotMap.buttonA) && !oi.gamepad.getRawButton(RobotMap.buttonB) && !oi.gamepad.getRawButton(RobotMap.buttonX) && !oi.gamepad.getRawButton(RobotMap.buttonY) && !oi.ljoystick.getRawButton(RobotMap.lSwitch)){
-      buttonFlag = false;
+      oi.ButtonFlag = false;
     }
     //VISION CODE TOGGLE
-    if(oi.gamepad.getRawButton(RobotMap.buttonB) && !buttonFlag){
+    if(oi.gamepad.getRawButton(RobotMap.buttonB) && !oi.ButtonFlag){
       visionFlag = !visionFlag;
-      buttonFlag = true;
+      oi.ButtonFlag= true;
     }
     //DETERMINES IF WE ARE IN VISION MODE OR DRIVE MODE
     if(visionFlag){   //START VISION CODE
         visionCode = new TrackTarget();
        } else {       //END VISION CODE
-        motorControl = new MotorControl(buttonFlag);
+        motorControl = new MotorControl();
     }
   } //END ROBOTOT TELEOP
 } //END ROBOT CLASS

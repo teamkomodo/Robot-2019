@@ -41,6 +41,9 @@ public class OI{
     public double adjustedLeft;
     public double adjustedRight;
 
+    public Boolean defaultDrivemode;
+    public Boolean ButtonFlag;
+
 
     public OI() {
         gamepad = new Joystick(RobotMap.kJoystickPort);
@@ -56,6 +59,8 @@ public class OI{
         mright = new SpeedControllerGroup(rmotor, rslave);
 
         drive = new DifferentialDrive(mleft, mright);
+        defaultDrivemode = false;       //FALSE FOR ARCADE, TRUE FOR TANK
+        ButtonFlag = false;
 
         table = NetworkTableInstance.getDefault().getTable("limelight");
         tx = table.getEntry("tx");
