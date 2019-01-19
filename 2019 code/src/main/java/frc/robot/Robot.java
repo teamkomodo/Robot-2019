@@ -54,7 +54,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-<<<<<<< HEAD
     //BUTON FLAG RESET
     if(!m_joystick.getRawButton(RobotMap.buttonA) && !m_joystick.getRawButton(RobotMap.buttonB) && !m_joystick.getRawButton(RobotMap.buttonX) && !m_joystick.getRawButton(RobotMap.buttonY)){
       buttonFlag = false;
@@ -70,10 +69,8 @@ public class Robot extends TimedRobot {
     } else {
       drive.tankDrive(m_joystick.getRawAxis(RobotMap.leftY), m_joystick.getRawAxis(RobotMap.rightY));
     }
-=======
     drive.arcadeDrive(-m_joystick.getRawAxis(RobotMap.leftY)*RobotMap.scaler, m_joystick.getRawAxis(RobotMap.leftX)*RobotMap.scaler);
 
 drive.tankDrive(m_joystick.getRawAxis(RobotMap.leftY), m_joystick.getRawAxis(RobotMap.rightY));
->>>>>>> master
   } //END ROBOTOT TELEOP
 } //END ROBOT CLASS
