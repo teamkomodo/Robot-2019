@@ -39,6 +39,7 @@ public class Robot extends TimedRobot {
     //VISION CODE TOGGLE
     if(oi.gamepad.getRawButton(RobotMap.buttonB) && !oi.ButtonFlag){
       visionFlag = !visionFlag;
+      oi.timer.reset();
       oi.ButtonFlag= true;
     }
     //DETERMINES IF WE ARE IN VISION MODE OR DRIVE MODE

@@ -3,6 +3,12 @@ import frc.robot.*;
 
 public class TrackTarget{
     public TrackTarget(){
+      
+      //SETS LIMELIGHT TO VISION MODE
+      Robot.oi.table.getEntry("pipeline").setNumber(0);
+
+      //TURN LIMELIGHT LEDS ON
+      Robot.oi.table.getEntry("ledMode").setNumber(3);
 
       //UPDATES VISION VALUES
       Robot.oi.limelightX = Robot.oi.tx.getDouble(0.0);

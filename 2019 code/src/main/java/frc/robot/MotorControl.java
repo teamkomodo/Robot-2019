@@ -4,6 +4,19 @@ import frc.robot.*;
 
 public class MotorControl{
     public MotorControl(){
+
+      //SETS LIMELIGHT TO CAMERA MODE
+      Robot.oi.table.getEntry("pipeline").setNumber(1);
+
+      //FLASH LEDS FOR .25 SECONDS EVERY 10 SECONDS
+      if(Robot.oi.timer.get() >= 10.0 && Robot.oi.timer.get() < 10.25){
+        Robot.oi.table.getEntry("ledMode").setNumber(2);
+      } 
+      if(Robot.oi.timer.get() >= 10.25){
+        Robot.oi.table.getEntry("ledMode").setNumber(1);
+        Robot.oi.timer.reset();
+      }
+
       //DRIVE MODE TOGGLE
       if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA) && !Robot.oi.ButtonFlag){
         Robot.oi.defaultDrivemode = !Robot.oi.defaultDrivemode;
@@ -37,5 +50,7 @@ public class MotorControl{
       SmartDashboard.putNumber("Gyro X", Robot.oi.gyro.getAngleX());
       SmartDashboard.putNumber("Gyro Y", Robot.oi.gyro.getAngleY());
       SmartDashboard.putNumber("Gyro Z", Robot.oi.gyro.getAngleZ());
+      SmartDashboard.putNumber("Timer", Robot.oi.timer.get());
+
     } 
 }
