@@ -29,6 +29,7 @@ public class OI{
     public ADIS16448_IMU gyro;
 
     public Timer timer;
+    public Timer debugTimer;
 
     public NetworkTable table;
     public NetworkTableEntry tx;
@@ -47,6 +48,16 @@ public class OI{
     public double oneFootLeftEncoder;
     public double oneFootRightEncoder;
     public double autonomousSpeed;
+    public double debugcounter;
+    public double averageX;
+    public double averageY;
+    public double averageZ;
+    public double calculatedX;
+    public double calculatedY;
+    public double calculatedZ;
+    public double xDrift;
+    public double yDrift;
+    public double zDrift;
 
     public Boolean defaultDrivemode;
     public Boolean ButtonFlag;
@@ -72,14 +83,26 @@ public class OI{
         oneFootRightEncoder = -3864.15;
 
         gyro = new ADIS16448_IMU();
-        gyro.reset();
 
         autonomousSpeed = 0.5;
 
         timer = new Timer();
         timer.reset();
         timer.start();
+        debugTimer = new Timer();
+        debugTimer.reset();
+        debugTimer.start();
 
+        debugcounter = 0.0;
+        averageX = 0.0;
+        averageY = 0.0;
+        averageZ = 0.0;
+        calculatedX = 0.0;
+        calculatedY = 0.0;
+        calculatedZ = 0.0;
+        xDrift = 0.139;
+        yDrift = -0.403;
+        zDrift = -0.0267;
 
         mleft = new SpeedControllerGroup(lmotor, lslave);
         mright = new SpeedControllerGroup(rmotor, rslave);
