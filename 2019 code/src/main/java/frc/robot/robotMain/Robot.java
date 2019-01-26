@@ -1,8 +1,10 @@
-package frc.robot;
+package frc.robot.robotMain;
 
 //IMPORTS
 import edu.wpi.first.wpilibj.TimedRobot;
-import frc.robot.*;
+import frc.robot.subsystems.auto.*;
+import frc.robot.subsystems.teleop.*;
+import frc.robot.vision.*;
 
 //START ROBOT CLASS
 public class Robot extends TimedRobot {
