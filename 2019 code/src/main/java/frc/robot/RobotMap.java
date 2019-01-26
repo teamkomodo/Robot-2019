@@ -4,10 +4,12 @@ public class RobotMap {
 
     //MOTOR DECLARATIONS
     public static final int rMotorPort = 3;
-    public static final int rslavePort = 5;
+    public static final int rMotor2Port = 5;
+    public static final int rMotor3Port = 7;
 
     public static final int lMotorPort = 2;
-    public static final int lslavePort = 4;
+    public static final int lMotor2Port = 4;
+    public static final int lMotor3Port = 6;
 
     //JOYSTICK DECLARATIONS
     public static final int lJoystickPort = 0;

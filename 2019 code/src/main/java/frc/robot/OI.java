@@ -75,10 +75,10 @@ public class OI{
 
         rmotor = new WPI_TalonSRX(RobotMap.rMotorPort);
         lmotor = new WPI_TalonSRX(RobotMap.lMotorPort);
-        lmotor2 = new WPI_TalonSRX(RobotMap.lslavePort);
-        rmotor2 = new WPI_TalonSRX(RobotMap.rslavePort);
-        lmotor3 = new WPI_TalonSRX(RobotMap.lslavePort);
-        rmotor3 = new WPI_TalonSRX(RobotMap.rslavePort);
+        lmotor2 = new WPI_TalonSRX(RobotMap.lMotor2Port);
+        rmotor2 = new WPI_TalonSRX(RobotMap.rMotor2Port);
+        lmotor3 = new WPI_TalonSRX(RobotMap.lMotor2Port);
+        rmotor3 = new WPI_TalonSRX(RobotMap.rMotor2Port);
 
 
         rmotor2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
