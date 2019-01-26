@@ -69,10 +69,10 @@ public class RobotMap {
     public static final double visionXThreshold = 2.0;
     public static final double visionYThreshold = 2.0;
     public static final double visionDistanceMax = 12.0;
-    public static final double visionDistanceMin = .005;         //SHOULD BE 1.0
-    public static final double visionDistanceTarget = 0.6;
-    public static final double visionDistanceThreshold = 0.2;
+    public static final double visionDistanceMin = .01;         //SHOULD BE 1.0
+    public static final double visionDistanceTarget = 2.85;
+    public static final double visionDistanceThreshold = 0.8;
 
     //OTHER DECLARATIONS
-    public static final double scaler = 0.6;
+    public static final double scaler = 0.8;
 }
