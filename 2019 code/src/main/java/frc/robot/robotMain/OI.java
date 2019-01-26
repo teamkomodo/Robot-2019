@@ -1,4 +1,4 @@
-package frc.robot;
+package frc.robot.robotMain;
 
 import edu.wpi.first.wpilibj.Joystick;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;

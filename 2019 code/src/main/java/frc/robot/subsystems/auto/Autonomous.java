@@ -1,6 +1,6 @@
-package frc.robot;
+package frc.robot.subsystems.auto;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.*;
+import frc.robot.robotMain.*;
 public class Autonomous{
     public double targetDistance = 10;      //THIS IS IN FEET
     private Boolean breakFlag = false;
