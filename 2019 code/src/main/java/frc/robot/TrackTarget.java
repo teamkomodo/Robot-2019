@@ -89,6 +89,11 @@ public class TrackTarget{
         Robot.oi.mleft.set(0);
         Robot.oi.mright.set(0);
       }
+      //LOOKS FOR A TARGET
+      if(Robot.oi.limelightTarget != 0.0){
+        //DETECTS IF TARGET IS IN RANGE
+        if(Robot.oi.limelightArea > RobotMap.visionDistanceMin && Robot.oi.limelightArea < RobotMap.visionDistanceMax){
+       // if 
     }
   }
 
