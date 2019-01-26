@@ -109,8 +109,8 @@ public class OI{
         yDrift = -0.403;
         zDrift = -0.0267;
 
-        mleft = new SpeedControllerGroup(lmotor, lmotor2);
-        mright = new SpeedControllerGroup(rmotor, rmotor2);
+        mleft = new SpeedControllerGroup(lmotor, lmotor2, lmotor3);
+        mright = new SpeedControllerGroup(rmotor, rmotor2, rmotor3);
 
         drive = new DifferentialDrive(mleft, mright);
         defaultDrivemode = false;       //FALSE FOR ARCADE, TRUE FOR TANK
