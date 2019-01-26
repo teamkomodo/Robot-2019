@@ -1,4 +1,4 @@
-package frc.robot.robotMain;
+package frc.robot.robotmain;
 
 //IMPORTS
 import edu.wpi.first.wpilibj.TimedRobot;

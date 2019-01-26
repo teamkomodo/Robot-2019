@@ -1,4 +1,4 @@
-package frc.robot.robotMain;
+package frc.robot.robotmain;
 
 public class RobotMap {
 
@@ -74,5 +74,5 @@ public class RobotMap {
     public static final double visionDistanceThreshold = 0.2;
 
     //OTHER DECLARATIONS
-    public static final double scaler = 0.75;
+    public static final double scaler = 0.6;
 }

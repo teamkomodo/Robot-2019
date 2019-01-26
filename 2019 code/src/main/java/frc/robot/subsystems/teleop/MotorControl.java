@@ -1,6 +1,6 @@
 package frc.robot.subsystems.teleop;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.robotMain.*;
+import frc.robot.robotmain.*;
 
 
 public class MotorControl{
