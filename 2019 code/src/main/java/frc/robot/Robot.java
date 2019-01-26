@@ -22,7 +22,7 @@ public class Robot extends TimedRobot {
   } //END ROBOT INIT
   @Override
   public void autonomousInit() {
-    oi.rslave.setSelectedSensorPosition(0);
+    oi.rmotor2.setSelectedSensorPosition(0);
     oi.lmotor.setSelectedSensorPosition(0);
   }
   @Override

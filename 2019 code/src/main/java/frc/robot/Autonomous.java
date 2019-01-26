@@ -6,8 +6,8 @@ public class Autonomous{
     private Boolean breakFlag = false;
     public Autonomous(){
         while(!breakFlag) {
-        if(-Robot.oi.rslave.getSelectedSensorPosition() / -Robot.oi.oneFootRightEncoder*targetDistance < 100 && Robot.oi.lmotor.getSelectedSensorPosition() / Robot.oi.oneFootLeftEncoder*targetDistance < 100){
-            if(-Robot.oi.rslave.getSelectedSensorPosition() / -Robot.oi.oneFootRightEncoder*targetDistance > Robot.oi.lmotor.getSelectedSensorPosition() / Robot.oi.oneFootLeftEncoder*targetDistance){
+        if(-Robot.oi.rmotor2.getSelectedSensorPosition() / -Robot.oi.oneFootRightEncoder*targetDistance < 100 && Robot.oi.lmotor.getSelectedSensorPosition() / Robot.oi.oneFootLeftEncoder*targetDistance < 100){
+            if(-Robot.oi.rmotor2.getSelectedSensorPosition() / -Robot.oi.oneFootRightEncoder*targetDistance > Robot.oi.lmotor.getSelectedSensorPosition() / Robot.oi.oneFootLeftEncoder*targetDistance){
                 Robot.oi.mleft.set(Robot.oi.autonomousSpeed -.3);
                 Robot.oi.mright.set(-Robot.oi.autonomousSpeed +.1);            
             } else {
@@ -19,9 +19,9 @@ public class Autonomous{
             Robot.oi.mright.set(0);
             breakFlag = true;  
         }
-        SmartDashboard.putNumber("Right Encoder", Robot.oi.rslave.getSelectedSensorPosition());
+        SmartDashboard.putNumber("Right Encoder", Robot.oi.rmotor2.getSelectedSensorPosition());
         SmartDashboard.putNumber("Left Encoder", Robot.oi.lmotor.getSelectedSensorPosition());
-        SmartDashboard.putNumber("Left %", -Robot.oi.rslave.getSelectedSensorPosition() / -Robot.oi.oneFootRightEncoder*targetDistance);
+        SmartDashboard.putNumber("Left %", -Robot.oi.rmotor2.getSelectedSensorPosition() / -Robot.oi.oneFootRightEncoder*targetDistance);
         SmartDashboard.putNumber("Right %", Robot.oi.lmotor.getSelectedSensorPosition() / Robot.oi.oneFootLeftEncoder*targetDistance);
     }
     }   

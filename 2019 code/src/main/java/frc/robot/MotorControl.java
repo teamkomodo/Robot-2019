@@ -65,7 +65,7 @@ public class MotorControl{
         Robot.oi.ButtonFlag = true;
       }
       if(Robot.oi.gamepad.getRawButton(RobotMap.buttonY)){
-        Robot.oi.rslave.setSelectedSensorPosition(0);
+        Robot.oi.rmotor2.setSelectedSensorPosition(0);
         Robot.oi.lmotor.setSelectedSensorPosition(0);
         Robot.oi.gyro.reset();
       }

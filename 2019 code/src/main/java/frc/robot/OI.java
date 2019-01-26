@@ -18,8 +18,10 @@ public class OI{
 
     public WPI_TalonSRX rmotor;
     public WPI_TalonSRX lmotor;
-    public WPI_TalonSRX lslave;
-    public WPI_TalonSRX rslave;
+    public WPI_TalonSRX lmotor2;
+    public WPI_TalonSRX rmotor2;
+    public WPI_TalonSRX rmotor3;
+    public WPI_TalonSRX lmotor3;
 
     public SpeedControllerGroup mleft;
     public SpeedControllerGroup mright;
@@ -73,11 +75,14 @@ public class OI{
 
         rmotor = new WPI_TalonSRX(RobotMap.rMotorPort);
         lmotor = new WPI_TalonSRX(RobotMap.lMotorPort);
-        lslave = new WPI_TalonSRX(RobotMap.lslavePort);
-        rslave = new WPI_TalonSRX(RobotMap.rslavePort);
+        lmotor2 = new WPI_TalonSRX(RobotMap.lslavePort);
+        rmotor2 = new WPI_TalonSRX(RobotMap.rslavePort);
+        lmotor3 = new WPI_TalonSRX(RobotMap.lslavePort);
+        rmotor3 = new WPI_TalonSRX(RobotMap.rslavePort);
 
-        rslave.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        lslave.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+
+        rmotor2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        lmotor2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
 
         oneFootLeftEncoder = 3825.25;
         oneFootRightEncoder = -3864.15;
@@ -104,8 +109,8 @@ public class OI{
         yDrift = -0.403;
         zDrift = -0.0267;
 
-        mleft = new SpeedControllerGroup(lmotor, lslave);
-        mright = new SpeedControllerGroup(rmotor, rslave);
+        mleft = new SpeedControllerGroup(lmotor, lmotor2);
+        mright = new SpeedControllerGroup(rmotor, rmotor2);
 
         drive = new DifferentialDrive(mleft, mright);
         defaultDrivemode = false;       //FALSE FOR ARCADE, TRUE FOR TANK
