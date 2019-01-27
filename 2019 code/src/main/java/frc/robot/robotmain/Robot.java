@@ -33,10 +33,6 @@ public class Robot extends TimedRobot {
   }
   @Override
   public void teleopPeriodic() {
-
-
-
-
     //BUTON FLAG RESET
     if(!oi.gamepad.getRawButton(RobotMap.buttonA) && !oi.gamepad.getRawButton(RobotMap.buttonB) && !oi.gamepad.getRawButton(RobotMap.buttonX) && !oi.gamepad.getRawButton(RobotMap.buttonY) && !oi.ljoystick.getRawButton(RobotMap.lSwitch)){
       oi.ButtonFlag = false;

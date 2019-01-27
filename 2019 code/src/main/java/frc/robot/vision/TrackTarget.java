@@ -26,18 +26,18 @@ public class TrackTarget{
 
           //CALCULATES DISTANCE SCALERS
           if(Robot.oi.limelightArea + RobotMap.visionDistanceThreshold < RobotMap.visionDistanceTarget) {
-            Robot.oi.visionDistanceScaler = 1- (Robot.oi.limelightArea / (RobotMap.visionDistanceTarget*2));
+            Robot.oi.visionDistanceScaler = 1- (Robot.oi.limelightArea / (RobotMap.visionDistanceTarget*1.5));    //THIS CAN BE A MINIMUM OF 1
           } else if(Robot.oi.limelightArea - RobotMap.visionDistanceThreshold > RobotMap.visionDistanceTarget) {
-            Robot.oi.visionDistanceScaler = Robot.oi.limelightArea / (RobotMap.visionDistanceTarget*2);
+            Robot.oi.visionDistanceScaler = Robot.oi.limelightArea / (RobotMap.visionDistanceTarget*1.5);         //THIS CAN BE A MINIMUM OF 1
           }
 
           //CALCULATES HORIZONTAL SCALERS
           if(Robot.oi.limelightX >= 20.0){
-            Robot.oi.visionXScaler = 0.7;
+            Robot.oi.visionXScaler = 1.0;
           } else if(Robot.oi.limelightX <= -20.0){
-            Robot.oi.visionXScaler = -0.7;
+            Robot.oi.visionXScaler = -1.0;
           } else {
-            Robot.oi.visionXScaler = Robot.oi.limelightX / 30;
+            Robot.oi.visionXScaler = Robot.oi.limelightX / 20;  //THIS CAN BE A MINIMUM OF 20
           }
           //LOOKS FOR A TARGET
           if(Robot.oi.limelightTarget != 0.0){
