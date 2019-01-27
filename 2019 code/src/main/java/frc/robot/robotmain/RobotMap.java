@@ -74,5 +74,5 @@ public class RobotMap {
     public static final double visionDistanceThreshold = 0.8;
 
     //OTHER DECLARATIONS
-    public static final double scaler = 0.8;
+    public static final double scaler = 1.0;
 }

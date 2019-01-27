@@ -43,6 +43,8 @@ public class Robot extends TimedRobot {
     }
     //VISION CODE TOGGLE
     if(oi.gamepad.getRawButton(RobotMap.buttonB) && !oi.ButtonFlag){
+      oi.visionStage = 0.0;
+      Robot.oi.debugTimer.reset();
       visionFlag = !visionFlag;
       oi.timer.reset();
       oi.ButtonFlag= true;

@@ -6,6 +6,9 @@ import frc.robot.robotmain.*;
 public class MotorControl{
     public MotorControl(){
 
+      SmartDashboard.putNumber("Ultrasonic", Robot.oi.ultrasonic.getVoltage());
+
+
       //SETS LIMELIGHT TO CAMERA MODE
       Robot.oi.table.getEntry("pipeline").setNumber(1);
 

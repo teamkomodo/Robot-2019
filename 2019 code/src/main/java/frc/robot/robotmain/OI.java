@@ -10,6 +10,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.analog.adis16448.frc.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.AnalogInput;
 
 public class OI{
     public Joystick gamepad;
@@ -33,6 +34,8 @@ public class OI{
     public Timer timer;
     public Timer debugTimer;
 
+    public AnalogInput ultrasonic;
+
     public NetworkTable table;
     public NetworkTableEntry tx;
     public NetworkTableEntry ty;
@@ -43,6 +46,7 @@ public class OI{
     public double limelightY;
     public double limelightArea;
     public double limelightTarget;
+    public double ultrasonicTarget;
     public double visionXScaler;
     public double visionDistanceScaler;
     public double adjustedLeft;
@@ -60,6 +64,7 @@ public class OI{
     public double xDrift;
     public double yDrift;
     public double zDrift;
+    public double visionStage;
 
     public Boolean defaultDrivemode;
     public Boolean ButtonFlag;
@@ -77,8 +82,8 @@ public class OI{
         lmotor = new WPI_TalonSRX(RobotMap.lMotorPort);
         lmotor2 = new WPI_TalonSRX(RobotMap.lMotor2Port);
         rmotor2 = new WPI_TalonSRX(RobotMap.rMotor2Port);
-        lmotor3 = new WPI_TalonSRX(RobotMap.lMotor3Port);
-        rmotor3 = new WPI_TalonSRX(RobotMap.rMotor3Port);
+        lmotor3 = new WPI_TalonSRX(RobotMap.lMotor2Port);
+        rmotor3 = new WPI_TalonSRX(RobotMap.rMotor2Port);
 
 
         rmotor2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
@@ -88,12 +93,14 @@ public class OI{
         oneFootRightEncoder = -3864.15;
 
         gyro = new ADIS16448_IMU();
+        ultrasonic = new AnalogInput(0);
 
         autonomousSpeed = 0.5;
 
         timer = new Timer();
         timer.reset();
         timer.start();
+
         debugTimer = new Timer();
         debugTimer.reset();
         debugTimer.start();
@@ -108,6 +115,8 @@ public class OI{
         xDrift = 0.139;
         yDrift = -0.403;
         zDrift = -0.0267;
+        visionStage = 0.0;
+        ultrasonicTarget = 0.3;
 
         mleft = new SpeedControllerGroup(lmotor, lmotor2, lmotor3);
         mright = new SpeedControllerGroup(rmotor, rmotor2, rmotor3);
