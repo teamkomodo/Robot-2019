@@ -16,11 +16,14 @@ public class Robot extends TimedRobot {
   public static TrackTarget visionCode;
   public static MotorControl motorControl;
   public static Autonomous autonomous;
+  public static GlobalVariables globalVariables;
+
   
   @Override
   public void robotInit() {
     //INITIALIZE ALL MOTOR CONTROLLERS AND VARIABLES
     oi = new OI();
+    globalVariables = new GlobalVariables();
   } //END ROBOT INIT
   @Override
   public void autonomousInit() {
@@ -35,15 +38,15 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     //BUTON FLAG RESET
     if(!oi.gamepad.getRawButton(RobotMap.buttonA) && !oi.gamepad.getRawButton(RobotMap.buttonB) && !oi.gamepad.getRawButton(RobotMap.buttonX) && !oi.gamepad.getRawButton(RobotMap.buttonY) && !oi.ljoystick.getRawButton(RobotMap.lSwitch)){
-      oi.ButtonFlag = false;
+      globalVariables.ButtonFlag = false;
     }
     //VISION CODE TOGGLE
-    if(oi.gamepad.getRawButton(RobotMap.buttonB) && !oi.ButtonFlag){
-      oi.visionStage = 0.0;
+    if(oi.gamepad.getRawButton(RobotMap.buttonB) && !globalVariables.ButtonFlag){
+      globalVariables.visionStage = 0.0;
       Robot.oi.debugTimer.reset();
       visionFlag = !visionFlag;
       oi.timer.reset();
-      oi.ButtonFlag= true;
+      globalVariables.ButtonFlag= true;
     }
     //DETERMINES IF WE ARE IN VISION MODE OR DRIVE MODE
     if(visionFlag){   //START VISION CODE

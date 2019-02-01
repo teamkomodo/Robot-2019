@@ -1,7 +1,6 @@
 package frc.robot.robotmain;
 
 public class RobotMap {
-
     //MOTOR DECLARATIONS
     public static final int rMotorPort = 3;
     public static final int rMotor2Port = 5;
@@ -60,19 +59,4 @@ public class RobotMap {
     public static final int buttonY = 4;
     public static final int lBumper = 5;
     public static final int rBumper = 6;
-
-    //CONTROL METHOD
-    public static Boolean enableGamepad = true;
-    public static Boolean enableGyroDrive = false;
-
-    //VISION CODE
-    public static final double visionXThreshold = 2.0;
-    public static final double visionYThreshold = 2.0;
-    public static final double visionDistanceMax = 12.0;
-    public static final double visionDistanceMin = .01;
-    public static final double visionDistanceTarget = 2.85;
-    public static final double visionDistanceThreshold = 0.8;
-
-    //OTHER DECLARATIONS
-    public static final double scaler = 1.0;
 }
