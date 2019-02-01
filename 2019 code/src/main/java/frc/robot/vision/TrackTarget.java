@@ -109,8 +109,8 @@ public class TrackTarget{
           Robot.oi.mright.set((-Robot.oi.autonomousSpeed) -.3);
       }
       */
-      Robot.oi.mleft.set(.3025);
-      Robot.oi.mright.set(-.3); //was .4
+      Robot.oi.mleft.set(.3);
+      Robot.oi.mright.set(-.375); //was .4
     } else {
       //STOP IF WE ARE AT OUR TARGET
       Robot.oi.mleft.set(0);

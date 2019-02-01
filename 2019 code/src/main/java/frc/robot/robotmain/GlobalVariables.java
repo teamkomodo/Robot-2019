@@ -2,7 +2,7 @@
 package frc.robot.robotmain;
 
 public class GlobalVariables {
-    public double ultrasonicTarget;     //
+    public double ultrasonicTarget;
     public double visionXScaler;
     public double visionDistanceScaler;
     public double adjustedLeft;
@@ -31,7 +31,7 @@ public class GlobalVariables {
     public static final double visionYThreshold = 2.0;
     public static final double visionDistanceMax = 12.0;
     public static final double visionDistanceMin = .01;
-    public static final double visionDistanceTarget = 2.85;
+    public static final double visionDistanceTarget = 10.0;
     public static final double visionDistanceThreshold = 0.8;
     public static final double scaler = 1.0;
 
@@ -47,7 +47,7 @@ public class GlobalVariables {
         yDrift = -0.403;
         zDrift = -0.0267;
         visionStage = 0.0;
-        ultrasonicTarget = 0.3;
+        ultrasonicTarget = 0.4;
         oneFootLeftEncoder = 3825.25;
         oneFootRightEncoder = -3864.15;
         autonomousSpeed = 0.5;
