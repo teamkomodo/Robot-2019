@@ -28,24 +28,24 @@ public class MotorControl{
       } 
       */
 
-      Robot.oi.calculatedX = Robot.oi.gyro.getAngleX()-Robot.oi.xDrift;
-      Robot.oi.calculatedY = Robot.oi.gyro.getAngleY()-Robot.oi.yDrift;
-      Robot.oi.calculatedZ = Robot.oi.gyro.getAngleZ()-Robot.oi.zDrift;   //THE ONE WE CARE ABOUT
+      Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngleX()-Robot.globalVariables.xDrift;
+      Robot.globalVariables.calculatedY = Robot.oi.gyro.getAngleY()-Robot.globalVariables.yDrift;
+      Robot.globalVariables.calculatedZ = Robot.oi.gyro.getAngleZ()-Robot.globalVariables.zDrift;   //THE ONE WE CARE ABOUT
 
       SmartDashboard.putNumber("Actual-X", Robot.oi.gyro.getAngleX());
       SmartDashboard.putNumber("Actual-Y", Robot.oi.gyro.getAngleY());
       SmartDashboard.putNumber("Actual-Z", Robot.oi.gyro.getAngleZ());
-      SmartDashboard.putNumber("Calculated-X", Robot.oi.calculatedX);
-      SmartDashboard.putNumber("Calculated-Y", Robot.oi.calculatedY);
-      SmartDashboard.putNumber("Calculated-Z", Robot.oi.calculatedZ);
+      SmartDashboard.putNumber("Calculated-X", Robot.globalVariables.calculatedX);
+      SmartDashboard.putNumber("Calculated-Y", Robot.globalVariables.calculatedY);
+      SmartDashboard.putNumber("Calculated-Z", Robot.globalVariables.calculatedZ);
 
-      if(RobotMap.enableGyroDrive){
-        if(Robot.oi.calculatedZ > 0){
-          Robot.oi.lmotor.set(-Robot.oi.calculatedZ);
-          Robot.oi.rmotor.set(-Robot.oi.calculatedZ);
-        } else if (Robot.oi.calculatedZ > 0){
-          Robot.oi.lmotor.set(-Robot.oi.calculatedZ);
-          Robot.oi.rmotor.set(-Robot.oi.calculatedZ);
+      if(Robot.globalVariables.enableGyroDrive){
+        if(Robot.globalVariables.calculatedZ > 0){
+          Robot.oi.lmotor.set(-Robot.globalVariables.calculatedZ);
+          Robot.oi.rmotor.set(-Robot.globalVariables.calculatedZ);
+        } else if (Robot.globalVariables.calculatedZ > 0){
+          Robot.oi.lmotor.set(-Robot.globalVariables.calculatedZ);
+          Robot.oi.rmotor.set(-Robot.globalVariables.calculatedZ);
         }
       }
 
@@ -59,41 +59,41 @@ public class MotorControl{
       }
 
       //DRIVE MODE TOGGLE
-      if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA) && !Robot.oi.ButtonFlag){
-        Robot.oi.defaultDrivemode = !Robot.oi.defaultDrivemode;
-        Robot.oi.ButtonFlag = true;
+      if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA) && !Robot.globalVariables.ButtonFlag){
+        GlobalVariables.defaultDrivemode = !GlobalVariables.defaultDrivemode;
+        Robot.globalVariables.ButtonFlag = true;
       } 
-      if(Robot.oi.ljoystick.getRawButton(RobotMap.lSwitch) && !Robot.oi.ButtonFlag) {
-        Robot.oi.defaultDrivemode = !Robot.oi.defaultDrivemode;
-        Robot.oi.ButtonFlag = true;
+      if(Robot.oi.ljoystick.getRawButton(RobotMap.lSwitch) && !Robot.globalVariables.ButtonFlag) {
+        GlobalVariables.defaultDrivemode = !GlobalVariables.defaultDrivemode;
+        Robot.globalVariables.ButtonFlag = true;
       }
       if(Robot.oi.gamepad.getRawButton(RobotMap.buttonY)){
         Robot.oi.rmotor2.setSelectedSensorPosition(0);
         Robot.oi.lmotor.setSelectedSensorPosition(0);
         Robot.oi.gyro.reset();
       }
-      if (RobotMap.enableGamepad){
+      if (GlobalVariables.enableGamepad){
         //DRIVE FUNCTIONS
-        if(!Robot.oi.defaultDrivemode){
-          Robot.oi.drive.arcadeDrive(-Robot.oi.gamepad.getRawAxis(RobotMap.leftY)*RobotMap.scaler, Robot.oi.gamepad.getRawAxis(RobotMap.leftX)*RobotMap.scaler);
-          if(RobotMap.enableGyroDrive){
+        if(!GlobalVariables.defaultDrivemode){
+          Robot.oi.drive.arcadeDrive(-Robot.oi.gamepad.getRawAxis(RobotMap.leftY)*GlobalVariables.scaler, Robot.oi.gamepad.getRawAxis(RobotMap.leftX)*GlobalVariables.scaler);
+          if(GlobalVariables.enableGyroDrive){
             if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) != 0 && Robot.oi.gamepad.getRawAxis(RobotMap.leftX) != 0) {
               Robot.oi.gyro.reset();
             }
           }
         } else {
-          Robot.oi.drive.tankDrive(-Robot.oi.gamepad.getRawAxis(RobotMap.leftY)*RobotMap.scaler, -Robot.oi.gamepad.getRawAxis(RobotMap.rightY)*RobotMap.scaler);
-          if(RobotMap.enableGyroDrive){
+          Robot.oi.drive.tankDrive(-Robot.oi.gamepad.getRawAxis(RobotMap.leftY)*GlobalVariables.scaler, -Robot.oi.gamepad.getRawAxis(RobotMap.rightY)*GlobalVariables.scaler);
+          if(GlobalVariables.enableGyroDrive){
             if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) == 0 && Robot.oi.gamepad.getRawAxis(RobotMap.rightY) == 0) {
               Robot.oi.gyro.reset();
             }
           }
         }
       } else {  //CONTROL MODE CHECK
-        if(!Robot.oi.defaultDrivemode){
-          Robot.oi.drive.arcadeDrive(-Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*RobotMap.scaler, Robot.oi.ljoystick.getRawAxis(RobotMap.joyX)*RobotMap.scaler);
+        if(!GlobalVariables.defaultDrivemode){
+          Robot.oi.drive.arcadeDrive(-Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, Robot.oi.ljoystick.getRawAxis(RobotMap.joyX)*GlobalVariables.scaler);
         } else {
-          Robot.oi.drive.tankDrive(-Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*RobotMap.scaler, -Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*RobotMap.scaler);
+          Robot.oi.drive.tankDrive(-Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, -Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler);
         }
       } //END CONTROL MODE
       SmartDashboard.putNumber("Left X", Robot.oi.gamepad.getRawAxis(RobotMap.leftX));
