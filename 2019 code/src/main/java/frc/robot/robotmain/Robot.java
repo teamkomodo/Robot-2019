@@ -4,7 +4,7 @@ package frc.robot.robotmain;
 import edu.wpi.first.wpilibj.TimedRobot;
 import frc.robot.subsystems.auto.*;
 import frc.robot.subsystems.teleop.*;
-import frc.robot.vision.*;
+import frc.robot.commands.*;
 
 //START ROBOT CLASS
 public class Robot extends TimedRobot {
@@ -17,7 +17,6 @@ public class Robot extends TimedRobot {
   public static MotorControl motorControl;
   public static Autonomous autonomous;
   public static GlobalVariables globalVariables;
-  public static BetaVision betaVision;   
   
   @Override
   public void robotInit() {
@@ -50,8 +49,7 @@ public class Robot extends TimedRobot {
     }
     //DETERMINES IF WE ARE IN VISION MODE OR DRIVE MODE
     if(visionFlag){   //START VISION CODE
-        //visionCode = new TrackTarget();
-        betaVision = new BetaVision();
+        visionCode = new TrackTarget();
        } else {       //END VISION CODE
         motorControl = new MotorControl();
     }
