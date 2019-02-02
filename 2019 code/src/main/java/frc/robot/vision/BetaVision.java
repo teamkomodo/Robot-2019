@@ -28,9 +28,9 @@ public class BetaVision{
         }
         steeringAdjust = Robot.oi.limelightX/20;     //STEERING CALCULATION        
         if(steeringAdjust > 0) {                     //IF X > 0
-            Robot.oi.drive.tankDrive(-(distanceAdjust-steeringAdjust),-distanceAdjust);
+            Robot.oi.drive.tankDrive(distanceAdjust-steeringAdjust,distanceAdjust);
         } else {                                     //IF X < 0
-            Robot.oi.drive.tankDrive(-distanceAdjust,-(distanceAdjust-steeringAdjust));
+            Robot.oi.drive.tankDrive(distanceAdjust,distanceAdjust+steeringAdjust);
         }
       } else {      //IF ROBOT DOES NOT SEE A TARGET
         Robot.oi.mleft.set(0);
