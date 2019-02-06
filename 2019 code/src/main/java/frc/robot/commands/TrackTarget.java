@@ -13,6 +13,7 @@ public class TrackTarget{
         Robot.oi.limelightTarget = Robot.oi.tv.getDouble(0.0); //UPDATES VISION VALUES
         double steeringAdjust = 0.0;
         double distanceAdjust = 0.0;
+        double xOffset = -5;
         if(Robot.oi.limelightTarget != 0.0){  //IF ROBOT SEES TARGET
           //DISTANCE CALCULATIONS
           if(Robot.oi.limelightArea + GlobalVariables.visionDistanceThreshold < GlobalVariables.visionDistanceTarget) {          //IF ROBOT IS TOO FAR
@@ -28,16 +29,12 @@ public class TrackTarget{
                   distanceAdjust = -1;
               }
           }
-          steeringAdjust = (Robot.oi.limelightX+7)/20;     //STEERING CALCULATION        
-          if(steeringAdjust > -7) {                     //IF X > 0
+          steeringAdjust = (Robot.oi.limelightX-xOffset)/20;     //STEERING CALCULATION        
+          if(steeringAdjust > xOffset) {                         //IF X > 0
               Robot.oi.drive.tankDrive(distanceAdjust-steeringAdjust,distanceAdjust);
-          } else {                                     //IF X < 0
+          } else {                                               //IF X < 0
               Robot.oi.drive.tankDrive(distanceAdjust,distanceAdjust+steeringAdjust);
           }
-
-          SmartDashboard.putNumber("steering adjust", steeringAdjust);
-          SmartDashboard.putNumber("distance adjust", distanceAdjust);
-
           if(steeringAdjust < .3 && steeringAdjust > -.3 && distanceAdjust < .3 && distanceAdjust > -.3){
               Robot.oi.gyro.reset();
               Robot.globalVariables.visionStage = 1;
@@ -47,24 +44,24 @@ public class TrackTarget{
           Robot.oi.mright.set(0);
         }   
       } else if(Robot.globalVariables.visionStage == 1){
+        Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngle()+Robot.globalVariables.gyroDrift;
         if(Robot.oi.ultrasonic.getVoltage() >= Robot.globalVariables.ultrasonicTarget){
           double steeringAdjust = 0;
-          Robot.globalVariables.calculatedZ = Robot.oi.gyro.getAngleZ()-Robot.globalVariables.zDrift;   //THE ONE WE CARE ABOUT
-          if((Robot.globalVariables.calculatedZ)*.01 > .5) {
+          if((Robot.globalVariables.calculatedX)*.01 > .5) {
             steeringAdjust = .5;
-          }else if ((Robot.globalVariables.calculatedZ)*.01 < -.5) {
+          }else if ((Robot.globalVariables.calculatedX)*.01 < -.5) {
             steeringAdjust = -.5;
           } else {
-            steeringAdjust = (Robot.globalVariables.calculatedZ)*.005;
+            steeringAdjust = (Robot.globalVariables.calculatedX)*.005;
           }
-          /*
-          if(Robot.globalVariables.calculatedZ > 0){
+          
+          if(Robot.globalVariables.calculatedX > 0){
             Robot.oi.drive.tankDrive(.5-steeringAdjust,.5);
           }else {
             Robot.oi.drive.tankDrive(.5,.5+steeringAdjust);
           }
-          */
-          Robot.oi.drive.tankDrive(.5,.53);
+          
+          //Robot.oi.drive.tankDrive(.5,.53);
         }
       } else {
         Robot.oi.drive.tankDrive(0,0);

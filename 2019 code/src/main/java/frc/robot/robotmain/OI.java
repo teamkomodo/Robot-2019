@@ -8,9 +8,9 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.analog.adis16448.frc.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.AnalogGyro;
 
 public class OI{
     public Joystick gamepad;
@@ -29,7 +29,7 @@ public class OI{
 
     public DifferentialDrive drive;
 
-    public ADIS16448_IMU gyro;
+    public AnalogGyro gyro;
 
     public Timer timer;
     public Timer debugTimer;
@@ -66,7 +66,7 @@ public class OI{
         rmotor2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
         lmotor2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
 
-        gyro = new ADIS16448_IMU();
+        gyro = new AnalogGyro(1);
         ultrasonic = new AnalogInput(0);
 
         timer = new Timer();
