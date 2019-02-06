@@ -1,35 +1,42 @@
 package frc.robot.robotmain;
 
 import edu.wpi.first.wpilibj.Joystick;
+
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.analog.adis16448.frc.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 public class OI{
     public Joystick gamepad;
     public Joystick rjoystick;
     public Joystick ljoystick;
 
-    public WPI_TalonSRX rmotor;
-    public WPI_TalonSRX lmotor;
-    public WPI_TalonSRX lmotor2;
-    public WPI_TalonSRX rmotor2;
-    public WPI_TalonSRX rmotor3;
-    public WPI_TalonSRX lmotor3;
+    public WPI_TalonSRX rtmotor;
+    public WPI_TalonSRX ltmotor;
+    public WPI_TalonSRX ltmotor2;
+    public WPI_TalonSRX rtmotor2;
+    public WPI_TalonSRX rtmotor3;
+    public WPI_TalonSRX ltmotor3;
+    public VictorSPX lvmotor;
+
+    public ADIS16448_IMU gyro;
 
     public SpeedControllerGroup mleft;
     public SpeedControllerGroup mright;
 
     public DifferentialDrive drive;
 
-    public AnalogGyro gyro;
 
     public Timer timer;
     public Timer debugTimer;
@@ -49,24 +56,25 @@ public class OI{
 
     public int encoderTimeout;
 
+   
     public OI() {
         gamepad = new Joystick(RobotMap.kJoystickPort);
         ljoystick = new Joystick(RobotMap.lJoystickPort);
         rjoystick = new Joystick(RobotMap.rJoystickPort);
 
-        rmotor = new WPI_TalonSRX(RobotMap.rMotorPort);
-        lmotor = new WPI_TalonSRX(RobotMap.lMotorPort);
-        lmotor2 = new WPI_TalonSRX(RobotMap.lMotor2Port);
-        rmotor2 = new WPI_TalonSRX(RobotMap.rMotor2Port);
-        lmotor3 = new WPI_TalonSRX(RobotMap.lMotor2Port);
-        rmotor3 = new WPI_TalonSRX(RobotMap.rMotor2Port);
+        rtmotor = new WPI_TalonSRX(RobotMap.rMotorPort);
+        ltmotor = new WPI_TalonSRX(RobotMap.lMotorPort);
+        ltmotor2 = new WPI_TalonSRX(RobotMap.lMotor2Port);
+        rtmotor2 = new WPI_TalonSRX(RobotMap.rMotor2Port);
+        ltmotor3 = new WPI_TalonSRX(RobotMap.lMotor2Port);
+        rtmotor3 = new WPI_TalonSRX(RobotMap.rMotor2Port);
 
         encoderTimeout = 30;
 
-        rmotor2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        lmotor2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        rtmotor2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        ltmotor2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
 
-        gyro = new AnalogGyro(1);
+         gyro = new ADIS16448_IMU();
         ultrasonic = new AnalogInput(0);
 
         timer = new Timer();
@@ -77,8 +85,12 @@ public class OI{
         debugTimer.reset();
         debugTimer.start();
 
-        mleft = new SpeedControllerGroup(lmotor, lmotor2, lmotor3);
-        mright = new SpeedControllerGroup(rmotor, rmotor2, rmotor3);
+        /* sample robot drive code
+        mleft = new SpeedControllerGroup(ltmotor, ltmotor2, ltmotor3);
+        */
+
+        mleft = new SpeedControllerGroup(ltmotor, ltmotor2, ltmotor3);
+        mright = new SpeedControllerGroup(rtmotor, rtmotor2, rtmotor3);
 
         drive = new DifferentialDrive(mleft, mright);
 

@@ -6,8 +6,8 @@ public class Autonomous{
     private Boolean breakFlag = false;
     public Autonomous(){
         while(!breakFlag) {
-        if(-Robot.oi.rmotor2.getSelectedSensorPosition() / -Robot.globalVariables.oneFootRightEncoder*targetDistance < 100 && Robot.oi.lmotor.getSelectedSensorPosition() / Robot.globalVariables.oneFootLeftEncoder*targetDistance < 100){
-            if(-Robot.oi.rmotor2.getSelectedSensorPosition() / -Robot.globalVariables.oneFootRightEncoder*targetDistance > Robot.oi.lmotor.getSelectedSensorPosition() / Robot.globalVariables.oneFootLeftEncoder*targetDistance){
+        if(-Robot.oi.rtmotor2.getSelectedSensorPosition() / -Robot.globalVariables.oneFootRightEncoder*targetDistance < 100 && Robot.oi.lmotor.getSelectedSensorPosition() / Robot.globalVariables.oneFootLeftEncoder*targetDistance < 100){
+            if(-Robot.oi.rtmotor2.getSelectedSensorPosition() / -Robot.globalVariables.oneFootRightEncoder*targetDistance > Robot.oi.lmotor.getSelectedSensorPosition() / Robot.globalVariables.oneFootLeftEncoder*targetDistance){
                 Robot.oi.mleft.set(Robot.globalVariables.autonomousSpeed -.3);
                 Robot.oi.mright.set(-Robot.globalVariables.autonomousSpeed +.1);            
             } else {
@@ -19,10 +19,10 @@ public class Autonomous{
             Robot.oi.mright.set(0);
             breakFlag = true;  
         }
-        SmartDashboard.putNumber("Right Encoder", Robot.oi.rmotor2.getSelectedSensorPosition());
-        SmartDashboard.putNumber("Left Encoder", Robot.oi.lmotor.getSelectedSensorPosition());
-        SmartDashboard.putNumber("Left %", -Robot.oi.rmotor2.getSelectedSensorPosition() / -Robot.globalVariables.oneFootRightEncoder*targetDistance);
-        SmartDashboard.putNumber("Right %", Robot.oi.lmotor.getSelectedSensorPosition() / Robot.globalVariables.oneFootLeftEncoder*targetDistance);
+        SmartDashboard.putNumber("Right Encoder", Robot.oi.rtmotor2.getSelectedSensorPosition());
+        SmartDashboard.putNumber("Left Encoder", Robot.oi.ltmotor.getSelectedSensorPosition());
+        SmartDashboard.putNumber("Left %", -Robot.oi.rtmotor2.getSelectedSensorPosition() / -Robot.globalVariables.oneFootRightEncoder*targetDistance);
+        SmartDashboard.putNumber("Right %", Robot.oi.ltmotor.getSelectedSensorPosition() / Robot.globalVariables.oneFootLeftEncoder*targetDistance);
     }
     }   
 }
