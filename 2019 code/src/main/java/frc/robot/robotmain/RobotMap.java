@@ -2,13 +2,21 @@ package frc.robot.robotmain;
 
 public class RobotMap {
     //MOTOR DECLARATIONS
-    public static final int rMotorPort = 3;
-    public static final int rMotor2Port = 5;
-    public static final int rMotor3Port = 7;
+    public static final int rMotor1Port = 3;        //TALON SRX
+    public static final int rMotor2Port = 5;        //VICTOR SPX
+    public static final int rMotor3Port = 7;        //VICTOR SPX
+    public static final int lMotor1Port = 2;        //TALON SRX
+    public static final int lMotor2Port = 4;        //VICTOR SPX
+    public static final int lMotor3Port = 6;        //VICTOR SPX
+    public static final int mLift1Port = 8;         //TALON SRX
+    public static final int mLift2Port = 9;         //VICTOR SPX
+    public static final int rLiftPort = 1;          //VICTOR SP
+    public static final int bManipularotPort = 2;   //VICTOR SP
+    public static final int hManipularotPort = 3;   //VICTOR SP
 
-    public static final int lMotorPort = 2;
-    public static final int lMotor2Port = 4;
-    public static final int lMotor3Port = 6;
+    //SENSOR DECLARATIONS
+    public static final int ultrasonicPort = 0;
+    public static final int gyroPort = 1;
 
     //JOYSTICK DECLARATIONS
     public static final int lJoystickPort = 0;

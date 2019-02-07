@@ -1,7 +1,13 @@
-package frc.robot.subsystems.teleop;
+package frc.robot.deprecated;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.robotmain.*;
 
+/*
+ATTENTION:
+
+THIS FILE WAS REPLACED BY JOYSTICK CONTROL. THIS IS NOW DEPRICATED AND WE 
+ARE NOT USING IT. PLEASE USE THIS FILE ONLY FOR REFERNCE!
+*/
 
 public class MotorControl{
     public MotorControl(){
@@ -46,8 +52,7 @@ public class MotorControl{
         Robot.globalVariables.ButtonFlag = true;
       }
       if(Robot.oi.gamepad.getRawButton(RobotMap.buttonY)){
-        Robot.oi.rmotor2.setSelectedSensorPosition(0);
-        Robot.oi.lmotor.setSelectedSensorPosition(0);
+        Robot.oi.drive.tankDrive(0, 0);
         Robot.oi.gyro.reset();
       }
       if (GlobalVariables.enableGamepad){

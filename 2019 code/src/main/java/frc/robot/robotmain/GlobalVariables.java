@@ -23,7 +23,10 @@ public class GlobalVariables {
     public static Boolean defaultDrivemode = false;       //FALSE FOR ARCADE, TRUE FOR TANK  
     public static Boolean enableGamepad = true;           //FALSE FOR JOYSTICKS, TRUE FOR GAMEPAD  
     public static Boolean enableGyroDrive = true;
-    public Boolean ButtonFlag;         
+    public Boolean ButtonFlag;        
+    public Integer controlMode;    
+    public Boolean visionFlag;         
+   
 
     public static final double visionXThreshold = 2.0;
     public static final double visionYThreshold = 2.0;
@@ -50,6 +53,8 @@ public class GlobalVariables {
         oneFootRightEncoder = -3864.15;
         autonomousSpeed = 0.5;
 
-        ButtonFlag = false;       
+        ButtonFlag = false;   
+        visionFlag = false;  
+        controlMode = 0;  
     }
 }

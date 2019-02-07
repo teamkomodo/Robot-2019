@@ -40,8 +40,7 @@ public class TrackTarget{
               Robot.globalVariables.visionStage = 1;
           }
         } else {      //IF ROBOT DOES NOT SEE A TARGET
-          Robot.oi.mleft.set(0);
-          Robot.oi.mright.set(0);
+          Robot.oi.drive.tankDrive(0, 0);
         }   
       } else if(Robot.globalVariables.visionStage == 1){
         Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngle()+Robot.globalVariables.gyroDrift;
