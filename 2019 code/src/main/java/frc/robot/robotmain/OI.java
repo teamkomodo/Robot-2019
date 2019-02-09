@@ -72,8 +72,12 @@ public class OI{
         lmotor2.follow(lmotor1);
         lmotor3.follow(lmotor1);
 
+        
+
         mLift1 = new WPI_TalonSRX(RobotMap.mLift1Port);
         mLift2 = new VictorSPX(RobotMap.mLift2Port);
+
+        mLift2.follow(mLift1);
         
         rLift = new VictorSP(1);
         bManipulator = new VictorSP(RobotMap.bManipularotPort);

@@ -25,7 +25,16 @@ public class GlobalVariables {
     public static Boolean enableGyroDrive = true;
     public Boolean ButtonFlag;        
     public Integer controlMode;    
-    public Boolean visionFlag;         
+    public Boolean visionFlag;   
+    
+    //idk abut the encoder values. Placeholder values
+    public double level1 = 0;  
+    public double level2 = 30;
+    public double level3 = 60;
+    public double level4 = 90;
+    public double level5 = 120;
+    public double level6 = 150;
+    public int levelCounter=0;
    
 
     public static final double visionXThreshold = 2.0;
