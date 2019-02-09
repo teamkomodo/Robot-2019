@@ -17,7 +17,7 @@ public class ButtonControl{
         if(Robot.oi.gamepad.getRawButton(RobotMap.buttonY)){Robot.globalVariables.controlMode = 4;}
 
         if(Robot.globalVariables.controlMode == 1){     //A
-            liftDown = new LiftDown();
+            liftDown = new LiftDown(Robot.globalVariables.level1);
         }
         if(Robot.globalVariables.controlMode == 2){     //B
             hatchManipulator = new HatchManipulator();
@@ -26,7 +26,7 @@ public class ButtonControl{
             robotLift = new RobotLift();
         }
         if(Robot.globalVariables.controlMode == 4){     //Y
-            liftUp = new LiftUp();
+            liftUp = new LiftUp(Robot.globalVariables.level1);
         }
     }
 }
