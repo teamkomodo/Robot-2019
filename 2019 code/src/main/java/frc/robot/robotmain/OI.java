@@ -9,9 +9,9 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import edu.wpi.first.wpilibj.DigitalInput;
 //MOTORS
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.VictorSP;
 //ROBOT
@@ -37,6 +37,7 @@ public class OI{
     public double limelightTarget;
     public int encoderTimeout;
     public AnalogGyro gyro;
+    public DigitalInput lineSensor;
     //MOTORS
     public WPI_TalonSRX rmotor1;
     public VictorSPX rmotor2;
@@ -73,25 +74,25 @@ public class OI{
         lmotor2.follow(lmotor1);
         lmotor3.follow(lmotor1);
 
-        
-
         mLift1 = new WPI_TalonSRX(RobotMap.mLift1Port);
         mLift2 = new VictorSPX(RobotMap.mLift2Port);
 
         mLift2.follow(mLift1);
         
-        rLift = new WPI_TalonSRX(RobotMap.rLiftPort);
+        rLift = new WPI_TalonSRX(1);
         bManipulator = new VictorSP(RobotMap.bManipularotPort);
         hManipulator = new VictorSP(RobotMap.hManipularotPort);
         
-        encoderTimeout = 30; //miliseconds
+        encoderTimeout = 30;
 
         rmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
         lmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        mLift1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
         rLift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
 
         gyro = new AnalogGyro(RobotMap.gyroPort);
         ultrasonic = new AnalogInput(RobotMap.ultrasonicPort);
+        lineSensor = new DigitalInput(0);
 
         timer = new Timer();
         timer.reset();

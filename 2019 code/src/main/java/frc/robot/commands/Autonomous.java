@@ -1,5 +1,4 @@
 package frc.robot.commands;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.robotmain.*;
 public class Autonomous{
     public double targetDistance = 10;      //THIS IS IN FEET

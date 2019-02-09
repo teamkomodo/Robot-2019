@@ -9,7 +9,6 @@ public class GlobalVariables {
     public double adjustedRight;
     public double oneFootLeftEncoder;   
     public double oneFootRightEncoder;  
-    public double rliftencoder;
     public double autonomousSpeed;      
     public double debugcounter;         
     public double averageX;             
@@ -26,17 +25,12 @@ public class GlobalVariables {
     public static Boolean enableGyroDrive = true;
     public Boolean ButtonFlag;        
     public Integer controlMode;    
-    public Boolean visionFlag;   
+    public Boolean visionFlag;  
+
+    public int levelCounter = 1;
     
-    //idk abut the encoder values. Placeholder values
-    public double level1 = 0;  
-    public double level2 = 30;
-    public double level3 = 60;
-    public double level4 = 90;
-    public double level5 = 120;
-    public double level6 = 150;
-    public int levelCounter=0;
-   
+    public Boolean[] buttonDone = {false, false, false, false};
+    public double[] levelEncoderValues = {1.1, 2.2, 3.3, 4.4, 5.5, 6.6};
 
     public static final double visionXThreshold = 2.0;
     public static final double visionYThreshold = 2.0;
@@ -61,7 +55,6 @@ public class GlobalVariables {
         ultrasonicTarget = 0.4;
         oneFootLeftEncoder = 3825.25;
         oneFootRightEncoder = -3864.15;
-        rliftencoder = 0;
         autonomousSpeed = 0.5;
 
         ButtonFlag = false;   
