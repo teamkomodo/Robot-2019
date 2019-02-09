@@ -11,7 +11,6 @@ public class Robot extends TimedRobot {
   //RANDOM DECLARATIONS
 
   public static OI oi;
-  public static TrackTarget visionCode;
   public static GlobalVariables globalVariables;  
   public static ButtonControl buttonControl;
   public static JoystickControl joystickControl;

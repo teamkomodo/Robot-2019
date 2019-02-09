@@ -4,7 +4,7 @@ import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
 public class JoystickControl{
-    public TrackTarget trackTarget;
+    public ApproachTarget approachTarget;
     public JoystickControl(){
         //MANIPULATOR
         Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY));
@@ -22,7 +22,7 @@ public class JoystickControl{
             Robot.oi.table.getEntry("ledMode").setNumber(2);
             Robot.oi.drive.tankDrive(-Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, -Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler);
         } else {
-            trackTarget = new TrackTarget();
+            approachTarget = new ApproachTarget(GlobalVariables.visionDistanceTarget);
         }
     }
 }

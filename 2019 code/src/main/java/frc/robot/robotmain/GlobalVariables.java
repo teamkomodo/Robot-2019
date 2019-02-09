@@ -28,6 +28,8 @@ public class GlobalVariables {
     public Boolean visionFlag;  
 
     public int levelCounter = 1;
+    public int lineFollowCounter = 0;
+    public boolean lineTrip = false;
     
     public Boolean[] buttonDone = {false, false, false, false};
     public double[] levelEncoderValues = {1.1, 2.2, 3.3, 4.4, 5.5, 6.6};
