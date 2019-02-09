@@ -2,11 +2,11 @@ package frc.robot.robotmain;
 
 public class RobotMap {
     //MOTOR DECLARATIONS
-    public static final int rMotor1Port = 3;        //TALON SRX
-    public static final int rMotor2Port = 5;        //VICTOR SPX
+    public static final int rMotor1Port = 1;        //TALON SRX
+    public static final int rMotor2Port = 2;        //VICTOR SPX
     public static final int rMotor3Port = 7;        //VICTOR SPX
-    public static final int lMotor1Port = 2;        //TALON SRX
-    public static final int lMotor2Port = 4;        //VICTOR SPX
+    public static final int lMotor1Port = 5;        //TALON SRX
+    public static final int lMotor2Port = 0;        //VICTOR SPX
     public static final int lMotor3Port = 6;        //VICTOR SPX
     public static final int mLift1Port = 8;         //TALON SRX
     public static final int mLift2Port = 9;         //VICTOR SPX
