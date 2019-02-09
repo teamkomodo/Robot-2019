@@ -9,6 +9,7 @@ public class GlobalVariables {
     public double adjustedRight;
     public double oneFootLeftEncoder;   
     public double oneFootRightEncoder;  
+    public double rliftencoder;
     public double autonomousSpeed;      
     public double debugcounter;         
     public double averageX;             
@@ -60,6 +61,7 @@ public class GlobalVariables {
         ultrasonicTarget = 0.4;
         oneFootLeftEncoder = 3825.25;
         oneFootRightEncoder = -3864.15;
+        rliftencoder = 0;
         autonomousSpeed = 0.5;
 
         ButtonFlag = false;   

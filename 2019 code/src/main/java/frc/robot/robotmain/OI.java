@@ -11,6 +11,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 //MOTORS
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.VictorSP;
 //ROBOT
@@ -45,7 +46,7 @@ public class OI{
     public VictorSPX lmotor3;
     public WPI_TalonSRX mLift1;
     public VictorSPX mLift2;
-    public VictorSP rLift;
+    public WPI_TalonSRX rLift;
     public VictorSP bManipulator;
     public VictorSP hManipulator;
     //ROBOT
@@ -79,15 +80,15 @@ public class OI{
 
         mLift2.follow(mLift1);
         
-        rLift = new VictorSP(1);
+        rLift = new WPI_TalonSRX(RobotMap.rLiftPort);
         bManipulator = new VictorSP(RobotMap.bManipularotPort);
         hManipulator = new VictorSP(RobotMap.hManipularotPort);
         
-        encoderTimeout = 30;
+        encoderTimeout = 30; //miliseconds
 
         rmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
         lmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        mLift1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        rLift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
 
         gyro = new AnalogGyro(RobotMap.gyroPort);
         ultrasonic = new AnalogInput(RobotMap.ultrasonicPort);
