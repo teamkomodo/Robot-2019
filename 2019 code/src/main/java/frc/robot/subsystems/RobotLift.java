@@ -5,17 +5,19 @@ import frc.robot.robotmain.*;
  //THIS NEEDS TO BACK UP A SET DISTACNE, RUN LIFT, AND DRIVE FORWARD
 public class RobotLift{
     public RobotLift(){
-       
- double targetDistance = -2;       //THIS IS IN FEET
- double targetBoi = .21; //sample
- double targetDistance2 = 1;
+    double[] targetDistance = {
+        -2,
+        .21,
+        1,
+    };
+ 
 
 
  {
     int stagecounter=1;
      switch(stagecounter){
         case 1:
-            if(Robot.oi.rmotor1.getSelectedSensorPosition()>targetDistance*Robot.globalVariables.oneFootRightEncoder && Robot.oi.lmotor1.getSelectedSensorPosition()>targetDistance*Robot.globalVariables.oneFootLeftEncoder){
+            if(Robot.oi.rmotor1.getSelectedSensorPosition()>-2*Robot.globalVariables.oneFootRightEncoder && Robot.oi.lmotor1.getSelectedSensorPosition()>-2*Robot.globalVariables.oneFootLeftEncoder){
                 Robot.oi.drive.tankDrive(-.6,-.6);
             } 
             else{
@@ -23,26 +25,21 @@ public class RobotLift{
                 stagecounter++;
                 break;
             }
-            
-           
-
         case 2:
-            Robot.oi.rLift.set(.6);
-            if(Robot.oi.rLift.getSelectedSensorPosition()<targetBoi){
+            if(Robot.oi.rLift.getSelectedSensorPosition()<.21){
                 Robot.oi.rLift.set(.6);
             }
             else{
                 Robot.oi.rLift.set(0); 
-
                 stagecounter++;
                 break;
             }
         
-            if(Robot.globalVariables.rliftencoder/targetBoi>.5) {
+            if(Robot.globalVariables.rliftencoder/.21>.5) {
                 Robot.oi.drive.tankDrive(.6, .6);
             }
         case 3:
-            if(Robot.oi.rmotor1.getSelectedSensorPosition()<targetDistance2*Robot.globalVariables.oneFootRightEncoder && Robot.oi.lmotor1.getSelectedSensorPosition()<targetDistance2*Robot.globalVariables.oneFootLeftEncoder ){
+            if(Robot.oi.rmotor1.getSelectedSensorPosition()<1*Robot.globalVariables.oneFootRightEncoder && Robot.oi.lmotor1.getSelectedSensorPosition()<1*Robot.globalVariables.oneFootLeftEncoder ){
                 Robot.oi.drive.tankDrive(.6, .6);  
             }
             else{
