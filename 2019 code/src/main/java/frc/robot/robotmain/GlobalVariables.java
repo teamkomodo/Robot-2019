@@ -1,4 +1,3 @@
-
 package frc.robot.robotmain;
 
 public class GlobalVariables {
@@ -23,6 +22,7 @@ public class GlobalVariables {
     public static Boolean defaultDrivemode = false;       //FALSE FOR ARCADE, TRUE FOR TANK  
     public static Boolean enableGamepad = true;           //FALSE FOR JOYSTICKS, TRUE FOR GAMEPAD  
     public static Boolean enableGyroDrive = true;
+    public Boolean visionBreak;
     public Boolean ButtonFlag;        
     public Integer controlMode;    
     public Boolean visionFlag;  
@@ -58,7 +58,8 @@ public class GlobalVariables {
         autonomousSpeed = 0.5;
 
         ButtonFlag = false;   
-        visionFlag = false;  
+        visionFlag = false; 
+        visionBreak = false; 
         controlMode = 0;  
     }
 }

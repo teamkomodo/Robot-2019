@@ -1,8 +1,9 @@
-package frc.robot.commands;
+package frc.robot.deprecated;
 import frc.robot.robotmain.*;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.*;
 
 public class TrackTarget{
+  public static DriveStraight driveStraight;
     public TrackTarget(){
       if (Robot.globalVariables.visionStage == 0) {
         Robot.oi.table.getEntry("pipeline").setNumber(0);      //SETS LIMELIGHT TO VISION MODE
@@ -43,24 +44,8 @@ public class TrackTarget{
           Robot.oi.drive.tankDrive(0, 0);
         }   
       } else if(Robot.globalVariables.visionStage == 1){
-        Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngle()+Robot.globalVariables.gyroDrift;
         if(Robot.oi.ultrasonic.getVoltage() >= Robot.globalVariables.ultrasonicTarget){
-          double steeringAdjust = 0;
-          if((Robot.globalVariables.calculatedX)*.01 > .5) {
-            steeringAdjust = .5;
-          }else if ((Robot.globalVariables.calculatedX)*.01 < -.5) {
-            steeringAdjust = -.5;
-          } else {
-            steeringAdjust = (Robot.globalVariables.calculatedX)*.005;
-          }
-          
-          if(Robot.globalVariables.calculatedX > 0){
-            Robot.oi.drive.tankDrive(.5-steeringAdjust,.5);
-          }else {
-            Robot.oi.drive.tankDrive(.5,.5+steeringAdjust);
-          }
-          
-          //Robot.oi.drive.tankDrive(.5,.53);
+         driveStraight = new DriveStraight(.5);
         }
       } else {
         Robot.oi.drive.tankDrive(0,0);

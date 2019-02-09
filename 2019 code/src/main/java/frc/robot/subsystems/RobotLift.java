@@ -3,8 +3,8 @@ import frc.robot.robotmain.*;
 
  //THIS NEEDS TO BACK UP A SET DISTACNE, RUN LIFT, AND DRIVE FORWARD
 public class RobotLift{
+    int stagecounter=1;
     public RobotLift(){
-        int stagecounter=1;
         switch(stagecounter){
             case 1:
                 if(Robot.oi.rmotor1.getSelectedSensorPosition()>-2*Robot.globalVariables.oneFootRightEncoder && Robot.oi.lmotor1.getSelectedSensorPosition()>-2*Robot.globalVariables.oneFootLeftEncoder){
