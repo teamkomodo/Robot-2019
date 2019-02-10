@@ -30,6 +30,8 @@ public class GlobalVariables {
     public int levelCounter = 1;
     public int lineFollowCounter = 0;
     public boolean lineTrip = false;
+    public boolean driverControl = true;
+
     
     public Boolean[] buttonDone = {false, false, false, false};
     public double[] levelEncoderValues = {1.1, 2.2, 3.3, 4.4, 5.5, 6.6};
@@ -40,7 +42,8 @@ public class GlobalVariables {
     public static final double visionDistanceMin = .01;
     public static final double visionDistanceTarget = 10.0;
     public static final double visionDistanceThreshold = 0.8;
-    public static final double joystickThreshold = 0.5;
+    public static final double joystickThreshold = 0.2;
+    public static final double gyroThreshold = 10;
 
     public static final double scaler = 1.0;
 

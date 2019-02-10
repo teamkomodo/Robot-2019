@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
+
+import com.analog.adis16448.frc.ADIS16448_IMU;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import edu.wpi.first.wpilibj.DigitalInput;
 //MOTORS
@@ -36,7 +38,7 @@ public class OI{
     public double limelightArea;
     public double limelightTarget;
     public int encoderTimeout;
-    public AnalogGyro gyro;
+    public ADIS16448_IMU gyro;
     public DigitalInput lineSensor;
     //MOTORS
     public WPI_TalonSRX rmotor1;
@@ -90,7 +92,8 @@ public class OI{
         mLift1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
         rLift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
 
-        gyro = new AnalogGyro(RobotMap.gyroPort);
+        gyro = new ADIS16448_IMU();
+
         ultrasonic = new AnalogInput(RobotMap.ultrasonicPort);
         lineSensor = new DigitalInput(0);
 

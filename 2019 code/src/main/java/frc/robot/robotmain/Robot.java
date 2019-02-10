@@ -15,6 +15,7 @@ public class Robot extends TimedRobot {
   public static GlobalVariables globalVariables;  
   public static ButtonControl buttonControl;
   public static JoystickControl joystickControl;
+  public static Dashboard dashboard;
   
   @Override
   public void robotInit() {
@@ -32,7 +33,8 @@ public class Robot extends TimedRobot {
   }
   @Override
   public void teleopPeriodic() {
-    buttonControl = new ButtonControl();
     joystickControl = new JoystickControl();
+    buttonControl = new ButtonControl();
+    dashboard = new Dashboard();
   } //END ROBOTOT TELEOP
 } //END ROBOT CLASS

@@ -16,8 +16,8 @@ public class RobotMap {
 
     //SENSOR DECLARATIONS
     public static final int ultrasonicPort = 0;
-    public static final int gyroPort = 1;
 
+    
     //JOYSTICK DECLARATIONS
     public static final int lJoystickPort = 0;
     public static final int joyX = 0;

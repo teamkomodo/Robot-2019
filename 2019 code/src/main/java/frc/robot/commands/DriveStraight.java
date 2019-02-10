@@ -6,7 +6,7 @@ public class DriveStraight{
     public DriveStraight(double speed){
             double steeringAdjust = 0;
 
-            Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngle()+Robot.globalVariables.gyroDrift;
+            Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngleZ();//+Robot.globalVariables.gyroDrift;
 
             if((Robot.globalVariables.calculatedX)*.01 > speed) {
               steeringAdjust = speed;
@@ -16,10 +16,10 @@ public class DriveStraight{
               steeringAdjust = (Robot.globalVariables.calculatedX)*.01;
             }
             
-            if(Robot.globalVariables.calculatedX > 0){
-              Robot.oi.drive.tankDrive(speed-steeringAdjust,speed);
-            }else {
-              Robot.oi.drive.tankDrive(speed,speed+steeringAdjust);
+            if(Robot.globalVariables.calculatedX - GlobalVariables.gyroThreshold > 0){
+              Robot.oi.drive.tankDrive(-speed,-speed-steeringAdjust);
+            }else if (Robot.globalVariables.calculatedX + GlobalVariables.gyroThreshold < 0) {
+              Robot.oi.drive.tankDrive(-speed+steeringAdjust,-speed);
             }
     }
 }

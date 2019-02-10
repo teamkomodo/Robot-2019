@@ -8,8 +8,18 @@ public class ButtonControl{
     public static LiftUp liftUp;
     public static LiftDown liftDown;
     public static RobotLift robotLift;
+    public static DriveStraight driveStraight;
+
     
     public ButtonControl(){
+
+        if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger)){
+            driveStraight = new DriveStraight(.8);
+            Robot.globalVariables.driverControl = false;
+        } else { 
+            Robot.globalVariables.driverControl = true;
+        }
+
         if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA)){
             Robot.globalVariables.buttonDone[0] = false;
             Robot.globalVariables.controlMode = 1;
