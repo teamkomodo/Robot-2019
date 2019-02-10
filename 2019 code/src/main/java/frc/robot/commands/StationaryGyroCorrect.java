@@ -14,12 +14,12 @@ public class StationaryGyroCorrect {
             Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngleZ();//+Robot.globalVariables.gyroDrift;
             Robot.globalVariables.driverControl = false;
 
-            if((Robot.globalVariables.calculatedX)*.015 > 1) {
+            if((Robot.globalVariables.calculatedX)*.02 > 1) {
               steeringAdjust = 1;
-            }else if ((Robot.globalVariables.calculatedX)*.015 < -1) {
+            }else if ((Robot.globalVariables.calculatedX)*.02 < -1) {
               steeringAdjust = -1;
             } else {
-              steeringAdjust = (Robot.globalVariables.calculatedX)*.015;
+              steeringAdjust = (Robot.globalVariables.calculatedX)*.02;
             }
             if(Robot.oi.gyro.getAngleZ() - GlobalVariables.gyroThreshold > 0){
                 Robot.oi.drive.tankDrive(steeringAdjust, -steeringAdjust);

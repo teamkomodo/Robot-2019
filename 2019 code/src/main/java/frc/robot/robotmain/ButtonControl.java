@@ -14,7 +14,14 @@ public class ButtonControl{
     public ButtonControl(){
 
         if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger)){
-            driveStraight = new DriveStraight(.8);
+            driveStraight = new DriveStraight(1);
+            Robot.globalVariables.driverControl = false;
+        } else { 
+            Robot.globalVariables.driverControl = true;
+        }
+
+        if(Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger)){
+            driveStraight = new DriveStraight(.5);
             Robot.globalVariables.driverControl = false;
         } else { 
             Robot.globalVariables.driverControl = true;

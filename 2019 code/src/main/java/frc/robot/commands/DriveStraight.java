@@ -20,6 +20,8 @@ public class DriveStraight{
               Robot.oi.drive.tankDrive(-speed,-speed-steeringAdjust);
             }else if (Robot.globalVariables.calculatedX + GlobalVariables.gyroThreshold < 0) {
               Robot.oi.drive.tankDrive(-speed+steeringAdjust,-speed);
+            } else {
+              Robot.oi.drive.tankDrive(-speed,-speed);
             }
     }
 }

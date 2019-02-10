@@ -39,6 +39,7 @@ public class OI{
     public double limelightTarget;
     public int encoderTimeout;
     public ADIS16448_IMU gyro;
+    public AnalogGyro gyro2;
     public DigitalInput lineSensor;
     //MOTORS
     public WPI_TalonSRX rmotor1;
@@ -93,6 +94,7 @@ public class OI{
         rLift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
 
         gyro = new ADIS16448_IMU();
+        gyro2= new AnalogGyro(1);
 
         ultrasonic = new AnalogInput(RobotMap.ultrasonicPort);
         lineSensor = new DigitalInput(0);
