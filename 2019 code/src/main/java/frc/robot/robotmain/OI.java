@@ -4,14 +4,16 @@ package frc.robot.robotmain;
 import edu.wpi.first.wpilibj.Joystick;
 //SENSORS
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-
 import com.analog.adis16448.frc.ADIS16448_IMU;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.SPI;
+import edu.wpi.first.wpilibj.SPI.Port;
 //MOTORS
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
@@ -28,6 +30,7 @@ public class OI{
     public Joystick ljoystick;
     //SENSORS
     public AnalogInput ultrasonic;
+    public AnalogInput lineSensor2;
     public NetworkTable table;
     public NetworkTableEntry tx;
     public NetworkTableEntry ty;
@@ -38,8 +41,7 @@ public class OI{
     public double limelightArea;
     public double limelightTarget;
     public int encoderTimeout;
-    public ADIS16448_IMU gyro;
-    public AnalogGyro gyro2;
+    public ADXRS450_Gyro gyro;
     public DigitalInput lineSensor;
     //MOTORS
     public WPI_TalonSRX rmotor1;
@@ -93,10 +95,10 @@ public class OI{
         mLift1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
         rLift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
 
-        gyro = new ADIS16448_IMU();
-        gyro2= new AnalogGyro(1);
+        gyro = new ADXRS450_Gyro();
 
         ultrasonic = new AnalogInput(RobotMap.ultrasonicPort);
+        lineSensor2 = new AnalogInput(3);
         lineSensor = new DigitalInput(0);
 
         timer = new Timer();

@@ -1,6 +1,15 @@
 package frc.robot.robotmain;
 
 public class GlobalVariables {
+    public static final double visionXThreshold = 2.0;
+    public static final double visionYThreshold = 2.0;
+    public static final double visionDistanceMax = 12.0;
+    public static final double visionDistanceMin = .01;
+    public static final double visionDistanceTarget = 10.0;
+    public static final double visionDistanceThreshold = 0.8;
+    public static final double joystickThreshold = 0.2;
+    public static final double gyroThreshold = 15;
+    public static final double scaler = 1.0;
     public double ultrasonicTarget;
     public double visionXScaler;
     public double visionDistanceScaler;
@@ -18,35 +27,35 @@ public class GlobalVariables {
     public double calculatedZ;          
     public double gyroDrift;                              
     public double visionStage;
-
+    public double[] levelEncoderValues = {
+        1.1,    //LEVEL 1
+        2.2,    //LEVEL 2
+        3.3,    //LEVEL 3
+        4.4,    //LEVEL 4
+        5.5,    //LEVEL 5
+        6.6     //LEVEL 6
+    };
+    
     public static Boolean defaultDrivemode = false;       //FALSE FOR ARCADE, TRUE FOR TANK  
     public static Boolean enableGamepad = true;           //FALSE FOR JOYSTICKS, TRUE FOR GAMEPAD  
     public static Boolean enableGyroDrive = true;
+    public boolean lineTrip = false;
+    public boolean driverControl = true;
     public Boolean visionBreak;
     public Boolean ButtonFlag;        
-    public Integer controlMode;    
     public Boolean visionFlag;  
+    public Boolean[] buttonDone = {
+        false,  //A
+        false,  //B
+        false,  //X
+        false,  //Y
+    };
 
     public int levelCounter = 1;
     public int lineFollowCounter = 0;
-    public boolean lineTrip = false;
-    public boolean driverControl = true;
-
+    public int ApproachTargetCounter = 1;
+    public int controlMode;    
     
-    public Boolean[] buttonDone = {false, false, false, false};
-    public double[] levelEncoderValues = {1.1, 2.2, 3.3, 4.4, 5.5, 6.6};
-
-    public static final double visionXThreshold = 2.0;
-    public static final double visionYThreshold = 2.0;
-    public static final double visionDistanceMax = 12.0;
-    public static final double visionDistanceMin = .01;
-    public static final double visionDistanceTarget = 10.0;
-    public static final double visionDistanceThreshold = 0.8;
-    public static final double joystickThreshold = 0.2;
-    public static final double gyroThreshold = 15;
-
-    public static final double scaler = 1.0;
-
     public GlobalVariables() {
         debugcounter = 0.0;
         averageX = 0.0;
@@ -55,9 +64,9 @@ public class GlobalVariables {
         calculatedX = 0.0;
         calculatedY = 0.0;
         calculatedZ = 0.0;
-        gyroDrift = -.005;
+        gyroDrift = -.015;
         visionStage = 0.0;
-        ultrasonicTarget = 0.4;
+        ultrasonicTarget = 230;
         oneFootLeftEncoder = 3825.25;
         oneFootRightEncoder = -3864.15;
         autonomousSpeed = 0.5;
