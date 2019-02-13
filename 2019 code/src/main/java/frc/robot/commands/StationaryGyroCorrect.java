@@ -8,8 +8,10 @@ public class StationaryGyroCorrect {
             Robot.globalVariables.driverControl = true;
             Robot.oi.gyro.reset();
         } else {
+        
             double steeringAdjust = 0;
-            Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngle()+Robot.globalVariables.gyroDrift;
+
+            Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngleZ();//+Robot.globalVariables.gyroDrift;
             Robot.globalVariables.driverControl = false;
 
             if((Robot.globalVariables.calculatedX)*.02 > 1) {
@@ -19,10 +21,9 @@ public class StationaryGyroCorrect {
             } else {
               steeringAdjust = (Robot.globalVariables.calculatedX)*.02;
             }
-            
-            if(Robot.oi.gyro.getAngle() - GlobalVariables.gyroThreshold > 0){
+            if(Robot.oi.gyro.getAngleZ() - GlobalVariables.gyroThreshold > 0){
                 Robot.oi.drive.tankDrive(steeringAdjust, -steeringAdjust);
-            } else if(Robot.oi.gyro.getAngle() + GlobalVariables.gyroThreshold < 0){
+            } else if(Robot.oi.gyro.getAngleZ() + GlobalVariables.gyroThreshold < 0){
                 Robot.oi.drive.tankDrive(steeringAdjust, -steeringAdjust);
             } else {
                 Robot.oi.drive.tankDrive(0, 0);

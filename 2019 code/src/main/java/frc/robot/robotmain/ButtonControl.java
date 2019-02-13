@@ -9,14 +9,20 @@ public class ButtonControl{
     public static LiftDown liftDown;
     public static RobotLift robotLift;
     public static DriveStraight driveStraight;
-    public static LineFollow lineFollow;
-    public static ApproachTarget approachTarget;
 
     
     public ButtonControl(){
-        if(Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger)){
+
+        if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger)){
+            driveStraight = new DriveStraight(1);
             Robot.globalVariables.driverControl = false;
+        } else { 
+            Robot.globalVariables.driverControl = true;
+        }
+
+        if(Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger)){
             driveStraight = new DriveStraight(.5);
+            Robot.globalVariables.driverControl = false;
         } else { 
             Robot.globalVariables.driverControl = true;
         }
@@ -26,7 +32,6 @@ public class ButtonControl{
             Robot.globalVariables.controlMode = 1;
         }
         if(Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
-            Robot.globalVariables.ApproachTargetCounter = 1;
             Robot.globalVariables.buttonDone[1] = false;
             Robot.globalVariables.controlMode = 2;
         }
@@ -44,8 +49,6 @@ public class ButtonControl{
         }
         if(Robot.globalVariables.controlMode == 2 && !Robot.globalVariables.buttonDone[1]){     //B
             hatchManipulator = new HatchManipulator();
-        } else if (Robot.globalVariables.buttonDone[1]){
-            Robot.globalVariables.driverControl = true;
         }
         if(Robot.globalVariables.controlMode == 3 && !Robot.globalVariables.buttonDone[2]){     //X
             robotLift = new RobotLift();

@@ -1,5 +1,4 @@
 package frc.robot.commands;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.robotmain.*;
 
 public class Vision{
@@ -28,20 +27,14 @@ public class Vision{
                   distanceAdjust = -1;
               }
           }
-          steeringAdjust = (Robot.oi.limelightX-xOffset)/20;     //STEERING CALCULATION   
-          distanceAdjust = distanceAdjust*-1;
-          
-          SmartDashboard.putNumber("Steering Adjust", steeringAdjust);
-          SmartDashboard.putNumber("Distance Adjust", distanceAdjust);
-
+          steeringAdjust = (Robot.oi.limelightX-xOffset)/20;     //STEERING CALCULATION        
           if(steeringAdjust > xOffset) {                         //IF X > 0
-              Robot.oi.drive.tankDrive(distanceAdjust,distanceAdjust-steeringAdjust);
+              Robot.oi.drive.tankDrive(distanceAdjust-steeringAdjust,distanceAdjust);
           } else {                                               //IF X < 0
-              Robot.oi.drive.tankDrive(distanceAdjust+steeringAdjust,distanceAdjust);
+              Robot.oi.drive.tankDrive(distanceAdjust,distanceAdjust+steeringAdjust);
           }
           if(steeringAdjust < .3 && steeringAdjust > -.3 && distanceAdjust < .3 && distanceAdjust > -.3){
             Robot.globalVariables.visionBreak = true;
-            Robot.globalVariables.ApproachTargetCounter = 2;
           } else {
             Robot.globalVariables.visionBreak = false;
           } 
