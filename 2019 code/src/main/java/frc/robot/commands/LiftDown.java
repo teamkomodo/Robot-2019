@@ -10,6 +10,7 @@ public class LiftDown {
                 Robot.oi.mLift1.set(0);
                 Robot.globalVariables.levelCounter--;
                 Robot.globalVariables.buttonDone[0] = true;
+               
             }
         }
     }
