@@ -1,28 +1,43 @@
 package frc.robot.commands;
 import frc.robot.robotmain.*;
 import frc.robot.commands.*;
-import frc.robot.robotmain.*;
 
 public class ApproachTarget{
     public static Vision vision;
     public static DriveStraight driveStraight;
     public static LineFollow lineFollow;
 
-    public ApproachTarget(double distance, double speed){               //PASS IN TARGET DISTANCE (% OF LIMELIGHT IMAGE) AND FINAL APPROACH SPEED
-        if(Robot.globalVariables.ApproachTargetCounter == 1){           //USE VISION TO GO TO TARGET
-            vision = new Vision(GlobalVariables.visionDistanceTarget);
-        } else if (Robot.globalVariables.ApproachTargetCounter == 2) {  //USE GYRO DRIVE AND ULTRASONIC ON FINAL APPROACH
-            if(Robot.oi.ultrasonic.getValue() >= Robot.globalVariables.ultrasonicTarget){
-                driveStraight = new DriveStraight(speed);
+    int stagecounter = 1;
+    public ApproachTarget(double distance){
+        switch(stagecounter){
+            case 1:
+                if(!Robot.globalVariables.visionBreak){
+                    vision = new Vision(distance);
+                } else {
+                    Robot.globalVariables.lineFollowCounter = 0;
+                    stagecounter++;
+                    break;
+                }
+            case 2:
+                if(Robot.globalVariables.lineFollowCounter < 3){
+                    lineFollow = new LineFollow();
+                } else {
+                    Robot.oi.gyro.reset();
+                    stagecounter++;
+                    break;
+                }
+            case 3:
+            if(Robot.oi.ultrasonic.getVoltage() >= Robot.globalVariables.ultrasonicTarget){
+                driveStraight = new DriveStraight(.5);
             } else {
-                Robot.globalVariables.ApproachTargetCounter++;
+                Robot.oi.drive.tankDrive(0,0);
+                stagecounter++;
+                break;
             }
-        } else if (Robot.globalVariables.ApproachTargetCounter == 3) {  //STOP THE ROBOT
-            Robot.oi.drive.tankDrive(0, 0);
-            Robot.globalVariables.ApproachTargetCounter++;
-        } else if (Robot.globalVariables.ApproachTargetCounter == 4){   //GIVE THE DRIVER CONTROLS BACK
-            Robot.globalVariables.driverControl = true;
-            Robot.globalVariables.visionFlag = false;
+
+            default:
+                Robot.oi.drive.tankDrive(0,0);
+            break;
         }
     }
 }
