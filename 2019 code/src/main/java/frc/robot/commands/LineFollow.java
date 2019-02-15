@@ -3,15 +3,16 @@ import frc.robot.robotmain.*;
 
 public class LineFollow{
     public LineFollow(){
+        Robot.oi.gyro.reset();
         if(Robot.oi.lineSensor.get() != Robot.globalVariables.lineTrip){
             Robot.globalVariables.lineFollowCounter++;
         }
         if(Robot.oi.lineSensor.get()){
             Robot.globalVariables.lineTrip = true;
-            Robot.oi.drive.tankDrive(.6, .4);
+            Robot.oi.drive.tankDrive(-.6, 0);
         } else {
             Robot.globalVariables.lineTrip = false;
-            Robot.oi.drive.tankDrive(.4, .6);
+            Robot.oi.drive.tankDrive(.3, -.4);
         }             
     }
 }
