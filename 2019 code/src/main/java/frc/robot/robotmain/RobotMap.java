@@ -2,14 +2,21 @@ package frc.robot.robotmain;
 
 public class RobotMap {
     //MOTOR DECLARATIONS
-    public static final int rMotor1Port = 1;        //TALON SRX
-    public static final int rMotor2Port = 2;        //VICTOR SPX
-    public static final int rMotor3Port = 7;        //VICTOR SPX
-    public static final int lMotor1Port = 5;        //TALON SRX
-    public static final int lMotor2Port = 0;        //VICTOR SPX
-    public static final int lMotor3Port = 6;        //VICTOR SPX
-    public static final int mLift1Port = 8;         //TALON SRX
-    public static final int mLift2Port = 9;         //VICTOR SPX
+    
+    public static final int rMotor1Port = 1;    //1    //TALON SRX
+    public static final int rMotor2Port = 2;    //6    //VICTOR SPX
+    public static final int rMotor3Port = 7;    //0    //VICTOR SPX
+    public static final int lMotor1Port = 5;    //2  //TALON SRX
+    public static final int lMotor2Port = 0;    //4   //VICTOR SPX
+    public static final int lMotor3Port = 6;    //7   //VICTOR SPX
+    public static final int rMotor1Portp = 1;    //1    //TALON SRX
+    public static final int rMotor2Portp = 6;    //6    //VICTOR SPX
+    public static final int rMotor3Portp = 0;    //0    //VICTOR SPX
+    public static final int lMotor1Portp = 2;    //2  //TALON SRX
+    public static final int lMotor2Portp = 4 ;    //4   //VICTOR SPX
+    public static final int lMotor3Portp = 7;    //7   //VICTOR SPX
+    public static final int mLift1Port = 4;         //TALON SRX
+    public static final int mLift2Port = 3;         //VICTOR SPX
     public static final int rLiftPort = 1;          //VICTOR SP
     public static final int bManipularotPort = 2;   //VICTOR SP
     public static final int hManipularotPort = 3;   //VICTOR SP

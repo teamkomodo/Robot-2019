@@ -57,6 +57,7 @@ public class OI{
     public VictorSP hManipulator;
     //ROBOT
     public DifferentialDrive drive;
+    public boolean pRobot = false;
     //MISC
     public Timer timer;
     public Timer debugTimer;
@@ -67,12 +68,25 @@ public class OI{
         ljoystick = new Joystick(RobotMap.lJoystickPort);
         rjoystick = new Joystick(RobotMap.rJoystickPort);
 
-        rmotor1 = new WPI_TalonSRX(RobotMap.rMotor1Port);
-        rmotor2 = new VictorSPX(RobotMap.rMotor2Port);
-        rmotor3 = new VictorSPX(RobotMap.rMotor3Port);
-        lmotor1 = new WPI_TalonSRX(RobotMap.lMotor1Port);
-        lmotor2 = new VictorSPX(RobotMap.lMotor2Port);
-        lmotor3 = new VictorSPX(RobotMap.lMotor3Port);
+        if(pRobot)
+        {
+            rmotor1 = new WPI_TalonSRX(RobotMap.rMotor1Portp);
+            rmotor2 = new VictorSPX(RobotMap.rMotor2Portp);
+            rmotor3 = new VictorSPX(RobotMap.rMotor3Portp);
+            lmotor1 = new WPI_TalonSRX(RobotMap.lMotor1Portp);
+            lmotor2 = new VictorSPX(RobotMap.lMotor2Portp);
+            lmotor3 = new VictorSPX(RobotMap.lMotor3Portp);
+        }
+        else if(pRobot==false)
+        {
+            rmotor1 = new WPI_TalonSRX(RobotMap.rMotor1Port);
+            rmotor2 = new VictorSPX(RobotMap.rMotor2Port);
+            rmotor3 = new VictorSPX(RobotMap.rMotor3Port);
+            lmotor1 = new WPI_TalonSRX(RobotMap.lMotor1Port);
+            lmotor2 = new VictorSPX(RobotMap.lMotor2Port);
+            lmotor3 = new VictorSPX(RobotMap.lMotor3Port);
+        }
+        
 
         rmotor2.follow(rmotor1);
         rmotor3.follow(rmotor1);

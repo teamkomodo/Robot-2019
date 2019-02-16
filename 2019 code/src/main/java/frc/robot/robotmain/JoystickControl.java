@@ -34,7 +34,7 @@ public class JoystickControl{
             }
             gyroCode = new StationaryGyroCorrect();
         } else {
-            approachTarget = new ApproachTarget(GlobalVariables.visionDistanceTarget, .5);
+            approachTarget = new ApproachTarget(GlobalVariables.visionDistanceTarget, .4);
         }
     }
 }

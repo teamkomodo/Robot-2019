@@ -9,10 +9,10 @@ public class LineFollow{
         }
         if(Robot.oi.lineSensor.get()){
             Robot.globalVariables.lineTrip = true;
-            Robot.oi.drive.tankDrive(-.6, 0);
+            Robot.oi.drive.tankDrive(-.7, 0);
         } else {
             Robot.globalVariables.lineTrip = false;
-            Robot.oi.drive.tankDrive(.3, -.4);
+            Robot.oi.drive.tankDrive(.3, -.5);
         }             
     }
 }
