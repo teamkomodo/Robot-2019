@@ -6,6 +6,8 @@ import frc.robot.subsystems.*;
 public class ButtonControl{
     public static HatchManipulator hatchManipulator;
     public static LiftUp liftUp;
+    public static LiftDownTest liftdowntest;
+    public static LiftUpTest liftuptest;
     public static LiftDown liftDown;
     public static RobotLift robotLift;
     public static DriveStraight driveStraight;
@@ -18,6 +20,21 @@ public class ButtonControl{
             Robot.globalVariables.driverControl = false;
             //driveStraight = new DriveStraight(.5);
             lineFollow = new LineFollow();
+        } else { 
+            Robot.globalVariables.driverControl = true;
+        }
+
+        if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
+            Robot.globalVariables.driverControl = false;
+            liftdowntest = new LiftDownTest(0.5);
+            
+        } else { 
+            Robot.globalVariables.driverControl = true;
+        }
+
+        if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
+            Robot.globalVariables.driverControl = false;
+            liftuptest = new LiftUpTest(0.5);
         } else { 
             Robot.globalVariables.driverControl = true;
         }
