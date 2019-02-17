@@ -37,6 +37,8 @@ public class GlobalVariables {
         6.6     //LEVEL 6
     };
     
+    public static boolean hFlag = false;
+    public static double count = 0;
     public static Boolean defaultDrivemode = false;       //FALSE FOR ARCADE, TRUE FOR TANK  
     public static Boolean enableGamepad = true;           //FALSE FOR JOYSTICKS, TRUE FOR GAMEPAD  
     public static Boolean enableGyroDrive = true;

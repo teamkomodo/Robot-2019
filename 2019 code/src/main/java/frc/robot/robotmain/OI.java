@@ -96,7 +96,7 @@ public class OI{
         mLift1 = new WPI_TalonSRX(RobotMap.mLift1Port);
         mLift2 = new VictorSPX(RobotMap.mLift2Port);
 
-        mLift2.follow(mLift1);
+        //mLift2.follow(mLift1);
         
         rLift = new WPI_TalonSRX(1);
         bManipulator = new VictorSP(RobotMap.bManipularotPort);
@@ -124,6 +124,7 @@ public class OI{
         debugTimer.start();
 
         drive = new DifferentialDrive(lmotor1, rmotor1);
+        
 
         table = NetworkTableInstance.getDefault().getTable("limelight");
         tx = table.getEntry("tx");

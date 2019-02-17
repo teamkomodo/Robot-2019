@@ -1,5 +1,6 @@
 package frc.robot.commands;
 import frc.robot.robotmain.*;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class LiftDownTest
 {
@@ -7,6 +8,8 @@ public class LiftDownTest
     public LiftDownTest(double speed)
     {
         speed1=speed;
-        Robot.oi.mLift1.set(-speed1);
+        System.out.println("works");
+         Robot.oi.mLift1.set(speed);
+         Robot.oi.mLift2.set(ControlMode.PercentOutput, speed1);
     }
 }
