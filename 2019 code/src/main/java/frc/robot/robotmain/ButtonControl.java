@@ -19,6 +19,7 @@ public class ButtonControl{
     
     public ButtonControl(){
         Robot.globalVariables.controlMode = 0;
+        lifttestjoystick = new LiftTestJoystick();
         if(Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger)){
             Robot.globalVariables.driverControl = true;
             //driveStraight = new DriveStraight(.5);
@@ -35,9 +36,9 @@ public class ButtonControl{
         // }
 
       
-        if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) != 0){
-            lifttestjoystick = new LiftTestJoystick();
-        }            
+        // if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) != 0){
+        //     lifttestjoystick = new LiftTestJoystick();
+        // }            
             
             
         if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA)){
