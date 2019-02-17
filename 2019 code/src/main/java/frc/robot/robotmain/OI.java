@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.SPI.Port;
 //MOTORS
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.VictorSP;
 //ROBOT
@@ -55,6 +56,7 @@ public class OI{
     public WPI_TalonSRX rLift;
     public VictorSP bManipulator;
     public VictorSP hManipulator;
+    public TalonSRX bManipulatortilt;
     //ROBOT
     public DifferentialDrive drive;
     public boolean pRobot = false;
@@ -101,6 +103,7 @@ public class OI{
         rLift = new WPI_TalonSRX(1);
         bManipulator = new VictorSP(RobotMap.bManipularotPort);
         hManipulator = new VictorSP(RobotMap.hManipularotPort);
+        bManipulatortilt = new TalonSRX(RobotMap.bManipularottiltPort);
         
         encoderTimeout = 30;
 

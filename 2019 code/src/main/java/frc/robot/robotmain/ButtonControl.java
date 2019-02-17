@@ -34,13 +34,12 @@ public class ButtonControl{
         //     Robot.globalVariables.driverControl = true;
         // }
 
-        if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
-            Robot.globalVariables.driverControl = true;
-            //liftuptest = new LiftUpTest(0.5);
+      
+        if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) != 0){
             lifttestjoystick = new LiftTestJoystick();
+        }            
             
-        } 
-
+            
         if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA)){
             Robot.globalVariables.buttonDone[0] = false;
             Robot.globalVariables.controlMode = 1;
