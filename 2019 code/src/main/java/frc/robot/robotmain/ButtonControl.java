@@ -6,17 +6,12 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class ButtonControl{
     public static HatchManipulator hatchManipulator;
-    public static LiftUp liftUp;
-    public static LiftDownTest liftdowntest;
-    public static LiftUpTest liftuptest;
     public static LiftTestJoystick lifttestjoystick;
-    public static LiftDown liftDown;
     public static RobotLift robotLift;
     public static DriveStraight driveStraight;
     public static LineFollow lineFollow;
     public static ApproachTarget approachTarget;
 
-    
     public ButtonControl(){
         Robot.globalVariables.controlMode = 0;
         if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper))
