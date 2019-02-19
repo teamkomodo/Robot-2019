@@ -8,7 +8,7 @@ public class JoystickControl{
     public StationaryGyroCorrect gyroCode;
     public JoystickControl(){
         //MANIPULATOR
-        Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY));
+        //Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY));
 
         //BUTTON FLAG
         if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger) && !Robot.globalVariables.ButtonFlag){

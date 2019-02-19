@@ -19,7 +19,7 @@ public class ButtonControl{
     
     public ButtonControl(){
         Robot.globalVariables.controlMode = 0;
-        if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) !=0)
+        if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper))
         {
             lifttestjoystick = new LiftTestJoystick();
         }
