@@ -13,6 +13,8 @@ public class ButtonControl{
     public static ApproachTarget approachTarget;
 
     public ButtonControl(){
+    }
+    public void autoButtonControl(){
         Robot.globalVariables.controlMode = 0;
         if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper))
         {

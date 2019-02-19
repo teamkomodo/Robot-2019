@@ -17,7 +17,6 @@ public class ApproachTarget{
                 if(Robot.oi.lineSensor.get())
                 {
                     lineFollow = new LineFollow();
-                    System.out.println("shanes kool sick mode");
                 }
                 } else {
                 Robot.globalVariables.ApproachTargetCounter++;
@@ -25,7 +24,6 @@ public class ApproachTarget{
         } else if (Robot.globalVariables.ApproachTargetCounter == 3){
             if(Robot.oi.ultrasonic.getValue() >= Robot.globalVariables.ultrasonicTarget){
                 lineFollow = new LineFollow();
-                System.out.println("shanes kool sick0 mode");
                 } else {
                 Robot.globalVariables.ApproachTargetCounter++;
             }

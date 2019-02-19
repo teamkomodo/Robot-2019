@@ -7,6 +7,8 @@ public class JoystickControl{
     public ApproachTarget approachTarget;
     public StationaryGyroCorrect gyroCode;
     public JoystickControl(){
+    }
+    public void autoJoystick(){
         //MANIPULATOR
         //Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY));
 

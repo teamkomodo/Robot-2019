@@ -17,11 +17,15 @@ public class Robot extends TimedRobot {
   public static JoystickControl joystickControl;
   public static Dashboard dashboard;
   
+  
   @Override
   public void robotInit() {
     //INITIALIZE ALL MOTOR CONTROLLERS AND VARIABLES
     oi = new OI();
+    joystickControl = new JoystickControl();
+    buttonControl = new ButtonControl();
     globalVariables = new GlobalVariables();
+    
   } //END ROBOT INIT
   @Override
   public void autonomousInit() {
@@ -30,11 +34,14 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     //AUTO CODE
+    joystickControl.autoJoystick();
+    buttonControl.autoButtonControl();
+    dashboard = new Dashboard();
   }
   @Override
   public void teleopPeriodic() {
-    joystickControl = new JoystickControl();
-    buttonControl = new ButtonControl();
+    joystickControl.autoJoystick();
+    buttonControl.autoButtonControl();
     dashboard = new Dashboard();
   } //END ROBOTOT TELEOP
 } //END ROBOT CLASS
