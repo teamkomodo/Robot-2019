@@ -19,12 +19,15 @@ public class ButtonControl{
     
     public ButtonControl(){
         Robot.globalVariables.controlMode = 0;
-        lifttestjoystick = new LiftTestJoystick();
-        if(Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger)){
-            Robot.globalVariables.driverControl = true;
-            //driveStraight = new DriveStraight(.5);
-            lineFollow = new LineFollow();
-        } 
+        if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) !=0)
+        {
+            lifttestjoystick = new LiftTestJoystick();
+        }
+        // if(Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger)){
+        //     Robot.globalVariables.driverControl = true;
+        //     //driveStraight = new DriveStraight(.5);
+        //     lineFollow = new LineFollow();
+        // } 
         // if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
         //     Robot.globalVariables.driverControl = false;
         //    // Robot.oi.drive.arcadeDrive(-Robot.oi.gamepad.getRawAxis(RobotMap.joyY), Robot.oi.gamepad.getRawAxis(RobotMap.joyX));

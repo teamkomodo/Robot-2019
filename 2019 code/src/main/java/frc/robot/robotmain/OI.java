@@ -1,5 +1,5 @@
 package frc.robot.robotmain;
-
+import edu.wpi.first.wpilibj.Encoder;
 //INPUT
 import edu.wpi.first.wpilibj.Joystick;
 //SENSORS
@@ -44,6 +44,7 @@ public class OI{
     public int encoderTimeout;
     public ADXRS450_Gyro gyro;
     public DigitalInput lineSensor;
+    Encoder encoder;
     //MOTORS
     public WPI_TalonSRX rmotor1;
     public VictorSPX rmotor2;
@@ -98,7 +99,7 @@ public class OI{
         mLift1 = new WPI_TalonSRX(RobotMap.mLift1Port);
         mLift2 = new VictorSPX(RobotMap.mLift2Port);
 
-        //mLift2.follow(mLift1);
+        mLift2.follow(mLift1);
         
         rLift = new WPI_TalonSRX(1);
         bManipulator = new VictorSP(RobotMap.bManipularotPort);
@@ -107,10 +108,20 @@ public class OI{
         
         encoderTimeout = 30;
 
-        rmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        lmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        mLift1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        rLift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        // rmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        // lmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        // mLift1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        // rLift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+
+        // encoderRight = new Encoder(0, 1, true, Encoder.EncodingType.k4X);
+        // encoderRight.setPIDSourceType(PIDSourceType.kDisplacement);
+        // encoderRight.setDistancePerPulse(1.0 / tinch);
+        // encoderRight.reset();
+        
+        // encoderLeft = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
+        // encoderLeft.setPIDSourceType(PIDSourceType.kDisplacement);
+        // encoderLeft.setDistancePerPulse(1.0 / tinch);
+        // encoderLeft.reset();
 
         gyro = new ADXRS450_Gyro();
 

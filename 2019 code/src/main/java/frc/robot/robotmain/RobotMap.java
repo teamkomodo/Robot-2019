@@ -16,14 +16,15 @@ public class RobotMap {
     public static final int lMotor2Portp = 4 ;    //4   //VICTOR SPX
     public static final int lMotor3Portp = 7;    //7   //VICTOR SPX
     public static final int mLift1Port = 4;         //TALON SRX
-    public static final int mLift2Port = 3;         //VICTOR SPX
-    public static final int rLiftPort = 1;          //VICTOR SP
-    public static final int bManipularotPort = 2;   //VICTOR SP
+    public static final int mLift2Port = 8;         //VICTOR SPX
+    //public static final int rLiftPort = 1;          //VICTOR SP
+    public static final int bManipularotPort = 19;   //VICTOR SP
     public static final int hManipularotPort = 1;   //VICTOR SP
-    public static final int bManipularottiltPort = 300; //TALONSRX
+   public static final int bManipularottiltPort = 300; //TALONSRX
 
     //SENSOR DECLARATIONS
     public static final int ultrasonicPort = 0;
+
     
     //JOYSTICK DECLARATIONS
     public static final int lJoystickPort = 0;
