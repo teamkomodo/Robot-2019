@@ -71,7 +71,7 @@ public class OI{
         ljoystick = new Joystick(RobotMap.lJoystickPort);
         rjoystick = new Joystick(RobotMap.rJoystickPort);
 
-        if(pRobot)
+        if(competitionRobot)
         {
             rmotor1 = new WPI_TalonSRX(RobotMap.rMotor1Portp);
             rmotor2 = new VictorSPX(RobotMap.rMotor2Portp);
@@ -80,7 +80,7 @@ public class OI{
             lmotor2 = new VictorSPX(RobotMap.lMotor2Portp);
             lmotor3 = new VictorSPX(RobotMap.lMotor3Portp);
         }
-        else if(pRobot==false)
+        else if(competitionRobot==false)
         {
             rmotor1 = new WPI_TalonSRX(RobotMap.rMotor1Port);
             rmotor2 = new VictorSPX(RobotMap.rMotor2Port);
@@ -108,10 +108,10 @@ public class OI{
         
         encoderTimeout = 30;
 
-        rmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        lmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        mLift1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        rLift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        // rmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        // lmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        // mLift1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        // rLift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
 
         // encoderRight = new Encoder(0, 1, true, Encoder.EncodingType.k4X);
         // encoderRight.setPIDSourceType(PIDSourceType.kDisplacement);
