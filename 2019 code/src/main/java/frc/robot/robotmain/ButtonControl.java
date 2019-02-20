@@ -11,6 +11,8 @@ public class ButtonControl{
     public static DriveStraight driveStraight;
     public static LineFollow lineFollow;
     public static ApproachTarget approachTarget;
+    public static LiftDown liftDown;
+    public static LiftUp liftUp;
 
     public ButtonControl(){
     }
@@ -20,25 +22,27 @@ public class ButtonControl{
         {
             lifttestjoystick = new LiftTestJoystick();
         }
-        // if(Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger)){
-        //     Robot.globalVariables.driverControl = true;
-        //     //driveStraight = new DriveStraight(.5);
-        //     lineFollow = new LineFollow();
-        // } 
-        // if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
-        //     Robot.globalVariables.driverControl = false;
-        //    // Robot.oi.drive.arcadeDrive(-Robot.oi.gamepad.getRawAxis(RobotMap.joyY), Robot.oi.gamepad.getRawAxis(RobotMap.joyX));
-        //    liftdowntest = new LiftDownTest(0.5);
-        //     } else { 
-        //     Robot.oi.mLift1.set(0);
-        //    // Robot.oi.mLift2.set(ControlMode.PercentOutput, 0);
-        //     Robot.globalVariables.driverControl = true;
-        // }
+        /*
+        if(Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger)){
+            Robot.globalVariables.driverControl = true;
+            //driveStraight = new DriveStraight(.5);
+            lineFollow = new LineFollow();
+        } 
+        if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
+            Robot.globalVariables.driverControl = false;
+           // Robot.oi.drive.arcadeDrive(-Robot.oi.gamepad.getRawAxis(RobotMap.joyY), Robot.oi.gamepad.getRawAxis(RobotMap.joyX));
+           liftdowntest = new LiftDownTest(0.5);
+            } else { 
+            Robot.oi.mLift1.set(0);
+           // Robot.oi.mLift2.set(ControlMode.PercentOutput, 0);
+            Robot.globalVariables.driverControl = true;
+        }
 
       
-        // if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) != 0){
-        //     lifttestjoystick = new LiftTestJoystick();
-        // }            
+        if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) != 0){
+            lifttestjoystick = new LiftTestJoystick();
+        }
+        */            
             
             
         if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA)){
@@ -59,9 +63,12 @@ public class ButtonControl{
             Robot.globalVariables.controlMode = 4;
         }
 
-        // if(Robot.globalVariables.controlMode == 1 && !Robot.globalVariables.buttonDone[0]){     //A
-        //     liftDown = new LiftDown();
-        // }
+        if(Robot.globalVariables.controlMode == 1 && !Robot.globalVariables.buttonDone[0]){     //A
+            liftDown = new LiftDown();
+        }
+        if(Robot.globalVariables.controlMode == 4 && !Robot.globalVariables.buttonDone[3]){     //Y
+            liftUp = new LiftUp();
+        }
         if(Robot.globalVariables.controlMode == 2 ){     //B
             System.out.println(Robot.globalVariables.controlMode);
             hatchManipulator = new HatchManipulator(false);
@@ -79,12 +86,6 @@ public class ButtonControl{
         // }else if (Robot.globalVariables.buttonDone[1]){
         //     Robot.globalVariables.driverControl = true;
         //     Robot.oi.hManipulator.set(0);
-        // }
-        
-        
-       
-        // if(Robot.globalVariables.controlMode == 4 && !Robot.globalVariables.buttonDone[3]){     //Y
-        //     liftUp = new LiftUp();
         // }
     }
 }
