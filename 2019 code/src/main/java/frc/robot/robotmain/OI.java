@@ -60,7 +60,7 @@ public class OI{
     public TalonSRX bManipulatortilt;
     //ROBOT
     public DifferentialDrive drive;
-    public boolean competitionRobot = false;
+    public boolean competitionRobot = true;
     //MISC
     public Timer timer;
     public Timer debugTimer;
@@ -71,26 +71,15 @@ public class OI{
         ljoystick = new Joystick(RobotMap.lJoystickPort);
         rjoystick = new Joystick(RobotMap.rJoystickPort);
 
-        if(competitionRobot)
-        {
-            rmotor1 = new WPI_TalonSRX(RobotMap.rMotor1Portp);
-            rmotor2 = new VictorSPX(RobotMap.rMotor2Portp);
-            rmotor3 = new VictorSPX(RobotMap.rMotor3Portp);
-            lmotor1 = new WPI_TalonSRX(RobotMap.lMotor1Portp);
-            lmotor2 = new VictorSPX(RobotMap.lMotor2Portp);
-            lmotor3 = new VictorSPX(RobotMap.lMotor3Portp);
-        }
-        else if(competitionRobot==false)
-        {
-            rmotor1 = new WPI_TalonSRX(RobotMap.rMotor1Port);
-            rmotor2 = new VictorSPX(RobotMap.rMotor2Port);
-            rmotor3 = new VictorSPX(RobotMap.rMotor3Port);
-            lmotor1 = new WPI_TalonSRX(RobotMap.lMotor1Port);
-            lmotor2 = new VictorSPX(RobotMap.lMotor2Port);
-            lmotor3 = new VictorSPX(RobotMap.lMotor3Port);
-        }
         
-
+        rmotor1 = new WPI_TalonSRX(RobotMap.rMotor1Port);
+        rmotor2 = new VictorSPX(RobotMap.rMotor2Port);
+        rmotor3 = new VictorSPX(RobotMap.rMotor3Port);
+        lmotor1 = new WPI_TalonSRX(RobotMap.lMotor1Port);
+        lmotor2 = new VictorSPX(RobotMap.lMotor2Port);
+        lmotor3 = new VictorSPX(RobotMap.lMotor3Port);
+        
+        
         rmotor2.follow(rmotor1);
         rmotor3.follow(rmotor1);
         lmotor2.follow(lmotor1);
@@ -108,10 +97,10 @@ public class OI{
         
         encoderTimeout = 30;
 
-        // rmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        // lmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        // mLift1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        // rLift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        rmotor1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, encoderTimeout);
+        lmotor1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, encoderTimeout);
+        mLift1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        rLift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
 
         // encoderRight = new Encoder(0, 1, true, Encoder.EncodingType.k4X);
         // encoderRight.setPIDSourceType(PIDSourceType.kDisplacement);
