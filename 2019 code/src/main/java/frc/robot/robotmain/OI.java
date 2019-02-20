@@ -60,7 +60,7 @@ public class OI{
     public TalonSRX bManipulatortilt;
     //ROBOT
     public DifferentialDrive drive;
-    public boolean pRobot = false;
+    public boolean competitionRobot = false;
     //MISC
     public Timer timer;
     public Timer debugTimer;
