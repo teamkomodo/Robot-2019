@@ -11,7 +11,7 @@ public class JoystickControl{
     public void autoJoystick(){
         //MANIPULATOR
         //Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY));
-
+        Robot.oi.mLift1.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY));
         //BUTTON FLAG
         if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger) && !Robot.globalVariables.ButtonFlag){
             Robot.globalVariables.visionFlag = !Robot.globalVariables.visionFlag;
