@@ -64,13 +64,7 @@ public class ButtonControl{
             Robot.globalVariables.buttonDone[3] = false;
             Robot.globalVariables.controlMode = 4;
         }
-
-        if(Robot.globalVariables.controlMode == 1 && !Robot.globalVariables.buttonDone[0]){     //A
-            liftDown = new LiftDown();
-        }
-        if(Robot.globalVariables.controlMode == 4 && !Robot.globalVariables.buttonDone[3]){     //Y
-            liftUp = new LiftUp();
-        }
+        
         if(Robot.globalVariables.controlMode == 2 ){     //B
             System.out.println(Robot.globalVariables.controlMode);
             hatchManipulator = new HatchManipulator(false);

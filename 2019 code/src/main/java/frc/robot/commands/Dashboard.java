@@ -1,10 +1,12 @@
 package frc.robot.commands;
 import frc.robot.robotmain.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class Dashboard{
     public Dashboard() {
         //YOU CAN PUT GENERIC DEBUT STUFF IN HERE
+       // Robot.oi.mLift1.changeControlMode(ControlMode.Position);
         SmartDashboard.putNumber("Gyro Actual", Robot.oi.gyro.getAngle());
         SmartDashboard.putNumber("Gyro Calcualted", Robot.globalVariables.calculatedX);
         SmartDashboard.putNumber("Left Drive Encoder", Robot.oi.lmotor1.getSelectedSensorPosition());
