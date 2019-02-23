@@ -29,7 +29,7 @@ public class Vision{
               }
           }
           steeringAdjust = (Robot.oi.limelightX-xOffset)/20;     //STEERING CALCULATION   
-          distanceAdjust = distanceAdjust*-1;
+       //   distanceAdjust = distanceAdjust*-1;
           
           SmartDashboard.putNumber("Steering Adjust", steeringAdjust);
           SmartDashboard.putNumber("Distance Adjust", distanceAdjust);

@@ -49,6 +49,7 @@ public class GlobalVariables {
     public boolean lineTrip = false;
     public boolean driverControl = true;
     public Boolean visionBreak;
+    public Boolean raiserFlag;
     public Boolean ButtonFlag;  
     public boolean ButtonXflag;
     public boolean ButtonYflag;
@@ -84,6 +85,7 @@ public class GlobalVariables {
         elevatortarget = 0;
 
         ElevatorFlag = false;
+        raiserFlag = false;
         ButtonXflag = false;
         ButtonYflag = false;
         ButtonFlag = false;   
