@@ -49,12 +49,12 @@ public class GlobalVariables {
     public boolean lineTrip = false;
     public boolean driverControl = true;
     public Boolean visionBreak;
-    public Boolean raiserFlag;
     public Boolean ButtonFlag;  
     public boolean ButtonXflag;
     public boolean ButtonYflag;
     public Boolean ElevatorFlag;      
-    public Boolean visionFlag;  
+    public Boolean visionFlag; 
+    public Boolean raiserFlag;   
     public Boolean[] buttonDone = {
         false,  //A
         false,  //B
@@ -75,7 +75,7 @@ public class GlobalVariables {
         calculatedX = 0.0;
         calculatedY = 0.0;
         calculatedZ = 0.0;
-        gyroDrift = .3;
+        gyroDrift = -.015;
         visionStage = 0.0;
         ultrasonicTarget = 75;
         lineTarget = 450;
@@ -85,12 +85,12 @@ public class GlobalVariables {
         elevatortarget = 0;
 
         ElevatorFlag = false;
-        raiserFlag = false;
         ButtonXflag = false;
         ButtonYflag = false;
         ButtonFlag = false;   
         visionFlag = false; 
         visionBreak = false; 
+        raiserFlag = false;
         controlMode = 0;  
     }
 }
