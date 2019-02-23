@@ -2,12 +2,11 @@ package frc.robot.subsystems;
 import frc.robot.robotmain.*;
 
  //THIS NEEDS TO BACK UP A SET DISTACNE, RUN LIFT, AND DRIVE FORWARD
-public class RoboRaiser{
+public class RobotLift{
     int stagecounter=1;
-    public RoboRaiser(){
+    public RobotLift(){
         switch(stagecounter){
             case 1:
-            Robot.globalVariables.raiserFlag = true;
                 if(Robot.oi.rmotor1.getSelectedSensorPosition()>-2*Robot.globalVariables.oneFootRightEncoder && Robot.oi.lmotor1.getSelectedSensorPosition()>-2*Robot.globalVariables.oneFootLeftEncoder){
                     Robot.oi.drive.tankDrive(-.6,-.6);
                 } 
@@ -38,12 +37,11 @@ public class RoboRaiser{
                     stagecounter++;
                     break;
                 }
-            // case 4:
-            //     Robot.globalVariables.buttonDone[2] = true;
-            //     break;
+            case 4:
+                Robot.globalVariables.buttonDone[2] = true;
+                break;
             default:
                     Robot.oi.drive.tankDrive(0, 0);
-                    Robot.globalVariables.raiserFlag = false;
     }
 }
 }
