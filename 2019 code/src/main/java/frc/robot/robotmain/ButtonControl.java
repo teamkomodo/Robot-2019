@@ -7,11 +7,11 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class ButtonControl{
     public static HatchManipulator hatchManipulator;
-    public static RobotLift robotLift;
     public static DriveStraight driveStraight;
     public static LineFollow lineFollow;
     public static ApproachTarget approachTarget;
     public static Elevator elevator;
+    public static RoboRaiser roboRaiser;
 
     public ButtonControl(){
     }
@@ -26,8 +26,16 @@ public class ButtonControl{
         //    // Robot.oi.mLift2.set(ControlMode.PercentOutput, 0);
         //     Robot.globalVariables.driverControl = true;
         // }
-       
-            elevator = new Elevator();        
+
+    //            if(Robot.oi.gamepad.getRawButton(RobotMap.rCenterButton) && !Robot.globalVariables.raiserFlag){
+    //         roboRaiser = new RoboRaiser();
+    //     } else if(Robot.oi.gamepad.getRawButton(RobotMap.lCenterButton)){
+    //        Robot.oi.rmotor1.set(ControlMode.PercentOutput, (0));
+    //        Robot.oi.lmotor1.set(ControlMode.PercentOutput, (0));
+    //        Robot.oi.rLift.set(ControlMode.PercentOutput, (-.1));
+    //  }
+
+        elevator = new Elevator();        
         
         Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.rightY)*-.7);
         if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
@@ -38,8 +46,7 @@ public class ButtonControl{
         else{
             Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (0));
         }
-            
-            
+              
         if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA)){
             Robot.globalVariables.buttonDone[0] = false;
             Robot.globalVariables.controlMode = 1;
