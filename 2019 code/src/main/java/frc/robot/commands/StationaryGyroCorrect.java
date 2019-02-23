@@ -8,8 +8,7 @@ public class StationaryGyroCorrect {
             Robot.globalVariables.driverControl = true;
             Robot.oi.gyro.reset();
         } else {
-            double steeringAdjust = 0;
-            Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngle()+Robot.globalVariables.gyroDrift;
+            double steeringAdjust = 0;  
             Robot.globalVariables.driverControl = false;
 
             if((Robot.globalVariables.calculatedX)*.02 > 1) {

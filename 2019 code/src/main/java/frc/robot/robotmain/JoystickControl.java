@@ -8,6 +8,7 @@ public class JoystickControl{
     public ApproachTarget approachTarget;
     public StationaryGyroCorrect gyroCode;
     public Elevator elevator;
+    public DriveStraight driveStraight;
     public JoystickControl(){
     }
     public void autoJoystick(){
@@ -15,13 +16,21 @@ public class JoystickControl{
         //Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY));
 
         //ELEVATOR CODE
-        
+        Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngle()+Robot.globalVariables.gyroDrift;
+
+
+
+        if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger)){
+            driveStraight = new DriveStraight(.7);
+            Robot.globalVariables.driverControl = false;
+        }
+
         elevator =  new Elevator();
         
         
         
         //BUTTON FLAG
-        if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger) && !Robot.globalVariables.ButtonFlag){
+        if(Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger) && !Robot.globalVariables.ButtonFlag){
             Robot.globalVariables.visionFlag = !Robot.globalVariables.visionFlag;
             if(Robot.globalVariables.visionFlag){                   //VISION INIT STUFF
                 Robot.oi.table.getEntry("pipeline").setNumber(0);   //SET LIMELIGHT PIPELINE
@@ -31,7 +40,7 @@ public class JoystickControl{
             }
             Robot.globalVariables.ButtonFlag = true;
         }
-        if(!Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger)){
+        if(!Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger)){
             Robot.globalVariables.ButtonFlag = false;
         }
         

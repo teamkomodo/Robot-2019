@@ -11,26 +11,16 @@ public class ApproachTarget{
     public ApproachTarget(double distance, double speed){               //PASS IN TARGET DISTANCE (% OF LIMELIGHT IMAGE) AND FINAL APPROACH SPEED
         if(Robot.globalVariables.ApproachTargetCounter == 1){           //USE VISION TO GO TO TARGET
             vision = new Vision(GlobalVariables.visionDistanceTarget);
-        } else if (Robot.globalVariables.ApproachTargetCounter == 2) {  //USE GYRO DRIVE AND ULTRASONIC ON FINAL APPROACH
-            if(Robot.oi.ultrasonic.getValue() >= Robot.globalVariables.lineTarget){
-                driveStraight = new DriveStraight(speed);
-                if(Robot.oi.lineSensor.get())
-                {
-                    lineFollow = new LineFollow();
-                }
-                } else {
-                Robot.globalVariables.ApproachTargetCounter++;
-            }
-        } else if (Robot.globalVariables.ApproachTargetCounter == 3){
+        }else if (Robot.globalVariables.ApproachTargetCounter == 2){
             if(Robot.oi.ultrasonic.getValue() >= Robot.globalVariables.ultrasonicTarget){
-                lineFollow = new LineFollow();
+                driveStraight = new DriveStraight(.7);
                 } else {
                 Robot.globalVariables.ApproachTargetCounter++;
             }
-        }else if (Robot.globalVariables.ApproachTargetCounter == 4) {  //STOP THE ROBOT
+        }else if (Robot.globalVariables.ApproachTargetCounter == 3) {  //STOP THE ROBOT
             Robot.oi.drive.tankDrive(0, 0);
             Robot.globalVariables.ApproachTargetCounter++;
-        } else if (Robot.globalVariables.ApproachTargetCounter == 5){   //GIVE THE DRIVER CONTROLS BACK
+        } else if (Robot.globalVariables.ApproachTargetCounter == 4){   //GIVE THE DRIVER CONTROLS BACK
             Robot.globalVariables.driverControl = true;
             Robot.globalVariables.visionFlag = false;
         }

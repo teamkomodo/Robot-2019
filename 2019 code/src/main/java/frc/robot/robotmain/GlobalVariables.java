@@ -74,9 +74,9 @@ public class GlobalVariables {
         calculatedX = 0.0;
         calculatedY = 0.0;
         calculatedZ = 0.0;
-        gyroDrift = -.015;
+        gyroDrift = .3;
         visionStage = 0.0;
-        ultrasonicTarget = 280;
+        ultrasonicTarget = 75;
         lineTarget = 450;
         oneFootLeftEncoder = 3825.25;
         oneFootRightEncoder = -3864.15;
