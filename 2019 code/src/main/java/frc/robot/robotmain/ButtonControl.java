@@ -31,10 +31,12 @@ public class ButtonControl{
         
         Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.rightY)*-.7);
         if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
-            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.4));
+            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.3));
+        }else if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
+            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.3));
         }
-        if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
-            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.4));
+        else{
+            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (0));
         }
             
             

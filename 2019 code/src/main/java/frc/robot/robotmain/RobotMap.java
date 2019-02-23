@@ -20,7 +20,7 @@ public class RobotMap {
     public static final int rLiftPort = 0;          //VICTOR SP
     public static final int bManipularotPort = 2;   //VICTOR SP change later
     public static final int hManipularotPort = 1;   //VICTOR SP
-    public static final int bManipularottiltPort = 300; //TALONSRX
+    public static final int bManipularottiltPort = 8; //TALONSRX
 
     //SENSOR DECLARATIONS
     public static final int ultrasonicPort = 0;
