@@ -1,6 +1,7 @@
 package frc.robot.robotmain;
 import frc.robot.robotmain.*;
 import frc.robot.commands.*;
+import frc.robot.commands.Elevator;
 import frc.robot.subsystems.*;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
@@ -10,6 +11,7 @@ public class ButtonControl{
     public static DriveStraight driveStraight;
     public static LineFollow lineFollow;
     public static ApproachTarget approachTarget;
+    public static Elevator elevator;
 
     public ButtonControl(){
     }
@@ -24,16 +26,15 @@ public class ButtonControl{
         //    // Robot.oi.mLift2.set(ControlMode.PercentOutput, 0);
         //     Robot.globalVariables.driverControl = true;
         // }
-        // if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) != 0){
-        //     lifttestjoystick = new LiftTestJoystick();
-        // }         
+       
+            elevator = new Elevator();        
         
         Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.rightY)*-.7);
         if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
-            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.7));
+            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.4));
         }
         if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
-            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.7));
+            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.4));
         }
             
             
