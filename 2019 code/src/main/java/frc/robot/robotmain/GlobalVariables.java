@@ -10,9 +10,11 @@ public class GlobalVariables {
     public static final double joystickThreshold = 0.2;
     public static final double gyroThreshold = 15;
     public static final double scaler = 1.0;
+    public double elevatortarget;
     public double ultrasonicTarget;
     public double lineTarget;
     public double visionXScaler;
+    public double liftScaler;
     public double visionDistanceScaler;
     public double adjustedLeft;
     public double adjustedRight;
@@ -45,7 +47,10 @@ public class GlobalVariables {
     public boolean lineTrip = false;
     public boolean driverControl = true;
     public Boolean visionBreak;
-    public Boolean ButtonFlag;        
+    public Boolean ButtonFlag;  
+    public boolean ButtonXflag;
+    public boolean ButtonYflag;
+    public Boolean ElevatorFlag;      
     public Boolean visionFlag;  
     public Boolean[] buttonDone = {
         false,  //A
@@ -74,7 +79,11 @@ public class GlobalVariables {
         oneFootLeftEncoder = 3825.25;
         oneFootRightEncoder = -3864.15;
         autonomousSpeed = 0.5;
+        elevatortarget = 0;
 
+        ElevatorFlag = false;
+        ButtonXflag = false;
+        ButtonYflag = false;
         ButtonFlag = false;   
         visionFlag = false; 
         visionBreak = false; 

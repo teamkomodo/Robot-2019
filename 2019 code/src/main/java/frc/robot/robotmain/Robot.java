@@ -16,6 +16,7 @@ public class Robot extends TimedRobot {
   public static ButtonControl buttonControl;
   public static JoystickControl joystickControl;
   public static Dashboard dashboard;
+  public static Elevator elevator;
   
   
   @Override
@@ -43,5 +44,6 @@ public class Robot extends TimedRobot {
     joystickControl.autoJoystick();
     buttonControl.autoButtonControl();
     dashboard = new Dashboard();
+    elevator =  new Elevator();
   } //END ROBOTOT TELEOP
 } //END ROBOT CLASS

@@ -6,7 +6,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class ButtonControl{
     public static HatchManipulator hatchManipulator;
-    public static LiftTestJoystick lifttestjoystick;
     public static RobotLift robotLift;
     public static DriveStraight driveStraight;
     public static LineFollow lineFollow;
@@ -18,10 +17,6 @@ public class ButtonControl{
     }
     public void autoButtonControl(){
         Robot.globalVariables.controlMode = 0;
-        if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper))
-        {
-            lifttestjoystick = new LiftTestJoystick();
-        }
         /*
         if(Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger)){
             Robot.globalVariables.driverControl = true;

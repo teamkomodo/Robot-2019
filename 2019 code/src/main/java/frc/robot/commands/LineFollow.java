@@ -13,6 +13,9 @@ public class LineFollow{
         } else {
             Robot.globalVariables.lineTrip = false;
             Robot.oi.drive.tankDrive(.3, -.5);
-        }             
+        }     
+        // if(Robot.globalVariables.lineFollowCounter > 6){
+        //     Robot.oi.drive.tankDrive(.1, -.1);
+        // }        
     }
 }
