@@ -60,7 +60,7 @@ public class OI{
     public TalonSRX bManipulatortilt;
     //ROBOT
     public DifferentialDrive drive;
-    public boolean pRobot = false;
+    public boolean pRobot = true;
     //MISC
     public Timer timer;
     public Timer debugTimer;
@@ -108,10 +108,10 @@ public class OI{
         
         encoderTimeout = 30;
 
-        // rmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        // lmotor1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        // mLift1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
-        // rLift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        rmotor1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder , 0, encoderTimeout);
+        lmotor1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, encoderTimeout);
+        mLift1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
+        rLift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, encoderTimeout);
 
         // encoderRight = new Encoder(0, 1, true, Encoder.EncodingType.k4X);
         // encoderRight.setPIDSourceType(PIDSourceType.kDisplacement);

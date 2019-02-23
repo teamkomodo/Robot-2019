@@ -9,8 +9,9 @@ public class JoystickControl{
     public JoystickControl(){
     }
     public void autoJoystick(){
-        //MANIPULATOR
-        //Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY));
+        //MANIPULATORS
+        Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.rightY));
+        Robot.oi.mLift1.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY));
 
         //BUTTON FLAG
         if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger) && !Robot.globalVariables.ButtonFlag){

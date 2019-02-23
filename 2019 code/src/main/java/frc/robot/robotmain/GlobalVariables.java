@@ -28,6 +28,7 @@ public class GlobalVariables {
     public double calculatedZ;          
     public double gyroDrift;                              
     public double visionStage;
+    public double elevatorTargetValue = 0;
     public double[] levelEncoderValues = {
         1.1,    //LEVEL 1
         2.2,    //LEVEL 2
@@ -42,6 +43,7 @@ public class GlobalVariables {
     public static Boolean defaultDrivemode = false;       //FALSE FOR ARCADE, TRUE FOR TANK  
     public static Boolean enableGamepad = true;           //FALSE FOR JOYSTICKS, TRUE FOR GAMEPAD  
     public static Boolean enableGyroDrive = true;
+    public Boolean ElevatorBreak = false;
     public boolean lineTrip = false;
     public boolean driverControl = true;
     public Boolean visionBreak;
