@@ -39,6 +39,7 @@ public class Robot extends TimedRobot {
     joystickControl.autoJoystick();
     buttonControl.autoButtonControl();
     dashboard = new Dashboard();
+    elevator =  new Elevator();
   }
   @Override
   public void teleopPeriodic() {

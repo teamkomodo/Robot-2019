@@ -75,6 +75,4 @@ public class RobotMap {
     public static final int buttonY = 4;
     public static final int lBumper = 5;
     public static final int rBumper = 6;
-    public static final int rCenterButton = 7;
-    public static final int lCenterButton = 8;
 }
