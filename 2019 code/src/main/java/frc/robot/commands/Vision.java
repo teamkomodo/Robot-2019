@@ -35,9 +35,9 @@ public class Vision{
           SmartDashboard.putNumber("Distance Adjust", distanceAdjust);
 
           if(steeringAdjust > xOffset) {                         //IF X > 0
-              Robot.oi.drive.tankDrive(distanceAdjust, distanceAdjust+steeringAdjust);
+              Robot.oi.drive.tankDrive(distanceAdjust-steeringAdjust ,distanceAdjust );
           } else {                                               //IF X < 0
-              Robot.oi.drive.tankDrive(distanceAdjust-steeringAdjust, distanceAdjust);
+              Robot.oi.drive.tankDrive(distanceAdjust ,distanceAdjust+steeringAdjust );
           }
           if(steeringAdjust < .3 && steeringAdjust > -.3 && distanceAdjust < .3 && distanceAdjust > -.3){
             Robot.globalVariables.visionBreak = true;
