@@ -31,6 +31,7 @@ public class OI{
     public Joystick ljoystick;
     //SENSORS
     public AnalogInput ultrasonic;
+    public DigitalInput limitSwitch;
     public AnalogInput lineSensor2;
     public NetworkTable table;
     public NetworkTableEntry tx;
@@ -117,6 +118,7 @@ public class OI{
         ultrasonic = new AnalogInput(RobotMap.ultrasonicPort);
         lineSensor2 = new AnalogInput(3);
         lineSensor = new DigitalInput(0);
+        limitSwitch = new DigitalInput(1);
 
         timer = new Timer();
         timer.reset();

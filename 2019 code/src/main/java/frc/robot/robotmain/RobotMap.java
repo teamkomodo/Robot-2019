@@ -24,6 +24,7 @@ public class RobotMap {
 
     //SENSOR DECLARATIONS
     public static final int ultrasonicPort = 0;
+    public static final int LimitSwitchPort = 1;
 
     
     //JOYSTICK DECLARATIONS

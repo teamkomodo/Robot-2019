@@ -17,5 +17,6 @@ public class Dashboard{
         SmartDashboard.putNumber("Limelight X", Robot.oi.limelightX);
         SmartDashboard.putBoolean("Line Sensor", Robot.oi.lineSensor.get());
         SmartDashboard.putNumber("Ultrasonic", Robot.oi.ultrasonic.getValue());
+        SmartDashboard.putBoolean("KewlLimitSwitch", Robot.oi.limitSwitch.get());
     }
 }
