@@ -20,10 +20,7 @@ public class JoystickControl{
 
 
 
-        if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger)){
-            driveStraight = new DriveStraight(.7);
-            Robot.globalVariables.driverControl = false;
-        }
+      
 
         elevator =  new Elevator();
         

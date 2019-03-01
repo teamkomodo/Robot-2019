@@ -20,14 +20,16 @@ public class ButtonControl{
         // if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
         //     Robot.globalVariables.driverControl = false;
         //    // Robot.oi.drive.arcadeDrive(-Robot.oi.gamepad.getRawAxis(RobotMap.joyY), Robot.oi.gamepad.getRawAxis(RobotMap.joyX));
-        //    liftdowntest = new LiftDownTest(0.5);
-        //     } else { 
-        //     Robot.oi.mLift1.set(0);
-        //    // Robot.oi.mLift2.set(ControlMode.PercentOutput, 0);
-        //     Robot.globalVariables.driverControl = true;
+           
+            
         // }
        
-            elevator = new Elevator();        
+            elevator = new Elevator();    
+            
+            if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger)){
+                driveStraight = new DriveStraight(.5);
+                Robot.globalVariables.driverControl = false;
+            }
         
         Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.rightY)*-.7);
         if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
