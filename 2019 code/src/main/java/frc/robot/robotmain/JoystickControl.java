@@ -42,14 +42,21 @@ public class JoystickControl{
         }
         
         //VISION CHECK
-        if(!Robot.globalVariables.visionFlag){
+        if(!Robot.globalVariables.visionFlag && (Robot.globalVariables.tankDrive==true)){
             if(Robot.globalVariables.driverControl){
                 Robot.oi.table.getEntry("pipeline").setNumber(1);   //SET LIMELINE PIPELINE
                 Robot.oi.table.getEntry("ledMode").setNumber(1);    //TURN OFF LIMELIGHT LEDS
                 Robot.oi.drive.tankDrive(Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler);
             }
             gyroCode = new StationaryGyroCorrect();
-        } else {
+        } else if(!Robot.globalVariables.visionFlag && (Robot.globalVariables.tankDrive==false)) {
+            if(Robot.globalVariables.driverControl){
+                Robot.oi.table.getEntry("pipeline").setNumber(1);   //SET LIMELINE PIPELINE
+                Robot.oi.table.getEntry("ledMode").setNumber(1);    //TURN OFF LIMELIGHT LEDS
+                Robot.oi.drive.arcadeDrive(Robot.oi.rjoystick.getRawAxis(RobotMap.joyY), -Robot.oi.rjoystick.getRawAxis(RobotMap.joyX));
+            }
+            //gyroCode = new StationaryGyroCorrect();
+        }else {
             approachTarget = new ApproachTarget(GlobalVariables.visionDistanceTarget, .4);
         }
     }
