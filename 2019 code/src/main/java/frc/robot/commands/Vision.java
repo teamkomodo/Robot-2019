@@ -13,6 +13,7 @@ public class Vision{
         double steeringAdjust = 0.0;
         double distanceAdjust = 0.0;
         double xOffset = -3;
+        Robot.oi.gyro.reset();
         if(Robot.oi.limelightTarget != 0.0){  //IF ROBOT SEES TARGET
           //DISTANCE CALCULATIONS
           if(Robot.oi.limelightArea + GlobalVariables.visionDistanceThreshold < distance) {          //IF ROBOT IS TOO FAR
@@ -36,15 +37,12 @@ public class Vision{
 
           if(steeringAdjust > xOffset) {                         //IF X > 0
               Robot.oi.drive.tankDrive(distanceAdjust, distanceAdjust+steeringAdjust);
-              Robot.oi.gyro.reset();
           } else {                                               //IF X < 0
               Robot.oi.drive.tankDrive(distanceAdjust-steeringAdjust ,distanceAdjust);
-              Robot.oi.gyro.reset();
           }
           if(steeringAdjust < .3 && steeringAdjust > -.3 && distanceAdjust < .3 && distanceAdjust > -.3){
             Robot.globalVariables.visionBreak = true;
             Robot.globalVariables.ApproachTargetCounter = 2;
-            Robot.oi.gyro.reset();
           } else {
             Robot.globalVariables.visionBreak = false;
           } 
