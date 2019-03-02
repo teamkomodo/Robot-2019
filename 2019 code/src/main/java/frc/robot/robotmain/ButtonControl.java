@@ -20,7 +20,25 @@ public class ButtonControl{
         Robot.globalVariables.controlMode = 0;
 
         //Elevator
-        elevator = new Elevator();    
+        elevator = new Elevator(); 
+        
+        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA)){
+            Robot.globalVariables.buttonDone[0] = false;
+            Robot.globalVariables.controlMode = 1;
+        }
+        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+            Robot.globalVariables.ApproachTargetCounter = 1;
+            //Robot.globalVariables.buttonDone[1] = false;
+            Robot.globalVariables.controlMode = 2;
+        }
+        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonX)){
+            //Robot.globalVariables.buttonDone[2] = false;
+            Robot.globalVariables.controlMode = 3;
+        }
+        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonY)){
+            Robot.globalVariables.buttonDone[3] = false;
+            Robot.globalVariables.controlMode = 4;
+        }
 
         //Drive Straight
         if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger)){
@@ -44,35 +62,12 @@ public class ButtonControl{
             System.out.println(Robot.globalVariables.controlMode);
             hatchManipulator = new HatchManipulator(850);
 
-        } //else if(Robot.globalVariables.controlMode == 3 ){     //X
-        //     //robotLift = new RobotLift();
-        //     System.out.println(Robot.globalVariables.controlMode);
-        //     hatchManipulator = new HatchManipulator(true);
-        // }
-        else
-        {
+        } else {
             System.out.println(Robot.globalVariables.controlMode);
             Robot.oi.hManipulator.set(0);
         }
 
-        //Button Controls
-        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA)){
-            Robot.globalVariables.buttonDone[0] = false;
-            Robot.globalVariables.controlMode = 1;
-        }
-        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
-            Robot.globalVariables.ApproachTargetCounter = 1;
-            //Robot.globalVariables.buttonDone[1] = false;
-            Robot.globalVariables.controlMode = 2;
-        }
-        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonX)){
-            //Robot.globalVariables.buttonDone[2] = false;
-            Robot.globalVariables.controlMode = 3;
-        }
-        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonY)){
-            Robot.globalVariables.buttonDone[3] = false;
-            Robot.globalVariables.controlMode = 4;
-        }
+      
 
 
         /*Unused code for now */
