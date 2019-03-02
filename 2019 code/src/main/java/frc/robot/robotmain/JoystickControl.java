@@ -18,6 +18,26 @@ public class JoystickControl{
 
         //ELEVATOR CODE
         Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngle()+Robot.globalVariables.gyroDrift;
+
+        elevator = new Elevator(); 
+        
+        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA)){
+            Robot.globalVariables.buttonDone[0] = false;
+            Robot.globalVariables.controlMode = 1;
+        }
+        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+            Robot.globalVariables.ApproachTargetCounter = 1;
+            //Robot.globalVariables.buttonDone[1] = false;
+            Robot.globalVariables.controlMode = 2;
+        }
+        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonX)){
+            //Robot.globalVariables.buttonDone[2] = false;
+            Robot.globalVariables.controlMode = 3;
+        }
+        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonY)){
+            Robot.globalVariables.buttonDone[3] = false;
+            Robot.globalVariables.controlMode = 4;
+        }
                 
         //BUTTON FLAG
         if(Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger) && !Robot.globalVariables.ButtonFlag){
