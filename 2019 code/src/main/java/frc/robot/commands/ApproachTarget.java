@@ -12,7 +12,7 @@ public class ApproachTarget{
 
     public ApproachTarget(double distance, double speed){               //PASS IN TARGET DISTANCE (% OF LIMELIGHT IMAGE) AND FINAL APPROACH SPEED
         if(Robot.globalVariables.ApproachTargetCounter == 1){           //USE VISION TO GO TO TARGET
-            vision = new Vision(GlobalVariables.visionDistanceTarget);
+            vision = new Vision(GlobalVariables.visionDistanceTarget, 0);
         }else if (Robot.globalVariables.ApproachTargetCounter == 2){
             if(Robot.oi.ultrasonic.getValue() >= Robot.globalVariables.ultrasonicTarget){
                 driveStraight = new DriveStraight(.7);
