@@ -20,9 +20,11 @@ public class Elevator{
         //         Robot.globalVariables.elevatortarget = Robot.globalVariables.levelEncoderValues[Robot.globalVariables.levelCounter];
         //     }
         // }
-        if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) > .2 || Robot.oi.gamepad.getRawAxis(RobotMap.leftY) < -.2){
-            Robot.oi.mLift1.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY));
-        }else{
+        if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) > .2){
+            Robot.oi.mLift1.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) * .8);
+        }else if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) < -.2){
+            Robot.oi.mLift1.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) * .2);
+        } else{
             Robot.oi.mLift1.set(-.15);
         }
     //     if(Robot.oi.mLift1.getSelectedSensorPosition() <= -23000){
