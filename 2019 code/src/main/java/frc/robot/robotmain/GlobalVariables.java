@@ -48,7 +48,7 @@ public class GlobalVariables {
     public Boolean ElevatorBreak = false;
     public boolean lineTrip = false;
     public boolean driverControl = true;
-    public boolean tankDrive = false;
+    public boolean tankDrive = true;
     public Boolean visionBreak;
     public Boolean raiserFlag;
     public Boolean ButtonFlag;  
@@ -78,7 +78,7 @@ public class GlobalVariables {
         calculatedZ = 0.0;
         gyroDrift = .3;
         visionStage = 0.0;
-        ultrasonicTarget = 145;
+        ultrasonicTarget = 130;
         lineTarget = 450;
         oneFootLeftEncoder = 3825.25;
         oneFootRightEncoder = -3864.15;

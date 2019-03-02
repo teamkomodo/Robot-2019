@@ -23,7 +23,7 @@ public class ApproachTarget{
             Robot.oi.drive.tankDrive(0, 0);
             Robot.globalVariables.ApproachTargetCounter++;
         }else if (Robot.globalVariables.ApproachTargetCounter == 4){
-            hatchManipulator = new HatchManipulator(true);
+            hatchManipulator = new HatchManipulator(1000);
             Robot.globalVariables.ApproachTargetCounter++;
         } else if (Robot.globalVariables.ApproachTargetCounter == 5){   //GIVE THE DRIVER CONTROLS BACK
             Robot.globalVariables.driverControl = true;
