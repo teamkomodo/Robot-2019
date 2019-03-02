@@ -44,13 +44,6 @@ public class ButtonControl{
 
         //Elevator
         elevator = new Elevator();    
-
-        //Drive Straight
-        if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger)){
-            driveStraight = new DriveStraight(.5);
-            Robot.globalVariables.driverControl = false;
-        }
-
         //Ball Manipulator
         Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.rightY)*-.7);
         if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
