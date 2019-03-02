@@ -3,8 +3,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.robotmain.*;
 
 public class Vision{
-    public Vision(double distance){
-        Robot.oi.table.getEntry("pipeline").setNumber(0);      //SETS LIMELIGHT TO VISION MODE
+    public Vision(double distance, int pipeline){
+        Robot.oi.table.getEntry("pipeline").setNumber(pipeline);      //SETS LIMELIGHT TO VISION MODE
         Robot.oi.table.getEntry("ledMode").setNumber(3);       //TURN LIMELIGHT LEDS ON
         Robot.oi.limelightX = Robot.oi.tx.getDouble(0.0);      //UPDATES VISION VALUES
         Robot.oi.limelightY = Robot.oi.ty.getDouble(0.0);      //UPDATES VISION VALUES

@@ -65,13 +65,13 @@ public class ButtonControl{
         // }
         if(Robot.globalVariables.controlMode == 2 ){     //B
             System.out.println(Robot.globalVariables.controlMode);
-            hatchManipulator = new HatchManipulator(false);
+            hatchManipulator = new HatchManipulator(850);
 
-        } else if(Robot.globalVariables.controlMode == 3 ){     //X
-            //robotLift = new RobotLift();
-            System.out.println(Robot.globalVariables.controlMode);
-            hatchManipulator = new HatchManipulator(true);
-        }
+        } //else if(Robot.globalVariables.controlMode == 3 ){     //X
+        //     //robotLift = new RobotLift();
+        //     System.out.println(Robot.globalVariables.controlMode);
+        //     hatchManipulator = new HatchManipulator(true);
+        // }
         else
         {
             System.out.println(Robot.globalVariables.controlMode);
