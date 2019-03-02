@@ -17,15 +17,7 @@ public class JoystickControl{
 
         //ELEVATOR CODE
         Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngle()+Robot.globalVariables.gyroDrift;
-
-
-
-      
-
-        elevator =  new Elevator();
-        
-        
-        
+                
         //BUTTON FLAG
         if(Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger) && !Robot.globalVariables.ButtonFlag){
             Robot.globalVariables.visionFlag = !Robot.globalVariables.visionFlag;

@@ -16,21 +16,19 @@ public class ButtonControl{
     public ButtonControl(){
     }
     public void autoButtonControl(){
+        //Random Variables
         Robot.globalVariables.controlMode = 0;
-        // if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
-        //     Robot.globalVariables.driverControl = false;
-        //    // Robot.oi.drive.arcadeDrive(-Robot.oi.gamepad.getRawAxis(RobotMap.joyY), Robot.oi.gamepad.getRawAxis(RobotMap.joyX));
-           
-            
-        // }
-       
-            elevator = new Elevator();    
-            
-            if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger)){
-                driveStraight = new DriveStraight(.5);
-                Robot.globalVariables.driverControl = false;
-            }
-        
+
+        //Elevator
+        elevator = new Elevator();    
+
+        //Drive Straight
+        if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger)){
+            driveStraight = new DriveStraight(.5);
+            Robot.globalVariables.driverControl = false;
+        }
+
+        //Ball Manipulator
         Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.rightY)*-.7);
         if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
             Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.3));
@@ -38,10 +36,26 @@ public class ButtonControl{
             Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.3));
         }
         else{
-            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (0));
+            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.07));
         }
-            
-            
+
+        //Hatch Manipulator
+        if(Robot.globalVariables.controlMode == 2 ){     //B
+            System.out.println(Robot.globalVariables.controlMode);
+            hatchManipulator = new HatchManipulator(850);
+
+        } //else if(Robot.globalVariables.controlMode == 3 ){     //X
+        //     //robotLift = new RobotLift();
+        //     System.out.println(Robot.globalVariables.controlMode);
+        //     hatchManipulator = new HatchManipulator(true);
+        // }
+        else
+        {
+            System.out.println(Robot.globalVariables.controlMode);
+            Robot.oi.hManipulator.set(0);
+        }
+
+        //Button Controls
         if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA)){
             Robot.globalVariables.buttonDone[0] = false;
             Robot.globalVariables.controlMode = 1;
@@ -60,23 +74,14 @@ public class ButtonControl{
             Robot.globalVariables.controlMode = 4;
         }
 
+
+        /*Unused code for now */
+
+
         // if(Robot.globalVariables.controlMode == 1 && !Robot.globalVariables.buttonDone[0]){     //A
         //     liftDown = new LiftDown();
         // }
-        if(Robot.globalVariables.controlMode == 2 ){     //B
-            System.out.println(Robot.globalVariables.controlMode);
-            hatchManipulator = new HatchManipulator(850);
-
-        } //else if(Robot.globalVariables.controlMode == 3 ){     //X
-        //     //robotLift = new RobotLift();
-        //     System.out.println(Robot.globalVariables.controlMode);
-        //     hatchManipulator = new HatchManipulator(true);
-        // }
-        else
-        {
-            System.out.println(Robot.globalVariables.controlMode);
-            Robot.oi.hManipulator.set(0);
-        }
+        
         // }else if (Robot.globalVariables.buttonDone[1]){
         //     Robot.globalVariables.driverControl = true;
         //     Robot.oi.hManipulator.set(0);
