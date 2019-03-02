@@ -19,6 +19,29 @@ public class ButtonControl{
         //Random Variables
         Robot.globalVariables.controlMode = 0;
 
+        //hatch manipulators
+        /*
+       if(Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+            Robot.oi.hManipulator.set(-.6);
+            Robot.oi.hatchTimer.reset();
+            Robot.oi.hatchTimer.start();
+            //Robot.globalVariables.hatchFlag = false;
+       } 
+       if(!Robot.globalVariables.hatchFlag){
+
+            Robot.globalVariables.hatchFlag = true;
+        }
+        */    
+        if(Robot.oi.hatchTimer.get() > 1 && !Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+            Robot.oi.hManipulator.set(0);
+        } else if(Robot.oi.hatchTimer.get() < 1 && !Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+            Robot.oi.hManipulator.set(.6);
+        } else if (Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+            Robot.oi.hManipulator.set(-.6);
+            Robot.oi.hatchTimer.reset();
+            Robot.oi.hatchTimer.start();
+        }
+
         //Elevator
         elevator = new Elevator();    
 
@@ -39,21 +62,21 @@ public class ButtonControl{
             Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.07));
         }
 
-        //Hatch Manipulator
-        if(Robot.globalVariables.controlMode == 2 ){     //B
-            System.out.println(Robot.globalVariables.controlMode);
-            hatchManipulator = new HatchManipulator(850);
+        // //Hatch Manipulator
+        // if(Robot.globalVariables.controlMode == 2 ){     //B
+        //     System.out.println(Robot.globalVariables.controlMode);
+        //     hatchManipulator = new HatchManipulator(1500);
 
-        } //else if(Robot.globalVariables.controlMode == 3 ){     //X
+        // } //else if(Robot.globalVariables.controlMode == 3 ){     //X
         //     //robotLift = new RobotLift();
         //     System.out.println(Robot.globalVariables.controlMode);
         //     hatchManipulator = new HatchManipulator(true);
         // }
-        else
-        {
-            System.out.println(Robot.globalVariables.controlMode);
-            Robot.oi.hManipulator.set(0);
-        }
+        // else
+        // {
+        //     System.out.println(Robot.globalVariables.controlMode);
+        //     Robot.oi.hManipulator.set(0);
+        // }
 
         //Button Controls
         if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA)){

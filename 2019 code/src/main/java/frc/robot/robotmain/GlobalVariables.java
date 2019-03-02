@@ -1,5 +1,7 @@
 package frc.robot.robotmain;
 
+import frc.robot.subsystems.HatchManipulator;
+
 public class GlobalVariables {
     public static final double visionXThreshold = 2.0;
     public static final double visionYThreshold = 2.0;
@@ -56,6 +58,7 @@ public class GlobalVariables {
     public boolean ButtonYflag;
     public Boolean ElevatorFlag;      
     public Boolean visionFlag;  
+    public Boolean hatchFlag; 
     public Boolean[] buttonDone = {
         false,  //A
         false,  //B
@@ -92,6 +95,7 @@ public class GlobalVariables {
         ButtonFlag = false;   
         visionFlag = false; 
         visionBreak = false; 
+        hatchFlag = false;
         controlMode = 0;  
     }
 }

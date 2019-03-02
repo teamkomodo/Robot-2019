@@ -7,15 +7,21 @@ import java.util.Timer;
 
 public class HatchManipulator {
     public HatchManipulator(int delay) {
-
-        double hspeed = 0.6;
-        Robot.oi.hManipulator.set(-hspeed);
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                Robot.oi.hManipulator.set(hspeed);
-                }
-        }, delay);
+        Robot.globalVariables.hatchFlag = true;
+       if(Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+            Robot.oi.hManipulator.set(.6);
+            Robot.globalVariables.hatchFlag = false;
+            if(!Robot.globalVariables.hatchFlag){
+                Robot.oi.hatchTimer.start();;
+                 } else {
+           Robot.oi.hManipulator.set(-.6);
+                if(Robot.oi.hatchTimer.get() > 1){
+                    Robot.oi.hManipulator.set(0);
+                    Robot.globalVariables.hatchFlag = true;
+                }     
+              }        
+            }
+      
 
         // if(forward)
         // {
