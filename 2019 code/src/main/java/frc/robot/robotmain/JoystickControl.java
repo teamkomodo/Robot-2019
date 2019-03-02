@@ -6,6 +6,7 @@ import frc.robot.subsystems.*;
 
 public class JoystickControl{
     public ApproachTarget approachTarget;
+    public ApproachCargo approachCargo;
     public StationaryGyroCorrect gyroCode;
     public Elevator elevator;
     public DriveStraight driveStraight;
@@ -29,9 +30,18 @@ public class JoystickControl{
             }
             Robot.globalVariables.ButtonFlag = true;
         }
+        //Hatch Trigger
         if(!Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger)){
             Robot.globalVariables.ButtonFlag = false;
         }
+        //Ball Trigger
+        if(!Robot.globalVariables.triggerFlag){
+            if(Robot.oi.ljoystick.getRawButtonPressed(RobotMap.lTrigger)){ 
+                approachCargo = new ApproachCargo(1.75,.6);
+                Robot.globalVariables.triggerFlag = true;
+            }
+        }
+        
         
         //VISION CHECK
         if(!Robot.globalVariables.visionFlag && (Robot.globalVariables.tankDrive==true)){

@@ -54,6 +54,7 @@ public class GlobalVariables {
     public Boolean ButtonFlag;  
     public boolean ButtonXflag;
     public boolean ButtonYflag;
+    public boolean triggerFlag;
     public Boolean ElevatorFlag;      
     public Boolean visionFlag;  
     public Boolean[] buttonDone = {
@@ -91,6 +92,7 @@ public class GlobalVariables {
         ButtonYflag = false;
         ButtonFlag = false;   
         visionFlag = false; 
+        triggerFlag = false;
         visionBreak = false; 
         controlMode = 0;  
     }
