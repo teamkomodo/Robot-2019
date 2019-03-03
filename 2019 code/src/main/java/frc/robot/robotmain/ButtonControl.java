@@ -7,7 +7,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class ButtonControl{
     public static HatchManipulator hatchManipulator;
-    public static RobotLift robotLift;
+    // public static RobotLift robotLift;
     public static DriveStraight driveStraight;
     public static LineFollow lineFollow;
     public static ApproachTarget approachTarget;

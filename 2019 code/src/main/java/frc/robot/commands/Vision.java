@@ -12,7 +12,7 @@ public class Vision{
         Robot.oi.limelightTarget = Robot.oi.tv.getDouble(0.0); //UPDATES VISION VALUES
         double steeringAdjust = 0.0;
         double distanceAdjust = 0.0;
-        double xOffset = 1;
+        double xOffset = 0;
         double Scaler = .8;
         Robot.oi.gyro.reset();
         if(Robot.oi.limelightTarget != 0.0){  //IF ROBOT SEES TARGET
