@@ -12,18 +12,19 @@ public class Vision{
         Robot.oi.limelightTarget = Robot.oi.tv.getDouble(0.0); //UPDATES VISION VALUES
         double steeringAdjust = 0.0;
         double distanceAdjust = 0.0;
-        double xOffset = -3;
+        double xOffset = 1;
+        double Scaler = .8;
         Robot.oi.gyro.reset();
         if(Robot.oi.limelightTarget != 0.0){  //IF ROBOT SEES TARGET
           //DISTANCE CALCULATIONS
           if(Robot.oi.limelightArea + GlobalVariables.visionDistanceThreshold < distance) {          //IF ROBOT IS TOO FAR
-              if(.1*(Robot.oi.limelightArea - distance) < 1){
+              if(.1*(Robot.oi.limelightArea - distance) < Scaler){
                   distanceAdjust = (.1*(Robot.oi.limelightArea - distance));                        //DISTANCE CALCULATION
               } else {
                   distanceAdjust = -1;
               }
           } else if (Robot.oi.limelightArea - GlobalVariables.visionDistanceThreshold > distance){    //IF ROBOT IS TOO CLOSE
-              if(-.1*(distance - Robot.oi.limelightArea) > -1){
+              if(-.1*(distance - Robot.oi.limelightArea) > -Scaler){
                   distanceAdjust = (-.1*(distance - Robot.oi.limelightArea));                          //DISTANCE CALCULATION
               } else {
                   distanceAdjust = 1;
@@ -31,6 +32,7 @@ public class Vision{
           }
           steeringAdjust = (Robot.oi.limelightX-xOffset)/20;     //STEERING CALCULATION   
        //   distanceAdjust = distanceAdjust*-1;
+          distanceAdjust = distanceAdjust*Scaler;
           
           SmartDashboard.putNumber("Steering Adjust", steeringAdjust);
           SmartDashboard.putNumber("Distance Adjust", distanceAdjust);

@@ -15,7 +15,7 @@ public class ApproachTarget{
             vision = new Vision(GlobalVariables.visionDistanceTarget, 0);
         }else if (Robot.globalVariables.ApproachTargetCounter == 2){
             if(Robot.oi.ultrasonic.getValue() >= Robot.globalVariables.ultrasonicTarget){
-                driveStraight = new DriveStraight(.7);
+                driveStraight = new DriveStraight(.4);
                 } else {
                 Robot.globalVariables.ApproachTargetCounter++;
             }
