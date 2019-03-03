@@ -71,6 +71,16 @@ public class ButtonControl{
         //     Robot.oi.hManipulator.set(0);
         // }
 
+
+        //Robot Lift
+        if(Robot.oi.gamepad.getRawAxis(RobotMap.rightTrigger) > 0){
+            Robot.oi.rLift.set(Robot.oi.gamepad.getRawAxis(RobotMap.rightTrigger) * .5);
+        }else if(Robot.oi.gamepad.getRawAxis(RobotMap.leftTrigger) > 0){
+            Robot.oi.rLift.set(-Robot.oi.gamepad.getRawAxis(RobotMap.leftTrigger) * .5);
+        }else{
+            Robot.oi.rLift.set(0);
+        }
+
         //Button Controls
         if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA)){
             Robot.globalVariables.buttonDone[0] = false;
