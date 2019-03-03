@@ -65,7 +65,6 @@ public class OI{
     //MISC
     public Timer timer;
     public Timer debugTimer;
-    public Timer hatchTimer;
 
    
     public OI() {
@@ -128,11 +127,6 @@ public class OI{
         debugTimer = new Timer();
         debugTimer.reset();
         debugTimer.start();
-
-        hatchTimer = new Timer();
-        hatchTimer.reset();
-        hatchTimer.start();
-
 
         drive = new DifferentialDrive(lmotor1, rmotor1);
         
