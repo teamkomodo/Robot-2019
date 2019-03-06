@@ -31,6 +31,8 @@ public class Robot extends TimedRobot {
   } //END ROBOT INIT
   @Override
   public void autonomousInit() {
+    joystickControl.autoJoystick();
+    buttonControl.autoButtonControl();
     //AUTO INIT
   }
   @Override
