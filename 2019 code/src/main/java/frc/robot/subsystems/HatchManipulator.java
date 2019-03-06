@@ -8,15 +8,20 @@ import java.util.Timer;
 public class HatchManipulator {
     public HatchManipulator(int delay) {
 
-        double hspeed = 0.6;
-        Robot.oi.hManipulator.set(-hspeed);
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                Robot.oi.hManipulator.set(hspeed);
-                }
-        }, delay);
 
+       if(Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+            Robot.oi.hManipulator.set(.6);
+            Robot.oi.hatchTimer.reset();;
+            Robot.oi.hatchTimer.start();;
+                 } else {
+           Robot.oi.hManipulator.set(-.6);
+                 }
+                if(Robot.oi.hatchTimer.get() > 1){
+                    Robot.oi.hManipulator.set(0);
+                }     
+                     
+      
+                
         // if(forward)
         // {
         // hspeed = -hspeed;
@@ -73,5 +78,6 @@ public class HatchManipulator {
         // }
         // }, 1000);
         // }
-    }
+    
+}
 }

@@ -48,6 +48,17 @@ public class ButtonControl{
             Robot.oi.hManipulator.set(0);
         }
 
+        
+        if(Robot.oi.hatchTimer.get() > 1 && !Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+            Robot.oi.hManipulator.set(0);
+        } else if(Robot.oi.hatchTimer.get() < 1 && !Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+            Robot.oi.hManipulator.set(.6);
+        } else if (Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+            Robot.oi.hManipulator.set(-.6);
+            Robot.oi.hatchTimer.reset();
+            Robot.oi.hatchTimer.start();
+        }
+
         //Button Controls
         if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA)){
             Robot.globalVariables.buttonDone[0] = false;
