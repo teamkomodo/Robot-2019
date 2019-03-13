@@ -31,23 +31,19 @@ public class Robot extends TimedRobot {
   } //END ROBOT INIT
   @Override
   public void autonomousInit() {
-    joystickControl.autoJoystick();
-    buttonControl.autoButtonControl();
-    //AUTO INIT
   }
   @Override
   public void autonomousPeriodic() {
-    //AUTO CODE
     joystickControl.autoJoystick();
     buttonControl.autoButtonControl();
     dashboard = new Dashboard();
     elevator =  new Elevator();
-  }
+  }//END ROBOT AUTO
   @Override
   public void teleopPeriodic() {
     joystickControl.autoJoystick();
     buttonControl.autoButtonControl();
     dashboard = new Dashboard();
     elevator =  new Elevator();
-  } //END ROBOTOT TELEOP
+  } //END ROBOT TELEOP
 } //END ROBOT CLASS

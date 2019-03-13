@@ -26,7 +26,7 @@ public class ButtonControl{
         if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
             Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.3));
         }else if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
-            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.3));
+            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.1));
         }
         else{
             Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.07));

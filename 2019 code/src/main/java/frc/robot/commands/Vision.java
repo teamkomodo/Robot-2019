@@ -12,7 +12,7 @@ public class Vision{
         Robot.oi.limelightTarget = Robot.oi.tv.getDouble(0.0); //UPDATES VISION VALUES
         double steeringAdjust = 0.0;
         double distanceAdjust = 0.0;
-        double xOffset = 0;
+        double xOffset = 1;
         double Scaler = .8;
         Robot.oi.gyro.reset();
         if(Robot.oi.limelightTarget != 0.0){  //IF ROBOT SEES TARGET
@@ -30,7 +30,7 @@ public class Vision{
                   distanceAdjust = 1;
               }
           }
-          steeringAdjust = (Robot.oi.limelightX-xOffset)/20;     //STEERING CALCULATION   
+          steeringAdjust = (Robot.oi.limelightX-xOffset)/17;     //STEERING CALCULATION   
        //   distanceAdjust = distanceAdjust*-1;
           distanceAdjust = distanceAdjust*Scaler;
           
@@ -42,7 +42,7 @@ public class Vision{
           } else {                                               //IF X < 0
               Robot.oi.drive.tankDrive(distanceAdjust-steeringAdjust ,distanceAdjust);
           }
-          if(steeringAdjust < .3 && steeringAdjust > -.3 && distanceAdjust < .3 && distanceAdjust > -.3){
+          if(steeringAdjust < .27 && steeringAdjust > -.27 && distanceAdjust < .3 && distanceAdjust > -.3){
             Robot.globalVariables.visionBreak = true;
             Robot.globalVariables.ApproachTargetCounter = 2;
           } else {
