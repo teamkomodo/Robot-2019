@@ -26,11 +26,12 @@ public class ButtonControl{
         if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
             Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.3));
         }else if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
-            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.1));
+            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.3));
         }
         else{
             Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.07));
         }
+
 
         //Hatch Manipulator
         if(Robot.globalVariables.controlMode == 2 ){     //B
@@ -99,6 +100,16 @@ public class ButtonControl{
        
         // if(Robot.globalVariables.controlMode == 4 && !Robot.globalVariables.buttonDone[3]){     //Y
         //     liftUp = new LiftUp();
+        // } 
+        
+        // //RoboRaiser
+        // if(Robot.oi.gamepad.getRawButton(RobotMap.rTrigger)){
+        //     Robot.oi.rLift.set(.5);
+        // } else if(Robot.oi.gamepad.getRawButton(RobotMap.lTrigger)){
+        //     Robot.oi.rLift.set(-.5);
+        // } else{
+        //     Robot.oi.rLift.set(0);
         // }
+
     }
 }
