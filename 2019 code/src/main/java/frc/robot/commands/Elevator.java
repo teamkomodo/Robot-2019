@@ -21,9 +21,9 @@ public class Elevator{
         //     }
         // }
         if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) > .2){
-            Robot.oi.mLift1.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) * .13);
+            Robot.oi.mLift1.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) * .3);
         }else if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) < -.2){
-            Robot.oi.mLift1.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) * .7 );
+            Robot.oi.mLift1.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) * .9);
         } else{
             Robot.oi.mLift1.set(-.11);
         }
