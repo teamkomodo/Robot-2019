@@ -15,11 +15,14 @@ public class ApproachTarget{
         if(Robot.globalVariables.ApproachTargetCounter == 1){           //USE VISION TO GO TO TARGET
             betaVision = new BetaVision(GlobalVariables.visionDistanceTarget,0);
         }else if (Robot.globalVariables.ApproachTargetCounter == 2){
+            /*
             if(Robot.oi.ultrasonic.getValue() >= Robot.globalVariables.ultrasonicTarget){
                 driveStraight = new DriveStraight(.4);
                 } else {
                 Robot.globalVariables.ApproachTargetCounter++;
             }
+            */
+            Robot.globalVariables.ApproachTargetCounter++;
         }else if (Robot.globalVariables.ApproachTargetCounter == 3) {  //STOP THE ROBOT
             Robot.oi.drive.tankDrive(0, 0);
             Robot.globalVariables.ApproachTargetCounter++;

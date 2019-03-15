@@ -13,7 +13,7 @@ public class BetaVision{
         double steeringAdjust = 0.0;
         double distanceAdjust = 0.0;
         double xOffset = 0;
-        double Scaler = .9;
+        double Scaler = 1;
         Robot.oi.gyro.reset();
         if(Robot.oi.limelightTarget != 0.0){  //IF ROBOT SEES TARGET
             if(Robot.oi.limelightArea + GlobalVariables.visionDistanceThreshold < distance) {          //IF ROBOT IS TOO FAR
@@ -35,22 +35,25 @@ public class BetaVision{
             steeringAdjust = (Robot.oi.limelightX-xOffset)/10;     //STEERING CALCULATION (MIGHT NEED TO BE 20)  
 
             if(distanceAdjust < .3 && distanceAdjust > -.3){       //IF TOO CLOSE OR TOO FAR
-                if(steeringAdjust*10 > .6){
-                    steeringAdjust = .6;
-                } else if(steeringAdjust*10 < -.6){                 //ADJUST STEERING CURVE FOR FINAL APPROACH
-                    steeringAdjust = -.6;
+                if(steeringAdjust*5 > .4){
+                    steeringAdjust = .4;
+                } else if(steeringAdjust*5 < -.4){                 //ADJUST STEERING CURVE FOR FINAL APPROACH
+                    steeringAdjust = -.4;
                 } else {
-                    steeringAdjust = steeringAdjust*10;
+                    steeringAdjust = steeringAdjust*5;
                 }
-                Robot.oi.drive.arcadeDrive(distanceAdjust, steeringAdjust);
+                Robot.oi.drive.arcadeDrive(distanceAdjust, -steeringAdjust);
             } else {                                               //IF IN RANGE BUT X IS OFF
-                Robot.oi.drive.arcadeDrive(distanceAdjust, steeringAdjust*.75);
+                Robot.oi.drive.arcadeDrive(distanceAdjust, -steeringAdjust*.65);
             }
             if(Robot.oi.limelightX < 1 && Robot.oi.limelightX > -1 && distanceAdjust < .3 && distanceAdjust > -.3){
-                Robot.globalVariables.visionBreak = true;          //BREAK VISION CODE
-                Robot.globalVariables.ApproachTargetCounter = 2;
+                if(Robot.oi.visionTimer.get() > 1){
+                    Robot.globalVariables.visionBreak = true;          //BREAK VISION CODE
+                    Robot.globalVariables.ApproachTargetCounter = 2;
+                }
               } else {
                 Robot.globalVariables.visionBreak = false;
+                Robot.oi.visionTimer.reset();
               } 
 
         } else {//IF NO TARGET

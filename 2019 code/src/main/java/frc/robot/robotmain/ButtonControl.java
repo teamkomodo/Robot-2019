@@ -48,6 +48,10 @@ public class ButtonControl{
             Robot.oi.hManipulator.set(0);
         }
 
+
+        if(Robot.oi.ljoystick.getRawButtonPressed(RobotMap.rTrigger)){
+            driveStraight = new DriveStraight(.6);
+        }
         
         if(Robot.oi.hatchTimer.get() > 1 && !Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
             Robot.oi.hManipulator.set(0);

@@ -66,6 +66,7 @@ public class OI{
     public Timer timer;
     public Timer debugTimer;
     public Timer hatchTimer;
+    public Timer visionTimer;
 
    
     public OI() {
@@ -133,6 +134,10 @@ public class OI{
         hatchTimer = new Timer();
         hatchTimer.reset();
         hatchTimer.start();
+
+        visionTimer = new Timer();
+        visionTimer.reset();
+        visionTimer.start();
 
         drive = new DifferentialDrive(lmotor1, rmotor1);
         
