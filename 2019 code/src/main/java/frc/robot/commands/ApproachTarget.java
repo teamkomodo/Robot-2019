@@ -9,10 +9,11 @@ public class ApproachTarget{
     public static DriveStraight driveStraight;
     public static LineFollow lineFollow;
     public static HatchManipulator hatchManipulator;
+    public static BetaVision betaVision;
 
     public ApproachTarget(double distance, double speed){               //PASS IN TARGET DISTANCE (% OF LIMELIGHT IMAGE) AND FINAL APPROACH SPEED
         if(Robot.globalVariables.ApproachTargetCounter == 1){           //USE VISION TO GO TO TARGET
-            vision = new Vision(GlobalVariables.visionDistanceTarget, 0);
+            betaVision = new BetaVision(GlobalVariables.visionDistanceTarget,0);
         }else if (Robot.globalVariables.ApproachTargetCounter == 2){
             if(Robot.oi.ultrasonic.getValue() >= Robot.globalVariables.ultrasonicTarget){
                 driveStraight = new DriveStraight(.4);

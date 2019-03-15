@@ -9,6 +9,7 @@ public class JoystickControl{
     public ApproachCargo approachCargo;
     public StationaryGyroCorrect gyroCode;
     public Elevator elevator;
+    public BetaVision betaVision;
     public DriveStraight driveStraight;
     public JoystickControl(){
     }
@@ -54,10 +55,16 @@ public class JoystickControl{
         if(!Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger)){
             Robot.globalVariables.ButtonFlag = false;
         }
+        //Drive straight 
+            if(Robot.oi.ljoystick.getRawButtonPressed(RobotMap.rTrigger)){ 
+                driveStraight = new DriveStraight(.7);
+            }
+        
         //Ball Trigger
         if(!Robot.globalVariables.triggerFlag){
             if(Robot.oi.ljoystick.getRawButtonPressed(RobotMap.lTrigger)){ 
-                approachCargo = new ApproachCargo(1.75,.6);
+                betaVision = new BetaVision(GlobalVariables.visionDistanceTarget,0);
+                //approachTarget = new ApproachTarget(GlobalVariables.visionDistanceTarget, .6);
                 Robot.globalVariables.triggerFlag = true;
             }
         }

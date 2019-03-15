@@ -82,6 +82,7 @@ public class OI{
         lmotor3 = new VictorSPX(RobotMap.lMotor3Port);
         
         
+        
         rmotor2.follow(rmotor1);
         rmotor3.follow(rmotor1);
         lmotor2.follow(lmotor1);

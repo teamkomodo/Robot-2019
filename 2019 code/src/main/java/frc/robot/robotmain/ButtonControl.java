@@ -35,7 +35,7 @@ public class ButtonControl{
         //Hatch Manipulator
         if(Robot.globalVariables.controlMode == 2 ){     //B
             System.out.println(Robot.globalVariables.controlMode);
-            hatchManipulator = new HatchManipulator(850);
+            hatchManipulator = new HatchManipulator(650);
 
         } //else if(Robot.globalVariables.controlMode == 3 ){     //X
         //     //robotLift = new RobotLift();
