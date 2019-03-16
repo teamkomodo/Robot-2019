@@ -94,8 +94,8 @@ public class OI{
         mLift2.follow(mLift1);
         
         rLift = new WPI_TalonSRX(1);
-        bManipulator = new VictorSP(RobotMap.bManipularotPort);
-        hManipulator = new VictorSP(RobotMap.hManipularotPort);
+        bManipulator = new VictorSP(RobotMap.bManipulatorPort);
+        hManipulator = new VictorSP(RobotMap.hManipulatorPort);
         bManipulatortilt = new TalonSRX(RobotMap.bManipularottiltPort);
         
         encoderTimeout = 30;
