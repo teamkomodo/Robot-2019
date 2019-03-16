@@ -48,10 +48,20 @@ public class ButtonControl{
             System.out.println(Robot.globalVariables.controlMode);
             Robot.oi.hManipulator.set(0);
         }
+        if(Robot.oi.ljoystick.getRawButtonPressed(RobotMap.lTrigger)){
+            Robot.oi.gyro.reset();
+        }
 
 
-        if(Robot.oi.ljoystick.getRawButtonPressed(RobotMap.rTrigger)){
+        if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger)){
+            Robot.globalVariables.driverControl = false;
             driveStraight = new DriveStraight(.6);
+            Robot.globalVariables.buttonDone[4] = false;
+        } else {
+            if(Robot.globalVariables.buttonDone[4] = false){
+                Robot.globalVariables.driverControl = true;
+                Robot.globalVariables.buttonDone[4] = true;
+            }
         }
         
         if(Robot.oi.hatchTimer.get() > 1 && !Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){

@@ -13,18 +13,18 @@ public class BetaVision{
         double steeringAdjust = 0.0;
         double distanceAdjust = 0.0;
         double xOffset = 0;
-        double Scaler = 1;
+        double Scaler = .6;
         Robot.oi.gyro.reset();
         if(Robot.oi.limelightTarget != 0.0){  //IF ROBOT SEES TARGET
             if(Robot.oi.limelightArea + GlobalVariables.visionDistanceThreshold < distance) {          //IF ROBOT IS TOO FAR
-                if(.1*(Robot.oi.limelightArea - distance) < Scaler){
-                    distanceAdjust = (.1*(Robot.oi.limelightArea - distance));                         //DISTANCE CALCULATION
+                if(.2*(Robot.oi.limelightArea - distance) < Scaler){
+                    distanceAdjust = (.2*(Robot.oi.limelightArea - distance));                         //DISTANCE CALCULATION
                 } else {
                     distanceAdjust = -1;
                 }
             } else if (Robot.oi.limelightArea - GlobalVariables.visionDistanceThreshold > distance){    //IF ROBOT IS TOO CLOSE
-                if(-.1*(distance - Robot.oi.limelightArea) > -Scaler){
-                    distanceAdjust = (-.1*(distance - Robot.oi.limelightArea));                         //DISTANCE CALCULATION
+                if(-.2*(distance - Robot.oi.limelightArea) > -Scaler){
+                    distanceAdjust = (-.2*(distance - Robot.oi.limelightArea));                         //DISTANCE CALCULATION
                 } else {
                     distanceAdjust = 1;
                 }
@@ -35,18 +35,18 @@ public class BetaVision{
             steeringAdjust = (Robot.oi.limelightX-xOffset)/10;     //STEERING CALCULATION (MIGHT NEED TO BE 20)  
 
             if(distanceAdjust < .3 && distanceAdjust > -.3){       //IF TOO CLOSE OR TOO FAR
-                if(steeringAdjust*5 > .4){
+                if(steeringAdjust*6 > .4){
                     steeringAdjust = .4;
-                } else if(steeringAdjust*5 < -.4){                 //ADJUST STEERING CURVE FOR FINAL APPROACH
+                } else if(steeringAdjust*6 < -.4){                 //ADJUST STEERING CURVE FOR FINAL APPROACH
                     steeringAdjust = -.4;
                 } else {
-                    steeringAdjust = steeringAdjust*5;
+                    steeringAdjust = steeringAdjust*6;
                 }
                 Robot.oi.drive.arcadeDrive(distanceAdjust, -steeringAdjust);
             } else {                                               //IF IN RANGE BUT X IS OFF
                 Robot.oi.drive.arcadeDrive(distanceAdjust, -steeringAdjust*.65);
             }
-            if(Robot.oi.limelightX < 1 && Robot.oi.limelightX > -1 && distanceAdjust < .3 && distanceAdjust > -.3){
+            if(Robot.oi.limelightX < 1 && Robot.oi.limelightX > -1 && distanceAdjust < .1 && distanceAdjust > -.1){
                 if(Robot.oi.visionTimer.get() > 1){
                     Robot.globalVariables.visionBreak = true;          //BREAK VISION CODE
                     Robot.globalVariables.ApproachTargetCounter = 2;

@@ -40,6 +40,10 @@ public class Robot extends TimedRobot {
     elevator =  new Elevator();
   }//END ROBOT AUTO
   @Override
+  public void teleopInit() {
+    Robot.oi.gyro.reset();
+  }
+  @Override
   public void teleopPeriodic() {
     joystickControl.autoJoystick();
     buttonControl.autoButtonControl();
