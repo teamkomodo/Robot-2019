@@ -22,7 +22,7 @@ public class ButtonControl{
         //Elevator
         elevator = new Elevator();
         //Ball Manipulator
-        Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.rightY)*-.7);
+        Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.rightY)*-1);
         if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
             Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.3));
         }else if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
