@@ -9,17 +9,17 @@ import frc.robot.deprecated.TrackTarget;
 
 //START ROBOT CLASS
 public class Robot extends TimedRobot {
-  
+
   //RANDOM DECLARATIONS
 
   public static OI oi;
-  public static GlobalVariables globalVariables;  
+  public static GlobalVariables globalVariables;
   public static ButtonControl buttonControl;
   public static JoystickControl joystickControl;
   public static Dashboard dashboard;
   public static Elevator elevator;
-  
-  
+
+
   @Override
   public void robotInit() {
     //INITIALIZE ALL MOTOR CONTROLLERS AND VARIABLES
@@ -27,21 +27,21 @@ public class Robot extends TimedRobot {
     joystickControl = new JoystickControl();
     buttonControl = new ButtonControl();
     globalVariables = new GlobalVariables();
-    
+
   } //END ROBOT INIT
   @Override
   public void autonomousInit() {
-    joystickControl.autoJoystick();
-    buttonControl.autoButtonControl();
-    //AUTO INIT
   }
   @Override
   public void autonomousPeriodic() {
-    //AUTO CODE
     joystickControl.autoJoystick();
     buttonControl.autoButtonControl();
     dashboard = new Dashboard();
     elevator =  new Elevator();
+  }//END ROBOT AUTO
+  @Override
+  public void teleopInit() {
+    Robot.oi.gyro.reset();
   }
   @Override
   public void teleopPeriodic() {
@@ -49,5 +49,5 @@ public class Robot extends TimedRobot {
     buttonControl.autoButtonControl();
     dashboard = new Dashboard();
     elevator =  new Elevator();
-  } //END ROBOTOT TELEOP
+  } //END ROBOT TELEOP
 } //END ROBOT CLASS

@@ -5,7 +5,7 @@ public class GlobalVariables {
     public static final double visionYThreshold = 2.0;
     public static final double visionDistanceMax = 12.0;
     public static final double visionDistanceMin = .01;
-    public static final double visionDistanceTarget = 10.0;
+    public static final double visionDistanceTarget = 7.5;
     public static final double visionDistanceThreshold = 0.8;
     public static final double joystickThreshold = 0.2;
     public static final double gyroThreshold = 15;
@@ -18,32 +18,32 @@ public class GlobalVariables {
     public double visionDistanceScaler;
     public double adjustedLeft;
     public double adjustedRight;
-    public double oneFootLeftEncoder;   
-    public double oneFootRightEncoder;  
-    public double autonomousSpeed;      
-    public double debugcounter;         
-    public double averageX;             
-    public double averageY;             
-    public double averageZ;             
-    public double calculatedX;          
-    public double calculatedY;          
-    public double calculatedZ;          
-    public double gyroDrift;                              
+    public double oneFootLeftEncoder;
+    public double oneFootRightEncoder;
+    public double autonomousSpeed;
+    public double debugcounter;
+    public double averageX;
+    public double averageY;
+    public double averageZ;
+    public double calculatedX;
+    public double calculatedY;
+    public double calculatedZ;
+    public double gyroDrift;
     public double visionStage;
     public double elevatorTargetValue = 0;
     public double[] levelEncoderValues = {
-        1.1,    //LEVEL 1
-        2.2,    //LEVEL 2
-        3.3,    //LEVEL 3
-        4.4,    //LEVEL 4
-        5.5,    //LEVEL 5
-        6.6     //LEVEL 6
+            1.1,    //LEVEL 1
+            2.2,    //LEVEL 2
+            3.3,    //LEVEL 3
+            4.4,    //LEVEL 4
+            5.5,    //LEVEL 5
+            6.6     //LEVEL 6
     };
-    
+
     public static boolean hFlag = false;
     public static double count = 0;
-    public static Boolean defaultDrivemode = false;       //FALSE FOR ARCADE, TRUE FOR TANK  
-    public static Boolean enableGamepad = true;           //FALSE FOR JOYSTICKS, TRUE FOR GAMEPAD  
+    public static Boolean defaultDrivemode = false;       //FALSE FOR ARCADE, TRUE FOR TANK
+    public static Boolean enableGamepad = true;           //FALSE FOR JOYSTICKS, TRUE FOR GAMEPAD
     public static Boolean enableGyroDrive = true;
     public Boolean ElevatorBreak = false;
     public boolean lineTrip = false;
@@ -51,24 +51,25 @@ public class GlobalVariables {
     public boolean tankDrive = true;
     public Boolean visionBreak;
     public Boolean raiserFlag;
-    public Boolean ButtonFlag;  
+    public Boolean ButtonFlag;
     public boolean ButtonXflag;
     public boolean ButtonYflag;
     public boolean triggerFlag;
-    public Boolean ElevatorFlag;      
-    public Boolean visionFlag;  
+    public Boolean ElevatorFlag;
+    public Boolean visionFlag;
     public Boolean[] buttonDone = {
-        false,  //A
-        false,  //B
-        false,  //X
-        false,  //Y
+            false,  //A
+            false,  //B
+            false,  //X
+            false,  //Y
+            false,  //Ltrigger
     };
 
     public int levelCounter = 1;
     public int lineFollowCounter = 0;
     public int ApproachTargetCounter = 1;
-    public int controlMode;    
-    
+    public int controlMode;
+
     public GlobalVariables() {
         debugcounter = 0.0;
         averageX = 0.0;
@@ -90,10 +91,10 @@ public class GlobalVariables {
         raiserFlag = false;
         ButtonXflag = false;
         ButtonYflag = false;
-        ButtonFlag = false;   
-        visionFlag = false; 
+        ButtonFlag = false;
+        visionFlag = false;
         triggerFlag = false;
-        visionBreak = false; 
-        controlMode = 0;  
+        visionBreak = false;
+        controlMode = 0;
     }
 }

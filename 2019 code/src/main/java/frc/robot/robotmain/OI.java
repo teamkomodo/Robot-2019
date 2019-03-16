@@ -66,8 +66,9 @@ public class OI{
     public Timer timer;
     public Timer debugTimer;
     public Timer hatchTimer;
+    public Timer visionTimer;
 
-   
+
     public OI() {
         gamepad = new Joystick(RobotMap.kJoystickPort);
         ljoystick = new Joystick(RobotMap.lJoystickPort);
@@ -132,6 +133,10 @@ public class OI{
         hatchTimer = new Timer();
         hatchTimer.reset();
         hatchTimer.start();
+
+        visionTimer = new Timer();
+        visionTimer.reset();
+        visionTimer.start();
 
         drive = new DifferentialDrive(lmotor1, rmotor1);
         
