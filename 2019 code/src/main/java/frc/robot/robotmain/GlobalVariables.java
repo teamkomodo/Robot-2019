@@ -5,7 +5,7 @@ public class GlobalVariables {
     public static final double visionYThreshold = 2.0;
     public static final double visionDistanceMax = 12.0;
     public static final double visionDistanceMin = .01;
-    public static final double visionDistanceTarget = 7.5;
+    public static final double visionDistanceTarget = 7.5;      //was 7.5
     public static final double visionDistanceThreshold = 0.8;
     public static final double joystickThreshold = 0.2;
     public static final double gyroThreshold = 15;

@@ -16,30 +16,13 @@ public class JoystickControl{
     public void autoJoystick(){
         //MANIPULATOR
         //Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY));
+        Robot.oi.bManipulator.set(Robot.oi.gamepad.getRawAxis(RobotMap.rightY)*-.75);
 
         //ELEVATOR CODE
         Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngle()+Robot.globalVariables.gyroDrift;
 
         elevator = new Elevator(); 
-        
-        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonA)){
-            Robot.globalVariables.buttonDone[0] = false;
-            Robot.globalVariables.controlMode = 1;
-        }
-        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
-            Robot.globalVariables.ApproachTargetCounter = 1;
-            //Robot.globalVariables.buttonDone[1] = false;
-            Robot.globalVariables.controlMode = 2;
-        }
-        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonX)){
-            //Robot.globalVariables.buttonDone[2] = false;
-            Robot.globalVariables.controlMode = 3;
-        }
-        if(Robot.oi.gamepad.getRawButton(RobotMap.buttonY)){
-            Robot.globalVariables.buttonDone[3] = false;
-            Robot.globalVariables.controlMode = 4;
-        }
-                
+
         //BUTTON FLAG
         if(Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger) && !Robot.globalVariables.ButtonFlag){
             Robot.globalVariables.visionFlag = !Robot.globalVariables.visionFlag;
@@ -57,14 +40,14 @@ public class JoystickControl{
         }
 
         //VISION CHECK
-        if(!Robot.globalVariables.visionFlag && (Robot.globalVariables.tankDrive==true)){
+        if(!Robot.globalVariables.visionFlag && Robot.globalVariables.tankDrive){
             if(Robot.globalVariables.driverControl){
                 Robot.oi.table.getEntry("pipeline").setNumber(1);   //SET LIMELINE PIPELINE
                 Robot.oi.table.getEntry("ledMode").setNumber(1);    //TURN OFF LIMELIGHT LEDS
                 Robot.oi.drive.tankDrive(Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler);
             }
             gyroCode = new StationaryGyroCorrect();
-        } else if(!Robot.globalVariables.visionFlag && (Robot.globalVariables.tankDrive==false)) {
+        } else if(!Robot.globalVariables.visionFlag && !Robot.globalVariables.tankDrive) {
             if(Robot.globalVariables.driverControl){
                 Robot.oi.table.getEntry("pipeline").setNumber(1);   //SET LIMELINE PIPELINE
                 Robot.oi.table.getEntry("ledMode").setNumber(1);    //TURN OFF LIMELIGHT LEDS
