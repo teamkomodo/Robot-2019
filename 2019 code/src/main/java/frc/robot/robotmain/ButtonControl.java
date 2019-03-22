@@ -62,22 +62,6 @@ public class ButtonControl{
             }
         }
 
-        if(Robot.oi.rjoystick.getRawButton(6)&&!Robot.globalVariables.buttonDone[5]){
-            if(Robot.globalVariables.direction == 1)
-            {
-                Robot.globalVariables.direction=-1;                
-            }
-            else{
-                Robot.globalVariables.direction=1;
-            }
-            Robot.globalVariables.buttonDone[5] = true;
-        } else {
-            if(!Robot.oi.rjoystick.getRawButton(6)&&Robot.globalVariables.buttonDone[5]){
-                Robot.globalVariables.driverControl = true;
-                Robot.globalVariables.buttonDone[5] = false;
-            }
-        }
-
         if(Robot.oi.hatchTimer.get() > 1 && !Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
             Robot.oi.hManipulator.set(0);
         } else if(Robot.oi.hatchTimer.get() < 1 && !Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){

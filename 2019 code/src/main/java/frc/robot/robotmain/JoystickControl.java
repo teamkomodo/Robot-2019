@@ -44,15 +44,8 @@ public class JoystickControl{
             if(Robot.globalVariables.driverControl){
                 Robot.oi.table.getEntry("pipeline").setNumber(1);   //SET LIMELINE PIPELINE
                 Robot.oi.table.getEntry("ledMode").setNumber(1);    //TURN OFF LIMELIGHT LEDS
-                if(Robot.globalVariables.direction==1)
-                {
-                    Robot.oi.drive.tankDrive(Robot.globalVariables.direction*Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, Robot.globalVariables.direction*Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler);
-                }else{
-                    Robot.oi.drive.tankDrive(Robot.globalVariables.direction*Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, Robot.globalVariables.direction*Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler);
-                }
+                Robot.oi.drive.tankDrive(Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler);
             }
-
-
             gyroCode = new StationaryGyroCorrect();
         } else if(!Robot.globalVariables.visionFlag && !Robot.globalVariables.tankDrive) {
             if(Robot.globalVariables.driverControl){
