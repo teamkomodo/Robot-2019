@@ -11,6 +11,7 @@ public class GlobalVariables {
     public static final double gyroThreshold = 15;
     public static final double scaler = 1.0;
     public double elevatortarget;
+    public int direction = 1; 
     public double ultrasonicTarget;
     public double lineTarget;
     public double visionXScaler;
@@ -63,6 +64,7 @@ public class GlobalVariables {
             false,  //X
             false,  //Y
             false,  //Ltrigger
+            false, //RJoystick 11
     };
 
     public int levelCounter = 1;
