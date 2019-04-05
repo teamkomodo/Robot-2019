@@ -19,31 +19,40 @@ public class ButtonControl{
         //Random Variables
         Robot.globalVariables.controlMode = 0;
 
-        //Elevator
-        elevator = new Elevator();
         //Ball Manipulator
-        if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
-            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.45));
-        }else if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
-            Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.45));
-        }
-        else{
+        if(!GlobalVariables.demoMode[0]){
+            if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
+                Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.45));
+            }else if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
+                Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.45));
+            }
+            else{
+                Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.07));
+            }
+        } else if(GlobalVariables.demoMode[5]){
+            if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
+                Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.45));
+            }else if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
+                Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.45));
+            }
+            else{
+                Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.07));
+            }
+        } else {
             Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.07));
         }
 
+
         //Hatch Manipulator
         if(Robot.globalVariables.controlMode == 2 ){     //B
-            System.out.println(Robot.globalVariables.controlMode);
-            hatchManipulator = new HatchManipulator(650);
-
-        } //else if(Robot.globalVariables.controlMode == 3 ){     //X
-        //     //robotLift = new RobotLift();
-        //     System.out.println(Robot.globalVariables.controlMode);
-        //     hatchManipulator = new HatchManipulator(true);
-        // }
+            if(!GlobalVariables.demoMode[0]){
+                hatchManipulator = new HatchManipulator(650);
+            } else if (GlobalVariables.demoMode[4]){
+                hatchManipulator = new HatchManipulator(650);
+            }
+        }
         else
         {
-            System.out.println(Robot.globalVariables.controlMode);
             Robot.oi.hManipulator.set(0);
         }
         if(Robot.oi.ljoystick.getRawButtonPressed(RobotMap.lTrigger)){
@@ -51,14 +60,16 @@ public class ButtonControl{
         }
 
 
-        if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger)){
-            Robot.globalVariables.driverControl = false;
-            driveStraight = new DriveStraight(.6);
-            Robot.globalVariables.buttonDone[4] = false;
-        } else {
-            if(Robot.globalVariables.buttonDone[4] = false){
-                Robot.globalVariables.driverControl = true;
-                Robot.globalVariables.buttonDone[4] = true;
+        if(!GlobalVariables.demoMode[0]){
+            if(Robot.oi.ljoystick.getRawButton(RobotMap.lTrigger)){
+                Robot.globalVariables.driverControl = false;
+                driveStraight = new DriveStraight(.6);
+                Robot.globalVariables.buttonDone[4] = false;
+            } else {
+                if(Robot.globalVariables.buttonDone[4] = false){
+                    Robot.globalVariables.driverControl = true;
+                    Robot.globalVariables.buttonDone[4] = true;
+                }
             }
         }
 
@@ -78,14 +89,26 @@ public class ButtonControl{
             }
         }
 
-        if(Robot.oi.hatchTimer.get() > 1 && !Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
-            Robot.oi.hManipulator.set(0);
-        } else if(Robot.oi.hatchTimer.get() < 1 && !Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
-            Robot.oi.hManipulator.set(.6);
-        } else if (Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
-            Robot.oi.hManipulator.set(-.6);
-            Robot.oi.hatchTimer.reset();
-            Robot.oi.hatchTimer.start();
+        if(!GlobalVariables.demoMode[0]){
+            if(Robot.oi.hatchTimer.get() > 1 && !Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+                Robot.oi.hManipulator.set(0);
+            } else if(Robot.oi.hatchTimer.get() < 1 && !Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+                Robot.oi.hManipulator.set(.6);
+            } else if (Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+                Robot.oi.hManipulator.set(-.6);
+                Robot.oi.hatchTimer.reset();
+                Robot.oi.hatchTimer.start();
+            }
+        } else if(GlobalVariables.demoMode[4]){
+            if(Robot.oi.hatchTimer.get() > 1 && !Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+                Robot.oi.hManipulator.set(0);
+            } else if(Robot.oi.hatchTimer.get() < 1 && !Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+                Robot.oi.hManipulator.set(.6);
+            } else if (Robot.oi.gamepad.getRawButton(RobotMap.buttonB)){
+                Robot.oi.hManipulator.set(-.6);
+                Robot.oi.hatchTimer.reset();
+                Robot.oi.hatchTimer.start();
+            }
         }
 
         //Button Controls

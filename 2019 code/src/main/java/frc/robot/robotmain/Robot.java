@@ -23,21 +23,22 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     //INITIALIZE ALL MOTOR CONTROLLERS AND VARIABLES
-    oi = new OI();
-    joystickControl = new JoystickControl();
-    buttonControl = new ButtonControl();
-    globalVariables = new GlobalVariables();
+      globalVariables = new GlobalVariables();
+      oi = new OI();
+      Robot.oi.gyro.reset();
+      joystickControl = new JoystickControl();
+      buttonControl = new ButtonControl();
 
   } //END ROBOT INIT
   @Override
   public void autonomousInit() {
+      Robot.oi.gyro.reset();
   }
   @Override
   public void autonomousPeriodic() {
     joystickControl.autoJoystick();
     buttonControl.autoButtonControl();
     dashboard = new Dashboard();
-    elevator =  new Elevator();
   }//END ROBOT AUTO
   @Override
   public void teleopInit() {
@@ -48,6 +49,5 @@ public class Robot extends TimedRobot {
     joystickControl.autoJoystick();
     buttonControl.autoButtonControl();
     dashboard = new Dashboard();
-    elevator =  new Elevator();
   } //END ROBOT TELEOP
 } //END ROBOT CLASS

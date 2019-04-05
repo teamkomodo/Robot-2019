@@ -46,6 +46,14 @@ public class GlobalVariables {
     public static Boolean defaultDrivemode = false;       //FALSE FOR ARCADE, TRUE FOR TANK
     public static Boolean enableGamepad = true;           //FALSE FOR JOYSTICKS, TRUE FOR GAMEPAD
     public static Boolean enableGyroDrive = true;
+    public static Boolean[] demoMode = {
+            false,      //ENABLE DEMO MODE      0
+            false,      //ENABLE GYRO           1
+            false,      //ENABLE VISION         2
+            false,      //ENABLE ELEVATOR       3
+            false,      //ENABLE HATCH          4
+            false,      //ENABLE BALL           5
+    };
     public Boolean ElevatorBreak = false;
     public boolean lineTrip = false;
     public boolean driverControl = true;

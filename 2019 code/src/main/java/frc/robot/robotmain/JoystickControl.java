@@ -21,7 +21,11 @@ public class JoystickControl{
         //ELEVATOR CODE
         Robot.globalVariables.calculatedX = Robot.oi.gyro.getAngle()+Robot.globalVariables.gyroDrift;
 
-        elevator = new Elevator(); 
+        if(!GlobalVariables.demoMode[0]){
+            elevator = new Elevator();
+        } else if(GlobalVariables.demoMode[3]){
+            elevator = new Elevator();
+        }
 
         //BUTTON FLAG
         if(Robot.oi.rjoystick.getRawButton(RobotMap.rTrigger) && !Robot.globalVariables.ButtonFlag){
@@ -44,16 +48,20 @@ public class JoystickControl{
             if(Robot.globalVariables.driverControl){
                 Robot.oi.table.getEntry("pipeline").setNumber(1);   //SET LIMELINE PIPELINE
                 Robot.oi.table.getEntry("ledMode").setNumber(1);    //TURN OFF LIMELIGHT LEDS
-                if(Robot.globalVariables.direction==1)
-                {
-                    Robot.oi.drive.tankDrive(Robot.globalVariables.direction*Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, Robot.globalVariables.direction*Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler);
-                }else{
-                    Robot.oi.drive.tankDrive(Robot.globalVariables.direction*Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, Robot.globalVariables.direction*Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler);
+                if(!GlobalVariables.demoMode[0]){
+                    if(Robot.globalVariables.direction==1) {
+                        Robot.oi.drive.tankDrive(Robot.globalVariables.direction*Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, Robot.globalVariables.direction*Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler);
+                    }else{
+                        Robot.oi.drive.tankDrive(Robot.globalVariables.direction*Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, Robot.globalVariables.direction*Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler);
+                    }
+                    gyroCode = new StationaryGyroCorrect();
+                } else {
+                    Robot.oi.drive.tankDrive(Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler);
+                    if(GlobalVariables.demoMode[1]){
+                        gyroCode = new StationaryGyroCorrect();
+                    }
                 }
             }
-
-
-            gyroCode = new StationaryGyroCorrect();
         } else if(!Robot.globalVariables.visionFlag && !Robot.globalVariables.tankDrive) {
             if(Robot.globalVariables.driverControl){
                 Robot.oi.table.getEntry("pipeline").setNumber(1);   //SET LIMELINE PIPELINE
@@ -62,8 +70,13 @@ public class JoystickControl{
             }
             //gyroCode = new StationaryGyroCorrect();
         }else {
-            approachTarget = new ApproachTarget(GlobalVariables.visionDistanceTarget, .6);
-            //betaVision = new BetaVision(GlobalVariables.visionDistanceTarget,0);
+            if(!GlobalVariables.demoMode[0]){
+                approachTarget = new ApproachTarget(GlobalVariables.visionDistanceTarget, .6);
+            } else if (GlobalVariables.demoMode[2]){
+                approachTarget = new ApproachTarget(GlobalVariables.visionDistanceTarget, .6);
+            } else {
+                Robot.globalVariables.visionFlag = false;
+            }
         }
     }
 }
