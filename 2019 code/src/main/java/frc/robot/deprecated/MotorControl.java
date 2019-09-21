@@ -77,15 +77,15 @@ public class MotorControl{
 
         //DRIVE FUNCTIONS
         if(!GlobalVariables.defaultDrivemode){
-          Robot.oi.drive.arcadeDrive(-Robot.oi.gamepad.getRawAxis(RobotMap.leftY)*GlobalVariables.scaler, Robot.oi.gamepad.getRawAxis(RobotMap.leftX)*GlobalVariables.scaler);
+          Robot.oi.drive.arcadeDrive(-Robot.oi.gamepad.getRawAxis(RobotMap.leftY)*Robot.globalVariables.driveScaler, Robot.oi.gamepad.getRawAxis(RobotMap.leftX)*Robot.globalVariables.driveScaler);
         } else {
-          Robot.oi.drive.tankDrive(-Robot.oi.gamepad.getRawAxis(RobotMap.leftY)*GlobalVariables.scaler, -Robot.oi.gamepad.getRawAxis(RobotMap.rightY)*GlobalVariables.scaler);
+          Robot.oi.drive.tankDrive(-Robot.oi.gamepad.getRawAxis(RobotMap.leftY)*Robot.globalVariables.driveScaler, -Robot.oi.gamepad.getRawAxis(RobotMap.rightY)*Robot.globalVariables.driveScaler);
         }
       } else {  //CONTROL MODE CHECK
         if(!GlobalVariables.defaultDrivemode){
-          Robot.oi.drive.arcadeDrive(-Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, Robot.oi.ljoystick.getRawAxis(RobotMap.joyX)*GlobalVariables.scaler);
+          Robot.oi.drive.arcadeDrive(-Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*Robot.globalVariables.driveScaler, Robot.oi.ljoystick.getRawAxis(RobotMap.joyX)*Robot.globalVariables.driveScaler);
         } else {
-          Robot.oi.drive.tankDrive(-Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler, -Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*GlobalVariables.scaler);
+          Robot.oi.drive.tankDrive(-Robot.oi.ljoystick.getRawAxis(RobotMap.joyY)*Robot.globalVariables.driveScaler, -Robot.oi.rjoystick.getRawAxis(RobotMap.joyY)*Robot.globalVariables.driveScaler);
         }
       } //END CONTROL MODE
       SmartDashboard.putNumber("Left X", Robot.oi.gamepad.getRawAxis(RobotMap.leftX));

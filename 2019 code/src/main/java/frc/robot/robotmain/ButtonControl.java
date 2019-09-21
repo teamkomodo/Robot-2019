@@ -22,18 +22,18 @@ public class ButtonControl{
         //Ball Manipulator
         if(!GlobalVariables.demoMode[0]){
             if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
-                Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.45));
+                Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.45));      //was -.45
             }else if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
-                Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.45));
+                Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.45));        //was .45
             }
             else{
                 Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.07));
             }
         } else if(GlobalVariables.demoMode[5]){
             if(Robot.oi.gamepad.getRawButton(RobotMap.rBumper)){
-                Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.45));
+                Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.3));
             }else if(Robot.oi.gamepad.getRawButton(RobotMap.lBumper)){
-                Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.45));
+                Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (.1));
             }
             else{
                 Robot.oi.bManipulatortilt.set(ControlMode.PercentOutput, (-.07));

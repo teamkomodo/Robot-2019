@@ -20,12 +20,14 @@ public class Elevator{
         //         Robot.globalVariables.elevatortarget = Robot.globalVariables.levelEncoderValues[Robot.globalVariables.levelCounter];
         //     }
         // }
-        if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) > .2){
-            Robot.oi.mLift1.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) * .3);
-        }else if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) < -.2){
-            Robot.oi.mLift1.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) * .9);
-        } else{
-            Robot.oi.mLift1.set(-.11);
+        if(Robot.globalVariables.driverControl){
+            if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) > .2){
+                Robot.oi.mLift1.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) * Robot.globalVariables.elevatorDownScaler);      //used to be .3 for fast, .15 for slow
+            }else if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) < -.2){
+                Robot.oi.mLift1.set(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) * Robot.globalVariables.elevatorUpScaler);      //used to be .9 for fast, .45 for slow
+            } else{
+                Robot.oi.mLift1.set(-.11);
+            }
         }
     //     if(Robot.oi.mLift1.getSelectedSensorPosition() <= -23000){
     //         if(Robot.oi.gamepad.getRawAxis(RobotMap.leftY) > .2 || Robot.oi.gamepad.getRawAxis(RobotMap.leftY) < -.2 ){

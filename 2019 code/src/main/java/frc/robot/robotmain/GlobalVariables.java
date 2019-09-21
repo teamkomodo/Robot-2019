@@ -9,7 +9,10 @@ public class GlobalVariables {
     public static final double visionDistanceThreshold = 0.8;
     public static final double joystickThreshold = 0.2;
     public static final double gyroThreshold = 15;
-    public static final double scaler = 1.0;
+    public double driveScaler = 1;                     //slow = .5, fast = 1
+    public double elevatorUpScaler = .9;
+    public double elevatorDownScaler = .3;
+    public double ballScaler = .5;
     public double elevatortarget;
     public int direction = 1; 
     public double ultrasonicTarget;
@@ -47,12 +50,13 @@ public class GlobalVariables {
     public static Boolean enableGamepad = true;           //FALSE FOR JOYSTICKS, TRUE FOR GAMEPAD
     public static Boolean enableGyroDrive = true;
     public static Boolean[] demoMode = {
-            false,      //ENABLE DEMO MODE      0
+            true,      //ENABLE DEMO MODE       0
             false,      //ENABLE GYRO           1
-            false,      //ENABLE VISION         2
-            false,      //ENABLE ELEVATOR       3
-            false,      //ENABLE HATCH          4
-            false,      //ENABLE BALL           5
+            true,      //ENABLE VISION         2
+            true,       //ENABLE ELEVATOR       3
+            true,      //ENABLE HATCH          4
+            true,      //ENABLE BALL           5
+            false,      //SLOW ROBOT            6
     };
     public Boolean ElevatorBreak = false;
     public boolean lineTrip = false;

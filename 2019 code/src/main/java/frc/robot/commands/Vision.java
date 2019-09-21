@@ -13,7 +13,8 @@ public class Vision{
         double steeringAdjust = 0.0;
         double distanceAdjust = 0.0;
         double xOffset = 1;
-        double Scaler = .8;
+        double Scaler = .8;         //was .6
+        double yDeadzone = 10;
         Robot.oi.gyro.reset();
         if(Robot.oi.limelightTarget != 0.0){  //IF ROBOT SEES TARGET
           //DISTANCE CALCULATIONS
@@ -30,12 +31,25 @@ public class Vision{
                   distanceAdjust = 1;
               }
           }
+          //distanceAdjust = 1-distanceAdjust;
           steeringAdjust = (Robot.oi.limelightX-xOffset)/17;     //STEERING CALCULATION   
        //   distanceAdjust = distanceAdjust*-1;
           distanceAdjust = distanceAdjust*Scaler;
           
           SmartDashboard.putNumber("Steering Adjust", steeringAdjust);
           SmartDashboard.putNumber("Distance Adjust", distanceAdjust);
+
+          if(Robot.oi.limelightY - yDeadzone > 0){
+              if(Robot.oi.limelightY * .25 > .8){
+                  Robot.oi.mLift1.set(-.8);
+              } else {
+                  Robot.oi.mLift1.set(-Robot.oi.limelightY * .25);
+              }
+          } else if(Robot.oi.limelightY + yDeadzone < 0){
+              Robot.oi.mLift1.set(.2);
+          } else if(Robot.oi.limelightY + yDeadzone > 0 && Robot.oi.limelightY - yDeadzone < 0) {
+              Robot.oi.mLift1.set(-.11);
+          }
 
           if(steeringAdjust > xOffset) {                         //IF X > 0
               Robot.oi.drive.tankDrive(distanceAdjust, distanceAdjust+steeringAdjust);
@@ -50,6 +64,7 @@ public class Vision{
           } 
         } else {      //IF ROBOT DOES NOT SEE A TARGET
           Robot.oi.drive.tankDrive(0, 0);
+          Robot.oi.mLift1.set(0);
         }   
     }
 }    
